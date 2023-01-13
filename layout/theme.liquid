@@ -1,0 +1,166 @@
+<!doctype html>
+{% assign site_lang = shop.locale | default: 'en' %}
+<!--[if lt IE 9]><html class="lt-ie9" lang="{{ site_lang }}"><![endif]-->
+<!--[if IE 9]><html class="lt-ie10" lang="{{ site_lang }}"><![endif]-->
+<!--[if gt IE 9]><!--><html lang="{{ site_lang }}"><!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Resource hints -->
+  <link rel="preconnect" href="https://cdn.shopify.com">
+  <link rel="preconnect" href="https://cdn.polyfill.io">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+
+  <!-- Meta -->
+  {% liquid
+    render 'meta'
+    unless template contains 'blank'
+      render 'meta-twitter-card'
+      render 'meta-fb-open-graph'
+      render 'meta-json-ld'
+    endunless %}
+
+  <!-- Stylesheets -->
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+  {{ 'custom-css.css' | asset_url | stylesheet_tag }}
+  {% render 'inline-css' %}
+
+  <!-- Global-E styles -->
+  <link id="GEPIStyles" rel="stylesheet" href="//gepi.global-e.com/includes/css/10000772" />
+
+  <!-- Custom header content -->
+  {{ content_for_header }}
+  <!-- End of custom header content -->
+
+  <script type="text/javascript">
+    (function e() {
+      var e = document.createElement("script");
+      e.type = "text/javascript",
+      e.async = true,
+      e.src = "//staticw2.yotpo.com/pJT2dfUplUG55wHXyZIGYFNrNkzb0iJkgUDKpoYy/widget.js";
+      var t = document.getElementsByTagName("script")[0];
+      t.parentNode.insertBefore(e, t)
+    })();
+  </script>
+
+  <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "e2l5k1lito");
+  </script>
+
+  {% render 'collections-object-data' %}
+
+  {% render 'gsf-conversion-pixels' %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ {% include 'talkable-partial' %}
+</head>
+
+<body 
+id="{{ page_title | handle }}"
+class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if template == blank %}no-template{% endif %}" data-shopify-template="{{ template | handleize }}">
+<script>window.KlarnaThemeGlobals={};{%case template.name%} {%when"product"%} {% if product.first_available_variant.price %}window.KlarnaThemeGlobals.data_purchase_amount = {{ product.first_available_variant.price }};{% endif %}window.KlarnaThemeGlobals.productVariants={{product.variants|json}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%when"cart"%} window.KlarnaThemeGlobals.data_purchase_amount={{cart.total_price}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%endcase%}</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  {%- unless template.suffix == 'international-checkout' -%}
+    {% section 'header' %}
+  {%- endunless -%}
+
+  <!-- Begin content-->
+  {% if template == blank %}
+    <div class="column row">
+  {% endif %}
+
+  {{ content_for_layout }}
+
+  {% if template == blank %}
+    </div>
+  {% endif %}
+  <!-- End content-->
+
+  {%- unless template.suffix == 'international-checkout' -%}
+    {% section 'footer' %}
+  {%- endunless -%}
+
+  {% render 'photoswipe-placeholder' %}
+
+  {% render 'scripts' %}
+
+ 
+
+  <script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=14102"></script>
+  <script id="gorgias-chat-shopify-install">!function(_){_.SHOPIFY_PERMANENT_DOMAIN="miaouxx.myshopify.com",_.SHOPIFY_CUSTOMER_ID="",_.SHOPIFY_CUSTOMER_EMAIL=""}(window||{});</script>
+
+  <script type="text/javascript">
+    var _learnq = _learnq || [];
+    function addedToCart() {
+      fetch(`${window.location.origin}/cart.js`)
+      .then(res => res.clone().json().then(data => {
+        var cart = {
+          total_price: data.total_price/100,
+          $value: data.total_price/100,
+          total_discount: data.total_discount,
+          original_total_price: data.original_total_price/100,
+          items: data.items
+        }
+        if (item !== 'undefined') {
+          cart = Object.assign(cart, item)
+        }
+        _learnq.push(['track', 'Added to Cart', cart])
+      }))
+    } 
+    (function (ns, fetch) {
+      ns.fetch = function() {
+        const response = fetch.apply(this, arguments);
+        response.then(res => {
+          if (`${window.location.origin}/cart/add.js`
+            .includes(res.url)) {
+              addedToCart()
+          }
+        });
+        return response
+      }
+    }(window, window.fetch))
+    $(document).ajaxComplete(function(event, request, settings){
+      if(settings.url == "/cart/add.js"){
+          addedToCart()
+      }
+    })
+  </script>
+{% render 'nosto-tagging' %}
+
+   <script src="https://unpkg.com/@loophq/onstore-sdk@latest/dist/loop-onstore-sdk.js"></script>
+  <script>
+  	LoopOnstore.init({
+  		key: "9eeea82d50ef3edb2a3f4fd4e6cdd73458ac6ac6",
+      attach: ".CartDrawer-checkoutButton"
+  	});
+  </script>
+  <script>
+      $(function(){
+        setTimeout(function(){
+          const freeShippingBanner = document.getElementById('FreeShippingBanner');
+          if (freeShippingBanner === null) {
+            $('body').prepend('<div id="FreeShippingBanner" style="direction: ltr;display: flex;justify-content: center;align-content: center;padding: .2rem;text-align: center;color: white;">Free Express shipping and returns on all orders</div>');
+          }
+        }, 15000);
+      });
+  </script>
+</body>
+</html>

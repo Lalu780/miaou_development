@@ -1,0 +1,649 @@
+{
+  "sections": {
+    "9281c30e-a836-4e6c-a077-f26fb6873c4a": {
+      "type": "hp-hero",
+      "settings": {
+        "title": "DÜSSELDORF",
+        "subtitle": "DILAN KOLKILIC",
+        "bg_image": "shopify:\/\/shop_images\/5c0ea630-a272-469c-b493-16c5dc58.jpg",
+        "link": "",
+        "cta": ""
+      }
+    },
+    "banner": {
+      "type": "banner-grid",
+      "disabled": true,
+      "blocks": {
+        "b6714857-e544-423c-a1bc-31bf840fbd50": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3c9ac43b-0c0b-4e5c-ac3a-ebc36e7a.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "b6714857-e544-423c-a1bc-31bf840fbd50"
+      ],
+      "settings": {
+      }
+    },
+    "4e95659a-f429-4d58-ac22-a091223d44b4": {
+      "type": "banner-text-grid",
+      "disabled": true,
+      "blocks": {
+        "template--16036322345139__4e95659a-f429-4d58-ac22-a091223d44b4-166619626221643906-0": {
+          "type": "text",
+          "settings": {
+            "heading": "FALL WINTER 2022",
+            "content": "<p>Photographer:<a href=\"https:\/\/www.instagram.com\/pierreangecarlotti\/?hl=en\">Pierre Ange Carlotti<br\/><\/a>Stylist:<a href=\"https:\/\/www.instagram.com\/georgia.pendlebury\/\">Georgia Pendlebury <br\/><\/a>Hair:<a href=\"https:\/\/www.instagram.com\/yann_turchi\/\">Yann Turchi<br\/><\/a>MU:<a href=\"https:\/\/www.instagram.com\/lynskiii\/?hl=en\">Lynski <br\/><\/a>DP:<a href=\"https:\/\/www.instagram.com\/theo_stefanini\/?hl=en\">TheoStefanini<br\/><\/a>Musician:<a href=\"https:\/\/www.instagram.com\/christian_georges_junior\/\">Christian Georges Jr.<br\/><\/a>Model:<a href=\"https:\/\/www.instagram.com\/sonyamohova\/?hl=en\">Sonya Mohova<br\/><\/a>Casting Direction:<a href=\"https:\/\/www.instagram.com\/gkldprojects\/?hl=en\">GK-LD<br\/><\/a>Art Buying & Production:<a href=\"https:\/\/www.instagram.com\/western_promises\/?hl=en\">Western Promises <br\/><\/a>1st Asst Photographer: Aline Blocman <br\/>2nd Asst Photographer:<a href=\"https:\/\/www.instagram.com\/bsantanoceto\/?hl=en\">Bastien Santonceto<br\/><\/a>3rd Asst Photographer:<a href=\"https:\/\/www.instagram.com\/queen_delacour\/?hl=en\">Valentine Lacour <br\/><\/a>BTS Photographer:<a href=\"https:\/\/www.instagram.com\/jennabey\/?hl=en\">Jennifer Abeyratne <br\/><\/a>Asst DP: Mila Kiss <br\/>Asst Stylist: Marie Poulmarch<br\/>Tailor: Sebastien Pleus<\/p>",
+            "vertical_alignment": "bottom",
+            "horizontal_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "template--16036322345139__4e95659a-f429-4d58-ac22-a091223d44b4-166619626221643906-0"
+      ],
+      "settings": {
+      }
+    },
+    "8969dc99-b2dd-41b4-bebe-af72deddb2f6": {
+      "type": "banner-grid",
+      "blocks": {
+        "template--16037371609267__8969dc99-b2dd-41b4-bebe-af72deddb2f6-1666201126b3980808-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/7bf8e63b-ddef-4b34-9808-1b44d443.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "71c034b5-c5c8-45af-bee3-85713789a65b": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/24c5798d-ff07-4eb6-90fe-d2429974.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "27d1983d-8eb8-4f61-abdf-57f9696416f4": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/22842273-16ba-4966-9e61-7b9f963d.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__8969dc99-b2dd-41b4-bebe-af72deddb2f6-1666201126b3980808-0",
+        "71c034b5-c5c8-45af-bee3-85713789a65b",
+        "27d1983d-8eb8-4f61-abdf-57f9696416f4"
+      ],
+      "settings": {
+      }
+    },
+    "a0e768cf-f8b9-47df-8bf3-ad70e99815ea": {
+      "type": "banner-grid",
+      "blocks": {
+        "template--16037371609267__a0e768cf-f8b9-47df-8bf3-ad70e99815ea-1666201126b3980808-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/9944c8c6-f65d-4a34-bc48-bc3e557a.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "https:\/\/miaou.com\/products\/deville-corset-abstraction",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "20e57b08-cfa7-4281-a68c-5a0a75655cd6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/e0200da1-a607-40fe-a45c-cb9b05ea.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0.2",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "https:\/\/miaou.com\/products\/deville-corset-abstraction",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "32e025fd-51d8-45d0-af78-75b7d197d193": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/82573f24-bcb3-4e15-9406-fa437354.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "https:\/\/miaou.com\/products\/imogene-corset-white-2",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__a0e768cf-f8b9-47df-8bf3-ad70e99815ea-1666201126b3980808-0",
+        "20e57b08-cfa7-4281-a68c-5a0a75655cd6",
+        "32e025fd-51d8-45d0-af78-75b7d197d193"
+      ],
+      "settings": {
+      }
+    },
+    "04f1db37-5247-44e9-a654-dd042db8a507": {
+      "type": "banner-grid",
+      "blocks": {
+        "template--16037371609267__04f1db37-5247-44e9-a654-dd042db8a507-1666200590f18d68b4-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3af392ee-1e7c-44ba-9cf5-1e01506e.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "https:\/\/miaou.com\/products\/thais-dress-baroque",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "template--16037371609267__04f1db37-5247-44e9-a654-dd042db8a507-1666200590f18d68b4-1": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/392e6e20-19a1-44e7-84aa-a6bf9168.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "https:\/\/miaou.com\/products\/mini-tee-neon-yellow-floral",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "template--16037371609267__04f1db37-5247-44e9-a654-dd042db8a507-1666200590f18d68b4-2": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2d650569-b6f2-4899-aa4d-f1f019d8.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__04f1db37-5247-44e9-a654-dd042db8a507-1666200590f18d68b4-0",
+        "template--16037371609267__04f1db37-5247-44e9-a654-dd042db8a507-1666200590f18d68b4-1",
+        "template--16037371609267__04f1db37-5247-44e9-a654-dd042db8a507-1666200590f18d68b4-2"
+      ],
+      "settings": {
+      }
+    },
+    "176cef55-7339-4431-bb9b-38f2d077cb9c": {
+      "type": "banner-grid",
+      "blocks": {
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/dad88375-7dea-41b8-aa69-de1c463b.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "https:\/\/miaou.com\/products\/deville-corset-abstraction",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-1": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/f44e9884-df6f-4fce-ab38-0c84840f.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "https:\/\/miaou.com\/products\/junior-pants-teal-leather",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-2": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5320d662-fa0c-4034-b426-90182ab1.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-0",
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-1",
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-2"
+      ],
+      "settings": {
+      }
+    },
+    "6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08": {
+      "type": "banner-grid",
+      "disabled": true,
+      "blocks": {
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6cf1b52a-1889-41c3-862a-0e1db41e.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/cd62e6bc-6b83-4e29-b818-2373ca3f.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "Shop now",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/040b312b-9e02-4936-9320-ad30c6ea.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "Shop now",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-0",
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-1",
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-2"
+      ],
+      "settings": {
+      }
+    },
+    "47283923-2816-441f-ad52-de2753112c2b": {
+      "type": "banner-grid",
+      "disabled": true,
+      "blocks": {
+        "template--16037371609267__47283923-2816-441f-ad52-de2753112c2b-16662014208b0cbe13-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/f544f2fd-aa37-4d4a-9088-69b62c03.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "1878d27d-4711-48aa-8971-f5f086c5fdfe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/929ddd4f-af8d-489d-a46d-e35702e7.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "dc7271cc-412f-4ae2-bddc-f02001dc98e1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/e8359bfa-c00d-4ddc-887f-657119ec.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__47283923-2816-441f-ad52-de2753112c2b-16662014208b0cbe13-0",
+        "1878d27d-4711-48aa-8971-f5f086c5fdfe",
+        "dc7271cc-412f-4ae2-bddc-f02001dc98e1"
+      ],
+      "settings": {
+      }
+    },
+    "310ebab3-3029-43b5-a846-19fbe9a3868a": {
+      "type": "fullbleed-banner",
+      "disabled": true,
+      "blocks": {
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/d039fdd5-dcc7-4270-8d38-7677cb6eb282_HO22_LookBook_Page_03_1.jpg"
+          }
+        },
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5_de20ecba-73d7-45f3-b575-413b072820a5.jpg"
+          }
+        },
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/MIAOU_ECOMM_4738.jpg"
+          }
+        },
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/PHOTO-2022-09-29-04-45-36.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-0",
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-1",
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-2",
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-3"
+      ],
+      "settings": {
+      }
+    },
+    "8b80fdfd-97a2-41c2-a393-778bc530521f": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "layout": "right",
+        "heading": "Image with text",
+        "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "814b2927-c5e1-4019-b953-523c5fa5b3ab": {
+      "type": "banner-text-grid",
+      "disabled": true,
+      "blocks": {
+        "template--16038861439155__814b2927-c5e1-4019-b953-523c5fa5b3ab-16662955194fe5ebae-0": {
+          "type": "text",
+          "settings": {
+            "heading": "Heading",
+            "content": "",
+            "vertical_alignment": "top",
+            "horizontal_alignment": "left"
+          }
+        },
+        "08a363c8-eb41-4eec-ba00-c3af6efe653b": {
+          "type": "text",
+          "settings": {
+            "heading": "Heading",
+            "content": "",
+            "vertical_alignment": "top",
+            "horizontal_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "template--16038861439155__814b2927-c5e1-4019-b953-523c5fa5b3ab-16662955194fe5ebae-0",
+        "08a363c8-eb41-4eec-ba00-c3af6efe653b"
+      ],
+      "settings": {
+      }
+    },
+    "492c3444-7daf-4bc8-b552-20ceb942ccd0": {
+      "type": "slideshow",
+      "disabled": true,
+      "blocks": {
+        "template--16038861439155__492c3444-7daf-4bc8-b552-20ceb942ccd0-16662955195ecb77bd-0": {
+          "type": "image",
+          "settings": {
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0.2",
+            "caption_position": "center middle",
+            "heading": "Image slide",
+            "heading_color": "",
+            "subhead": "Tell your brand's story through video and images",
+            "subhead_color": "",
+            "link": "",
+            "cta": "Shop now",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "template--16038861439155__492c3444-7daf-4bc8-b552-20ceb942ccd0-16662955195ecb77bd-1": {
+          "type": "image",
+          "settings": {
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0.2",
+            "caption_position": "center middle",
+            "heading": "Image slide",
+            "heading_color": "",
+            "subhead": "Tell your brand's story through video and images",
+            "subhead_color": "",
+            "link": "",
+            "cta": "Shop now",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "template--16038861439155__492c3444-7daf-4bc8-b552-20ceb942ccd0-16662955195ecb77bd-2": {
+          "type": "image",
+          "settings": {
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0.2",
+            "caption_position": "center middle",
+            "heading": "Image slide",
+            "heading_color": "",
+            "subhead": "Tell your brand's story through video and images",
+            "subhead_color": "",
+            "link": "",
+            "cta": "Shop now",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16038861439155__492c3444-7daf-4bc8-b552-20ceb942ccd0-16662955195ecb77bd-0",
+        "template--16038861439155__492c3444-7daf-4bc8-b552-20ceb942ccd0-16662955195ecb77bd-1",
+        "template--16038861439155__492c3444-7daf-4bc8-b552-20ceb942ccd0-16662955195ecb77bd-2"
+      ],
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": "5000",
+        "slideshow_width": "1920",
+        "slideshow_height": "823"
+      }
+    },
+    "af8af513-2536-41f0-8745-2036b3355aa7": {
+      "type": "fullbleed-banner",
+      "disabled": true,
+      "blocks": {
+        "template--16038861439155__af8af513-2536-41f0-8745-2036b3355aa7-166629551947bbb2c0-0": {
+          "type": "image",
+          "settings": {
+          }
+        },
+        "template--16038861439155__af8af513-2536-41f0-8745-2036b3355aa7-166629551947bbb2c0-1": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "template--16038861439155__af8af513-2536-41f0-8745-2036b3355aa7-166629551947bbb2c0-2": {
+          "type": "image",
+          "settings": {
+          }
+        },
+        "template--16038861439155__af8af513-2536-41f0-8745-2036b3355aa7-166629551947bbb2c0-3": {
+          "type": "image",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "template--16038861439155__af8af513-2536-41f0-8745-2036b3355aa7-166629551947bbb2c0-0",
+        "template--16038861439155__af8af513-2536-41f0-8745-2036b3355aa7-166629551947bbb2c0-1",
+        "template--16038861439155__af8af513-2536-41f0-8745-2036b3355aa7-166629551947bbb2c0-2",
+        "template--16038861439155__af8af513-2536-41f0-8745-2036b3355aa7-166629551947bbb2c0-3"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "9281c30e-a836-4e6c-a077-f26fb6873c4a",
+    "banner",
+    "4e95659a-f429-4d58-ac22-a091223d44b4",
+    "8969dc99-b2dd-41b4-bebe-af72deddb2f6",
+    "a0e768cf-f8b9-47df-8bf3-ad70e99815ea",
+    "04f1db37-5247-44e9-a654-dd042db8a507",
+    "176cef55-7339-4431-bb9b-38f2d077cb9c",
+    "6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08",
+    "47283923-2816-441f-ad52-de2753112c2b",
+    "310ebab3-3029-43b5-a846-19fbe9a3868a",
+    "8b80fdfd-97a2-41c2-a393-778bc530521f",
+    "814b2927-c5e1-4019-b953-523c5fa5b3ab",
+    "492c3444-7daf-4bc8-b552-20ceb942ccd0",
+    "af8af513-2536-41f0-8745-2036b3355aa7"
+  ]
+}

@@ -1,0 +1,34 @@
+{% comment %}
+
+  Your cards must be approved by Twitter to be activated
+    - https://dev.twitter.com/docs/cards/validation/validator
+
+  More information:
+   - https://dev.twitter.com/docs/cards/types/product-card
+   - https://dev.twitter.com/docs/cards/types/summary-card
+
+{% endcomment %}
+
+{% comment %}
+  Twitter user name of the site, based on theme settings
+{% endcomment %}
+
+{% if settings.twitter_user_name and settings.twitter_user_name != blank %}
+
+<meta name="twitter:site" content="{{ settings.twitter_user_name | replace: '@', '' }}">
+
+{% if template.name == 'product' %}
+  <meta name="twitter:card" content="product">
+  <meta name="twitter:title" content="{{ product.title }}">
+  <meta name="twitter:description" content="{{ product.description | strip_html | truncatewords: 140, '' | escape }}">
+  <meta name="twitter:image" content="{{ product.featured_image.src | img_url: '1024x1024' | prepend: 'https:' }}">
+{% elsif template.name == 'article' %}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ article.title }}">
+  <meta name="twitter:description" content="{{ article.excerpt_or_content | strip_html | truncatewords: 140, '' | escape }}">
+  {% if article.image %}
+    <meta name="twitter:image" content="{{ article.image | img_url: 'medium' | prepend: 'https:' }}">
+  {% endif %}
+{% endif %}
+
+{% endif %}

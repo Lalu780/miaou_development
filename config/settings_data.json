@@ -1,0 +1,514 @@
+{
+  "current": {
+    "favicon": "shopify:\/\/shop_images\/FAVICON_32x32_6829242e-cf23-451d-b6b7-b15f50a367ae.webp",
+    "apple_touch_icon": "",
+    "grid_item_thumbs_enabled": true,
+    "grid_item_sale_badge_enabled": true,
+    "ajax_cart_enabled": true,
+    "product_options_style": "radios",
+    "product_subheading_enabled": true,
+    "product_image_placeholder_width": "400",
+    "product_image_placeholder_height": "300",
+    "product_image_size": "contain",
+    "product_desc_tab_1_enabled": true,
+    "product_desc_tab_1_title": "",
+    "product_desc_tab_1_content": "",
+    "product_desc_tab_2_enabled": true,
+    "product_desc_tab_2_title": "",
+    "product_desc_tab_2_content": "",
+    "facebook": "https:\/\/www.facebook.com\/Miaouxxx\/",
+    "twitter": "",
+    "twitter_user_name": "@shopify",
+    "instagram": "https:\/\/www.instagram.com\/miaou\/",
+    "pinterest": "",
+    "snapchat": "",
+    "youtube": "",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/Frame_67_f26c3cc4-6db9-4af5-b355-ab4c98e8fea1.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "large",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "transparent",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#000000",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#000000",
+    "checkout_button_color": "#000000",
+    "checkout_error_color": "#ff6d6d",
+    "sections": {
+      "166059286295ef2d0d": {
+        "type": "banner-grid",
+        "blocks": {
+          "166059286295ef2d0d-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/MIAOU_HOLIDAY_9148_R.jpg",
+              "bg_color": "#ffffff",
+              "tint_color": "#8b8484",
+              "tint_strength": "0",
+              "heading": "<p>NEW<\/p><p>CORSETS<\/p>",
+              "subhead": "",
+              "text_color": "#000000",
+              "link": "https:\/\/miaou.com\/collections\/corsets",
+              "cta": "Shop now",
+              "cta_color": "#ffffff",
+              "cta_bg_color": "",
+              "cta_style": "solid",
+              "banner_height": "window",
+              "vertical_alignment": "top",
+              "horizontal_alignment": "left"
+            }
+          },
+          "166059286295ef2d0d-1": {
+            "type": "image",
+            "disabled": true,
+            "settings": {
+              "image": "shopify:\/\/shop_images\/000003740023.jpg",
+              "bg_color": "#ffffff",
+              "tint_color": "#ffffff",
+              "tint_strength": "0.2",
+              "heading": "<p>NEW CORSETS<\/p>",
+              "subhead": "",
+              "text_color": "#ffffff",
+              "link": "shopify:\/\/collections\/corsets",
+              "cta": "Shop now",
+              "cta_color": "",
+              "cta_bg_color": "",
+              "cta_style": "solid",
+              "banner_height": "window",
+              "vertical_alignment": "middle",
+              "horizontal_alignment": "middle"
+            }
+          }
+        },
+        "block_order": [
+          "166059286295ef2d0d-0",
+          "166059286295ef2d0d-1"
+        ],
+        "settings": {
+        }
+      },
+      "1660593266445103ce": {
+        "type": "banner-grid",
+        "blocks": {
+          "1660593266445103ce-0": {
+            "type": "image",
+            "disabled": true,
+            "settings": {
+              "image": "shopify:\/\/shop_images\/618fe9f2-130f-494a-b64a-c0841c6de9de_000007980034.jpg",
+              "bg_color": "#ffffff",
+              "tint_color": "#ffffff",
+              "tint_strength": "0.2",
+              "heading": "<p>MESHING AROUND<\/p>",
+              "subhead": "",
+              "text_color": "#ffffff",
+              "link": "",
+              "cta": "Shop now",
+              "cta_color": "#ffffff",
+              "cta_bg_color": "",
+              "cta_style": "solid",
+              "banner_height": "window",
+              "vertical_alignment": "middle",
+              "horizontal_alignment": "middle"
+            }
+          },
+          "1660593266445103ce-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/MIAOU_HOLIDAY_9287_R.jpg",
+              "bg_color": "#ffffff",
+              "tint_color": "#ffffff",
+              "tint_strength": "0",
+              "heading": "<p>BEST<\/p><p>SELLERS<\/p>",
+              "subhead": "",
+              "text_color": "#000000",
+              "link": "shopify:\/\/collections\/best-sellers",
+              "cta": "Shop now",
+              "cta_color": "#ffffff",
+              "cta_bg_color": "",
+              "cta_style": "solid",
+              "banner_height": "window",
+              "vertical_alignment": "top",
+              "horizontal_alignment": "right"
+            }
+          }
+        },
+        "block_order": [
+          "1660593266445103ce-0",
+          "1660593266445103ce-1"
+        ],
+        "settings": {
+        }
+      },
+      "16605933460ec541aa": {
+        "type": "banner-grid",
+        "disabled": true,
+        "blocks": {
+          "16605933460ec541aa-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/1fcdb6b0-4b33-46d7-b1aa-5624c1d2.jpg",
+              "bg_color": "#ffffff",
+              "tint_color": "#ffffff",
+              "tint_strength": "0.2",
+              "heading": "<p>LAST CHANCE SALE<\/p>",
+              "subhead": "",
+              "text_color": "#ffffff",
+              "link": "",
+              "cta": "Shop now",
+              "cta_color": "#ffffff",
+              "cta_bg_color": "rgba(0,0,0,0)",
+              "cta_style": "solid",
+              "banner_height": "window",
+              "vertical_alignment": "middle",
+              "horizontal_alignment": "middle"
+            }
+          },
+          "16605933460ec541aa-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/689425ec-60c0-4f39-860e-4900ba566163_noUvLQAYMPzOY89jNoxY-UG9xVIr4UR1zA_1.jpg",
+              "bg_color": "#ffffff",
+              "tint_color": "#ffffff",
+              "tint_strength": "0.2",
+              "heading": "<p>SHE'S BACK<\/p>",
+              "subhead": "",
+              "text_color": "#ffffff",
+              "link": "",
+              "cta": "Shop now",
+              "cta_color": "",
+              "cta_bg_color": "",
+              "cta_style": "solid",
+              "banner_height": "window",
+              "vertical_alignment": "middle",
+              "horizontal_alignment": "middle"
+            }
+          }
+        },
+        "block_order": [
+          "16605933460ec541aa-0",
+          "16605933460ec541aa-1"
+        ],
+        "settings": {
+        }
+      },
+      "banner-grid": {
+        "type": "banner-grid",
+        "blocks": {
+          "block-0": {
+            "type": "image",
+            "settings": {
+              "bg_color": "#dddedc",
+              "tint_color": "#000000",
+              "tint_strength": "0.2",
+              "heading": "<p>Banner block<\/p>",
+              "subhead": "Tell your brand's story through images",
+              "text_color": "",
+              "link": "",
+              "cta": "Shop now",
+              "cta_color": "",
+              "cta_bg_color": "",
+              "cta_style": "solid"
+            }
+          },
+          "block-1": {
+            "type": "image",
+            "settings": {
+              "bg_color": "#dddedc",
+              "tint_color": "#000000",
+              "tint_strength": "0.2",
+              "heading": "<p>Banner block<\/p>",
+              "subhead": "Tell your brand's story through images",
+              "text_color": "",
+              "link": "",
+              "cta": "Shop now",
+              "cta_color": "",
+              "cta_bg_color": "",
+              "cta_style": "solid"
+            }
+          },
+          "block-2": {
+            "type": "image",
+            "settings": {
+              "bg_color": "#dddedc",
+              "tint_color": "#000000",
+              "tint_strength": "0.2",
+              "heading": "<p>Banner block<\/p>",
+              "subhead": "Tell your brand's story through images",
+              "text_color": "",
+              "link": "",
+              "cta": "Shop now",
+              "cta_color": "",
+              "cta_bg_color": "",
+              "cta_style": "solid"
+            }
+          }
+        },
+        "block_order": [
+          "block-0",
+          "block-1",
+          "block-2"
+        ],
+        "settings": {
+        }
+      },
+      "blog": {
+        "type": "blog",
+        "settings": {
+          "heading": "Latest from the blog",
+          "subhead": "<p>Engage your customers with news and product stories<\/p>",
+          "blog": ""
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "menu_1": "account-links",
+          "menu_2": "terms-menu",
+          "menu_3": "social-links",
+          "show_default_shop_address": false,
+          "extra_info": "",
+          "email": "",
+          "phone": "",
+          "social_icons_enabled": false,
+          "designed_by_link_enabled": false
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "main_linklist": "shop-col",
+          "second_linklist": "tvg-universe"
+        }
+      },
+      "hp-hero": {
+        "type": "hp-hero",
+        "settings": {
+          "title": "ALL ABOUT YOU",
+          "subtitle": "",
+          "bg_image": "shopify:\/\/shop_images\/blueBanner-Desktop.jpg",
+          "bg_image_mobile": "shopify:\/\/shop_images\/68F8BA7C-A58E-4864-B570-38BC9BD55BB6.jpg",
+          "link": "shopify:\/\/collections\/new-womens-clothing",
+          "cta": "SHOP NEW ARRIVALS",
+          "vertical_alignment": "middle",
+          "horizontal_alignment": "middle",
+          "text_color": "#ffffff"
+        }
+      },
+      "image-with-text": {
+        "type": "image-with-text",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/000003640005.jpg",
+          "layout": "left",
+          "heading": "New Sets",
+          "text": "",
+          "button_label": "Shop Now",
+          "button_link": "shopify:\/\/collections\/summer-sets"
+        }
+      },
+      "newsletter": {
+        "type": "newsletter",
+        "settings": {
+          "heading": "Subscribe to our newsletter",
+          "subhead": "<p>Let your customers be first to hear about your new products, offers and events<\/p>",
+          "mailchimp_form_action": ""
+        }
+      },
+      "slideshow": {
+        "type": "slideshow",
+        "blocks": {
+          "slideshow-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/000003630018_copy.jpg",
+              "bg_color": "#dddedc",
+              "tint_color": "#000000",
+              "tint_strength": "0.2",
+              "caption_position": "center middle",
+              "heading": "Just Dropped",
+              "heading_color": "",
+              "subhead": "",
+              "subhead_color": "",
+              "link": "shopify:\/\/collections\/new-womens-clothing",
+              "cta": "Shop now",
+              "cta_color": "#ffffff",
+              "cta_bg_color": "#ffffff",
+              "cta_style": "hollow"
+            }
+          }
+        },
+        "block_order": [
+          "slideshow-0"
+        ],
+        "settings": {
+          "autoplay": true,
+          "autoplay_speed": "7000",
+          "slideshow_width": "1920",
+          "slideshow_height": "1080"
+        }
+      },
+      "js-ajax-discount": {
+        "type": "js-ajax-discount",
+        "settings": {
+        }
+      },
+      "16642594701b762353": {
+        "type": "four-sixty",
+        "settings": {
+          "title": "<p>FOLLOW US <a href=\"https:\/\/www.instagram.com\/miaou\/\" target=\"_blank\" title=\"https:\/\/www.instagram.com\/miaou\/\">@MIAOU<\/a><\/p>"
+        }
+      },
+      "1c2da56b-6adf-484d-9c2d-c3025b56df4a": {
+        "type": "nosto-home",
+        "settings": {
+        }
+      },
+      "15e9ffd6-8c36-47db-8a8d-3758db086193": {
+        "type": "hp-hero",
+        "disabled": true,
+        "settings": {
+          "title": "HOLIDAY LOOKS",
+          "subtitle": "",
+          "bg_image": "shopify:\/\/shop_images\/HolidayBanner-DesktopFINAL_ffcdb26b-90ca-4f57-aab7-96d58fe4a991.jpg",
+          "bg_image_mobile": "shopify:\/\/shop_images\/MobileBanner.jpg",
+          "link": "shopify:\/\/collections\/nye-looks",
+          "cta": "Shop Now",
+          "vertical_alignment": "middle",
+          "horizontal_alignment": "middle",
+          "text_color": "#000000"
+        }
+      }
+    },
+    "content_for_index": [
+      "hp-hero",
+      "166059286295ef2d0d",
+      "1660593266445103ce",
+      "16605933460ec541aa",
+      "15e9ffd6-8c36-47db-8a8d-3758db086193",
+      "1c2da56b-6adf-484d-9c2d-c3025b56df4a",
+      "16642594701b762353"
+    ],
+    "blocks": {
+      "8962992520437913685": {
+        "type": "shopify:\/\/apps\/yotpo-loyalty-rewards\/blocks\/loader-app-embed-block\/2f9660df-5018-4e02-9868-ee1fb88d6ccd",
+        "disabled": false,
+        "settings": {
+          "inject_modules_loader": true,
+          "inject_sdk_loader": true
+        }
+      },
+      "7570552984445421165": {
+        "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/settings\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "disabled": true,
+        "settings": {
+        }
+      },
+      "855628211100114053": {
+        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "content_for_index": [
+        "hp-hero",
+        "image-with-text",
+        "banner-grid",
+        "blog",
+        "newsletter"
+      ],
+      "facebook": "https:\/\/facebook.com\/shopify",
+      "instagram": "https:\/\/instagram.com\/shopify",
+      "pinterest": "https:\/\/pinterest.com\/shopify",
+      "sections": {
+        "banner-grid": {
+          "block_order": [
+            "block-0",
+            "block-1",
+            "block-2"
+          ],
+          "blocks": {
+            "block-0": {
+              "settings": {
+              },
+              "type": "image"
+            },
+            "block-1": {
+              "settings": {
+              },
+              "type": "image"
+            },
+            "block-2": {
+              "settings": {
+              },
+              "type": "image"
+            }
+          },
+          "settings": {
+          },
+          "type": "banner-grid"
+        },
+        "blog": {
+          "settings": {
+          },
+          "type": "blog"
+        },
+        "footer": {
+          "settings": {
+          },
+          "type": "footer"
+        },
+        "header": {
+          "settings": {
+          },
+          "type": "header"
+        },
+        "hp-hero": {
+          "settings": {
+          },
+          "type": "hp-hero"
+        },
+        "image-with-text": {
+          "settings": {
+          },
+          "type": "image-with-text"
+        },
+        "newsletter": {
+          "settings": {
+          },
+          "type": "newsletter"
+        },
+        "slideshow": {
+          "block_order": [
+            "slideshow-0",
+            "slideshow-1"
+          ],
+          "blocks": {
+            "slideshow-0": {
+              "settings": {
+              },
+              "type": "image"
+            },
+            "slideshow-1": {
+              "settings": {
+              },
+              "type": "image"
+            }
+          },
+          "settings": {
+          },
+          "type": "slideshow"
+        }
+      },
+      "snapchat": "https:\/\/snapchat.com\/add\/shopify",
+      "twitter": "https:\/\/twitter.com\/shopify",
+      "twitter_user_name": "@shopify",
+      "youtube": "https:\/\/www.youtube.com\/user\/shopify"
+    }
+  }
+}

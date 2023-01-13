@@ -1,0 +1,368 @@
+{
+  "sections": {
+    "banner": {
+      "type": "banner-grid",
+      "blocks": {
+        "b6714857-e544-423c-a1bc-31bf840fbd50": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/d039fdd5-dcc7-4270-8d38-7677cb6eb282_HO22_LookBook_Page_03_1.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "Shop now",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "b6714857-e544-423c-a1bc-31bf840fbd50"
+      ],
+      "settings": {
+      }
+    },
+    "4e95659a-f429-4d58-ac22-a091223d44b4": {
+      "type": "banner-text-grid",
+      "blocks": {
+        "template--16036322345139__4e95659a-f429-4d58-ac22-a091223d44b4-166619626221643906-0": {
+          "type": "text",
+          "settings": {
+            "heading": "L.A. WOMAN",
+            "content": "<p>Photographer:Moni Haworth<\/p><p>Stylist: Peri Rosenzweig<\/p><p>Hair:Tiago Goya<\/p><p>MU:Kennedy<\/p><p>Video Edit:Jessica May Proper<\/p><p>Music: Obsession by Animotion<\/p><p>Model:Gabbriette<\/p><p>Creative Production: Sara Lemieux<\/p><p>1st Asst Photographer: Juju Sorelli<\/p><p>BTS Photographer: Talia Cassel<\/p><p>Asst Stylist: Natalie Smithson<\/p><p>PA: Jackie Marrufo<\/p>",
+            "vertical_alignment": "bottom",
+            "horizontal_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "template--16036322345139__4e95659a-f429-4d58-ac22-a091223d44b4-166619626221643906-0"
+      ],
+      "settings": {
+      }
+    },
+    "04f1db37-5247-44e9-a654-dd042db8a507": {
+      "type": "banner-grid",
+      "blocks": {
+        "template--16037371609267__04f1db37-5247-44e9-a654-dd042db8a507-1666200590f18d68b4-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/4ea61703-e055-428b-80a0-da4e2d6ac470_3Q1A7402_copy_2.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "template--16037371609267__04f1db37-5247-44e9-a654-dd042db8a507-1666200590f18d68b4-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2d41d150-48d2-4d1c-9d34-63ffc92ad452_HO22_LookBook_Page_05.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "template--16037371609267__04f1db37-5247-44e9-a654-dd042db8a507-1666200590f18d68b4-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5022460a-0328-407d-b701-097486fa9fdd_HO22_LookBook_Page_06.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__04f1db37-5247-44e9-a654-dd042db8a507-1666200590f18d68b4-0",
+        "template--16037371609267__04f1db37-5247-44e9-a654-dd042db8a507-1666200590f18d68b4-1",
+        "template--16037371609267__04f1db37-5247-44e9-a654-dd042db8a507-1666200590f18d68b4-2"
+      ],
+      "settings": {
+      }
+    },
+    "8969dc99-b2dd-41b4-bebe-af72deddb2f6": {
+      "type": "banner-grid",
+      "blocks": {
+        "template--16037371609267__8969dc99-b2dd-41b4-bebe-af72deddb2f6-1666201126b3980808-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/d039fdd5-dcc7-4270-8d38-7677cb6eb282_HO22_LookBook_Page_03_1.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__8969dc99-b2dd-41b4-bebe-af72deddb2f6-1666201126b3980808-0"
+      ],
+      "settings": {
+      }
+    },
+    "a0e768cf-f8b9-47df-8bf3-ad70e99815ea": {
+      "type": "banner-grid",
+      "blocks": {
+        "template--16037371609267__a0e768cf-f8b9-47df-8bf3-ad70e99815ea-1666201126b3980808-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1f103723-1e05-424b-9239-4abb9a7dc569_HO22_LookBook_Page_09.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__a0e768cf-f8b9-47df-8bf3-ad70e99815ea-1666201126b3980808-0"
+      ],
+      "settings": {
+      }
+    },
+    "176cef55-7339-4431-bb9b-38f2d077cb9c": {
+      "type": "banner-grid",
+      "blocks": {
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/780a60ad-1fe2-43f8-bace-16093299003f_HO22_LookBook_Page_10.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/73044de6-aab2-4ef9-a660-94c407a4e77d_HO22_LookBook_Page_11.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/a96a3b02-00d6-468f-af25-9f6eb93195de_HO22_LookBook_Page_12.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-0",
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-1",
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-2"
+      ],
+      "settings": {
+      }
+    },
+    "6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08": {
+      "type": "banner-grid",
+      "blocks": {
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/b21d6e58-4ea1-4d55-a83a-a3ba8ce0bfb3_HO22_LookBook_Page_15.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/7351c69e-1d2f-424e-a0ee-72cf14481d73_HO22_LookBook_Page_16.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "Shop now",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        },
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/067d946f-09d2-42f6-81ab-dc503098cc6e_HO22_LookBook_Page_13.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "Shop now",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-0",
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-1",
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-2"
+      ],
+      "settings": {
+      }
+    },
+    "47283923-2816-441f-ad52-de2753112c2b": {
+      "type": "banner-grid",
+      "blocks": {
+        "template--16037371609267__47283923-2816-441f-ad52-de2753112c2b-16662014208b0cbe13-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/9f7811a8-5b76-4c25-9f91-9746cf6843ea_HO22_LookBook_Page_14.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__47283923-2816-441f-ad52-de2753112c2b-16662014208b0cbe13-0"
+      ],
+      "settings": {
+      }
+    },
+    "310ebab3-3029-43b5-a846-19fbe9a3868a": {
+      "type": "fullbleed-banner",
+      "blocks": {
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/d039fdd5-dcc7-4270-8d38-7677cb6eb282_HO22_LookBook_Page_03_1.jpg"
+          }
+        },
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5_de20ecba-73d7-45f3-b575-413b072820a5.jpg"
+          }
+        },
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/MIAOU_ECOMM_4738.jpg"
+          }
+        },
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/PHOTO-2022-09-29-04-45-36.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-0",
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-1",
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-2",
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-3"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "4e95659a-f429-4d58-ac22-a091223d44b4",
+    "04f1db37-5247-44e9-a654-dd042db8a507",
+    "8969dc99-b2dd-41b4-bebe-af72deddb2f6",
+    "a0e768cf-f8b9-47df-8bf3-ad70e99815ea",
+    "176cef55-7339-4431-bb9b-38f2d077cb9c",
+    "6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08",
+    "47283923-2816-441f-ad52-de2753112c2b",
+    "310ebab3-3029-43b5-a846-19fbe9a3868a"
+  ]
+}

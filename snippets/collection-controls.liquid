@@ -1,0 +1,114 @@
+{%- if collection.featured_image contains 'collections/'  %}
+ <div class="menu-overlay" style="padding-top: 0px;">         
+      {% else %}
+  <div class="menu-overlay" style="padding-top: 24px;">
+      {% endif %}
+<!-- <div class="menu-overlay"> -->
+  <ul class="header-main">
+    <li class="header-sub header-bar dropdown-1">
+      <span>SIZE</span>
+    </li>
+    <li class="header-sub header-bar dropdown-2">
+      <span>COLOR</span>
+    </li>
+    {% if current_tags != null %}
+      <!--
+        <li class="header-sub header-bar" style="float:left;margin-right:35px;" onclick="window.location.assign('{{ collection.url | escape }}');"><span>Clear all</span></li>
+      -->
+    {% endif %}
+    <li class="header-sub header-sub-sort header-bar dropdown-3">
+      <span>SORT</span>
+    </li>
+  </ul>
+  <div class="dropdown-content">
+    <ul
+      id="js-collection-tag-filter-size"
+      class="dropdown-content-list dropdown-options-1 options-1"
+      name="tag-filter-size"
+      data-collection-url="{{ collection.url | escape }}"
+    >
+      {% assign sizes = 'sizes-XXS,sizes-XS,sizes-S,sizes-M,sizes-L,sizes-XL,sizes-1XL,sizes-2XL,sizes-3XL,sizes-4XL'
+        | split: ','
+      %}
+      {% for size_value in sizes %}
+        <li
+          tag_value="{{ size_value }}"
+          class="size_options"
+          {% if current_tags contains size_value %}
+            id="selected_size"
+          {% endif %}
+        >
+          <!--
+            <input type="checkbox" class="size-checkbox" value="{{ size_value }}" {% if current_tags contains size_value %}checked{% endif %}>
+          -->
+          {{ size_value | remove: 'sizes-' | replace: '-', ' ' | upcase }}
+        </li>
+      {% endfor %}
+    </ul>
+    <ul
+      id="js-collection-tag-filter-color"
+      class="dropdown-content-list dropdown-options-1 options-2"
+      name="tag-filter-color"
+      data-collection-url="{{ collection.url | escape }}"
+    >
+      {% for tag in collection.all_tags %}
+        {% if tag contains 'color' %}
+          <li
+            tag_value="{{ tag | handle }}"
+            class="color_options"
+            {% if current_tags contains tag %}
+              id="selected_color"
+            {% endif %}
+          >
+            <!--
+              <input type="checkbox" class="color-checkbox" value="{{ tag | handle }}" {% if current_tags contains tag %}checked{% endif %}>
+            -->
+            {{ tag | remove: 'color-' | replace: '-', ' ' | upcase }}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    <ul id="js-collection-sorting" class="dropdown-content-list dropdown-options-2 options-3" name="SORT-BY">
+      {% assign sort_values = 'manual,best-selling,price-descending,price-ascending,created-descending'
+        | split: ','
+      %}
+      {% for sort_value in sort_values %}
+        <li sort_value="{{ sort_value | handle }}">
+          {% assign translation = sort_value | replace: '-', '_' | prepend: 'collections.sorting.' %}
+          {{ translation | t | upcase }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<script>
+  $(document).on("click", ".dropdown-1", function(){
+        $(this).toggleClass("active"), $(".options-1").toggleClass("active");
+    $(".dropdown-2, .dropdown-3, .options-2, .options-3").removeClass("active");
+     });
+  $(document).on("click", ".dropdown-2", function(){
+        $(this).toggleClass("active"), $(".options-2").toggleClass("active");
+    $(".dropdown-1, .dropdown-3, .options-1, .options-3").removeClass("active");
+     });
+  $(document).on("click", ".dropdown-3", function(){
+        $(this).toggleClass("active"), $(".options-3").toggleClass("active");
+    $(".dropdown-2, .dropdown-1, .options-2, .options-1").removeClass("active");
+     });
+   ;
+</script>
+<style>
+  .dropdown-options-1 li:before {
+    content: "";
+    display: inline-block;
+    margin-right: 8px;
+    margin-bottom: 4px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #fff;
+    vertical-align: middle;
+  }
+  #selected_color:before, #selected_size:before {
+    background-color: #fff;
+  }
+</style>

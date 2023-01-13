@@ -1,0 +1,42 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<div class="BackToStock-overlay js-bis-overlay-close"></div>
+
+<div class="BackToStock" aria-label="Join waiting list form">
+    <div class="BackToStock--right">
+        <div class="Product-card-options-toggle js-bis-overlay-close" tabindex="0" aria-label="Close waitlist form"><span></span><span></span></div>
+        <h3 class="u-pSize">{{ product.title | upcase }}</h3>
+        <p class="u-pSize__Small">
+            Get notified when this product is back in stock.
+        </p>
+
+        <input id="js-bts-var" type="hidden" value="{{ current_variant.id }}">
+        <input id="js-bts-prod" type="hidden" value="{{ product.id }}">
+
+        <!-- <select class="BackToStock-select" aria-label="Variant selector" id="js-bts-select" {% unless product.variants.size> 1 %}style="display: none;"{%
+            endunless %}>
+            {%- for variant in product.variants -%}
+            {%- if variant.available == false -%}
+            <option variant_id="{{ variant.id }}" {% if current_variant.id==variant.id %} selected {%- endif -%}>{{
+                variant.title }}</option>
+            {%- endif -%}
+            {%- endfor -%}
+        </select> -->
+
+        <input aria-label="Waiting list email field" tabindex="0" type="email" id="js-bts-email" placeholder="Email" aria-label="Email address" class="Input" required>
+        <p role="alert" class="u-noMargin BackToStock-error u-pSize__Small" style="display: none;" id="js-bts-message"></p>
+
+        <!-- <div class="Checkbox--Round">
+            <input id="js-bts-checkbox" checked class="Checkbox--Round__input" style="display: inline-block !important;" name="checkbox-1" type="checkbox">
+            <label for="js-bts-checkbox" class="Checkbox--Round__label"><span class="Checkbox__text">Glaze your inbox with tips, tricks & exclusive content from Hailey.
+                <span role="alert" style="display: none; color: #C63939" id="js-checked-message"> *Required step.</span></span>
+            </label>
+        </div> -->
+
+        <button class="js-out-of-stock BackToStock-btn ProductForm-submitButton o-button" id="js-bts-btn" submit>Sign up</button>
+        <p role="alert" class="u-noMargin BackToStock-success u-pSize__Small" style="display: none;" id="js-bts-message-success"></p>
+
+        <p class="u-noMargin u-pSize__Small pp-message"> By signing up, you agree to our <a class="u-pSize__Small" href="/pages/privacy">Privacy Policy*</a>.
+        </p>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+
+{% if section.blocks.size > 0 %}
+<section class="BannerGrid-container">
+  <div class="column">
+    <ul class="BannerGrid-items BannerGrid-items--{{ section.id }}" data-item-count="{{ section.blocks.size }}">
+      {%- for block in section.blocks -%}        
+        <li class="BannerGrid-item BannerGrid-item--{{ block.id }}">
+            <div class="BannerGrid-textPlaceholder">                
+                <div class="BannerGrid-text --vertical-{{ block.settings.vertical_alignment }} --horizontal-{{ block.settings.horizontal_alignment }} --{{ block.settings.text_size }}">
+                    <h3>{{ block.settings.heading }}</h3>
+        
+                    <div>{{ block.settings.content }}</div>
+                </div>                
+            </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>  
+</section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Banner Text grid",
+    "class": "BannerGrid IndexSection",
+    "max_blocks": 3,
+    "settings": [],
+    "blocks": [      
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [          
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content"            
+          },
+          {
+            "type": "select",
+            "id": "text_size",
+            "label": "Text Size",
+            "options": [
+              { 
+                "value": "smaller", 
+                "label": "Smaller" 
+              },
+              { 
+                "value": "default", 
+                "label": "Default" 
+              },
+              { 
+                "value": "bigger", 
+                "label": "Bigger" 
+              }
+            ],
+            "default": "default"   
+          },
+          {
+            "type": "select",
+            "id": "vertical_alignment",
+            "label": "Vertical Text Alignment",
+            "options": [
+              { 
+                "value": "top", 
+                "label": "Top" 
+              },
+              { 
+                "value": "middle", 
+                "label": "Middle" 
+              },
+              { 
+                "value": "bottom", 
+                "label": "Bottom" 
+              }
+            ],
+            "default": "top"   
+          },
+          {
+            "type": "select",
+            "id": "horizontal_alignment",
+            "label": "Horizontal Text Alignment",
+            "options": [
+              { 
+                "value": "left", 
+                "label": "Left" 
+              },
+              { 
+                "value": "middle", 
+                "label": "Middle" 
+              },
+              { 
+                "value": "right", 
+                "label": "Right" 
+              }
+            ],
+            "default": "left"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Banner Text grid",
+      "category": "Grid",
+      "settings": {},
+      "blocks": [        
+        {
+          "type": "text"
+        }
+      ]
+    }]
+  }
+{% endschema %}

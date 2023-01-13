@@ -1,0 +1,205 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Shiro",
+    "theme_author": "The Vaan Group",
+    "theme_version": "1.0.0",
+    "theme_documentation_url": "https:\/\/www.vaangroup.com\/",
+    "theme_support_email": "info@vaangroup.com"
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "Will be scaled down to 32 x 32px"
+      },
+      {
+        "type": "image_picker",
+        "id": "apple_touch_icon",
+        "label": "Apple touch icon",
+        "info": "Will be scaled down to 180 x 180px"
+      }
+    ]
+  },
+  {
+    "name": "Collection",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "grid_item_thumbs_enabled",
+        "label": "Show additional thumbnails in product grid item on mouse hover",
+        "default": true,
+        "info": "A thumbnail won't be shown if an image is not linked to an available variant. [How to add image to a variant](http:\/\/illarionvk.com\/r\/add_images_to_variants)"
+      },
+      {
+        "type": "checkbox",
+        "id": "grid_item_sale_badge_enabled",
+        "label": "Show \"On Sale\" badge",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Product",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "ajax_cart_enabled",
+        "label": "Enable AJAX cart",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "product_options_style",
+        "label": "Show product option selectors as",
+        "options": [
+          {
+            "value": "radios",
+            "label": "Radio buttons"
+          },
+          {
+            "value": "dropdowns",
+            "label": "Dropdowns"
+          }
+        ],
+        "default": "radios"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_subheading_enabled",
+        "label": "Show product subheading",
+        "default": true,
+        "info": "Subheadings are stored as product metafields. [Click here to edit](\/admin\/bulk?resource_name=Product&edit=metafields.theme_extras.product_subheading:string&metafield_titles[metafields.theme_extras.product_subheading]=Product%20Subheading&limit=100&return_to=\/admin\/products)"
+      },
+      {
+        "type": "header",
+        "content": "Image"
+      },
+      {
+        "type": "paragraph",
+        "content": "Product images are fitted inside a responsive placeholder box. Change width and height values below to modify placeholder dimensions."
+      },
+      {
+        "type": "text",
+        "id": "product_image_placeholder_width",
+        "label": "Placeholder width",
+        "default": "400",
+        "info": "400"
+      },
+      {
+        "type": "text",
+        "id": "product_image_placeholder_height",
+        "label": "Placeholder height",
+        "default": "300",
+        "info": "300"
+      },
+      {
+        "type": "select",
+        "id": "product_image_size",
+        "label": "Image size",
+        "options": [
+          {
+            "value": "contain",
+            "label": "Letterboxed within placeholder"
+          },
+          {
+            "value": "cover",
+            "label": "Scaled as large as possible"
+          }
+        ],
+        "default": "contain"
+      },
+      {
+        "type": "header",
+        "content": "Description tab 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_desc_tab_1_enabled",
+        "label": "Show tab",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "product_desc_tab_1_title",
+        "label": "Tab title"
+      },
+      {
+        "type": "textarea",
+        "id": "product_desc_tab_1_content",
+        "label": "Tab content",
+        "info": "Use basic HTML to format text"
+      },
+      {
+        "type": "header",
+        "content": "Description tab 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_desc_tab_2_enabled",
+        "label": "Show tab",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "product_desc_tab_2_title",
+        "label": "Tab title"
+      },
+      {
+        "type": "textarea",
+        "id": "product_desc_tab_2_content",
+        "label": "Tab content",
+        "info": "Use basic HTML to format text"
+      }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Links"
+      },
+      {
+        "type": "text",
+        "id": "facebook",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "text",
+        "id": "twitter",
+        "label": "Twitter URL"
+      },
+      {
+        "type": "text",
+        "id": "twitter_user_name",
+        "label": "Twitter User Name",
+        "default": "@shopify"
+      },
+      {
+        "type": "text",
+        "id": "instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "text",
+        "id": "pinterest",
+        "label": "Pinterest URL"
+      },
+      {
+        "type": "text",
+        "id": "snapchat",
+        "label": "Snapchat URL",
+        "info": "https:\/\/snapchat.com\/add\/[USERNAME], where [USERNAME] is replaced with your user name"
+      },
+      {
+        "type": "text",
+        "id": "youtube",
+        "label": "Youtube URL"
+      }
+    ]
+  }
+]

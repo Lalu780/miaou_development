@@ -1,0 +1,6 @@
+"use strict";(self["webpackChunk"]=self["webpackChunk"]||[]).push([[177],{5151:(__unused_webpack_module,__unused_webpack___webpack_exports__,__webpack_require__)=>{var jquery_min=__webpack_require__(7009)
+;var jquery_min_default=__webpack_require__.n(jquery_min);const init=async function(){const tabControls=jquery_min_default()(".js-index-tabs-control");const tabPanels=jquery_min_default()(".js-index-tabs-panel");if(!tabPanels)return
+;tabControls.on("click",(function(evt){evt.preventDefault();const tabControl=jquery_min_default()(evt.delegateTarget);const tabFilter=['[data-tab-letter="',tabControl.attr("data-tab-letter")||"a",'"]'].join("")
+;tabControls.not(tabFilter).removeClass("is-active");tabControl.addClass("is-active");tabPanels.not(tabFilter).removeClass("is-active");tabPanels.filter(tabFilter).addClass("is-active")}))};const logErrors=function(err){console.error(err)}
+;init().catch(logErrors)}},__webpack_require__=>{var __webpack_exec__=moduleId=>__webpack_require__(__webpack_require__.s=moduleId);__webpack_require__.O(0,[351],(()=>__webpack_exec__(5151)));var __webpack_exports__=__webpack_require__.O()
+}]);

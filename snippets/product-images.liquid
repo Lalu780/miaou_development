@@ -1,0 +1,111 @@
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+
+{%- assign aspect_ratio_sum = 0 -%}
+{%- for image in product.images -%}
+  {%- assign aspect_ratio_sum = aspect_ratio_sum | plus: image.aspect_ratio -%}
+{%- endfor -%}
+{%- assign avg_aspect_ratio = aspect_ratio_sum | times: 1.0 | divided_by: product.images.size -%}
+{%- assign placeholder_padding = avg_aspect_ratio | times: 200 | append: '%' -%}
+
+<section class="js-product-gallery ProductGallery ProductGallery--mobile" data-product-id="{{ product.id }}">
+  <style>
+    .ProductGallery[data-product-id="{{ product.id }}"] .ProductGallery-imageCarouselPlaceholder {
+      padding-bottom: {{ placeholder_padding }};
+    }
+    .ProductGallery[data-product-id="{{ product.id }}"] .ProductGallery-imagePlaceholder {
+      padding-bottom: {{ placeholder_padding }};
+    }
+  </style>
+
+  <div class="js-product-gallery-images ProductGallery-images" data-product-id="{{ product.id }}">
+    <div class="ProductGallery-imageCarouselPlaceholder">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- Featured Image -->
+          {% capture featured_image_sizes %}
+            {{ featured_image | img_url: '640x' }} 320w,
+            {{ featured_image | img_url: '750x' }} 375w,
+            {{ featured_image | img_url: '960x' }} 480w,
+            {{ featured_image | img_url: '1024x' }} 600w,
+            {{ featured_image | img_url: '2048x' }} 1024w
+          {% endcapture %}
+          <div class="swiper-slide">
+            <article class="js-product-gallery-image ProductGallery-image ProductGallery-image--featured" data-image-variants="{{ featured_image.variants | map: 'id' | join: ' ' | escape }}">
+              <a class="js-lightbox-trigger ProductGallery-imageLink" href="{{ featured_image.src | img_url: '2048x2048' }}">
+                <div class="ProductGallery-imagePlaceholder lazyload" data-sizes="auto" data-bgset="{{ featured_image_sizes | strip_newlines | strip }}" style="background-image: url('{{ featured_image.src | img_url: '1024x1024' }}');"></div>
+              </a>
+            </article>
+          </div>
+
+          <!-- Rest of the product images -->
+          {% for other_image in product.images %}
+            {% unless other_image.src == featured_image.src %}
+              {% capture other_image_sizes %}
+                {{ other_image | img_url: '640x' }} 320w,
+                {{ other_image | img_url: '750x' }} 375w,
+                {{ other_image | img_url: '960x' }} 480w,
+                {{ other_image | img_url: '1024x' }} 600w,
+                {{ other_image | img_url: '2048x' }} 1024w
+              {% endcapture %}
+              <div class="swiper-slide">
+                <article class="js-product-gallery-image ProductGallery-image" data-image-variants="{{ other_image.variants | map: 'id' | join: ' ' | escape }}">
+                  <a class="js-lightbox-trigger ProductGallery-imageLink" href="{{ other_image.src | img_url: '2048x2048' }}">
+                    <div class="ProductGallery-imagePlaceholder lazyload" data-sizes="auto" data-bgset="{{ other_image_sizes | strip_newlines | strip }}"></div>
+                  </a>
+                </article>
+              </div>
+            {% endunless %}
+          {% endfor %}
+
+          {% if product.metafields.pdp_extras.pdp_additional_images_videos %}
+              <div class="swiper-slide ProductGallery-videoHolder">
+                <iframe width="640" height="360" frameborder="0" title="Additional video 0" allow="autoplay; fullscreen" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="allowfullscreen" class="js-product-gallery-image ProductGallery-video lazyload" id="js-vimeo-mobile" style="background: rgb(245, 245, 245);"></iframe>
+              </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="slideshow-NavigationArrow" data-action="prev">
+        <div class="slideshow-NavigationArrow-icon">
+          <div class="slideshow-NavigationArrow-iconPlaceholder">
+            {% render 'svg-slideshow-arrow-left' %}
+          </div>
+        </div>
+
+        <button type="button" class="js-slideshow-arrow slideshow-NavigationArrow-button" data-action="prev">
+          <div class="u-vhide">
+            {{ 'general.carousel.prev' | t }}
+          </div>
+        </button>
+      </div>
+
+      <div class="slideshow-NavigationArrow" data-action="next">
+        <div class="slideshow-NavigationArrow-icon">
+          <div class="slideshow-NavigationArrow-iconPlaceholder">
+            {% render 'svg-slideshow-arrow-right' %}
+          </div>
+        </div>
+
+        <button type="button" class="js-slideshow-arrow slideshow-NavigationArrow-button" data-action="next">
+          <div class="u-vhide">
+            {{ 'general.carousel.next' | t }}
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ProductGalleryDesktop {% if product.metafields.pdp_extras.pdp_additional_images_videos == blank %}--hide-last{% endif %}">
+  {% for other_image in product.images %}    
+    {% capture other_image_sizes %}
+      {{ other_image | img_url: '640x' }} 320w,
+      {{ other_image | img_url: '750x' }} 375w,
+      {{ other_image | img_url: '960x' }} 480w,
+      {{ other_image | img_url: '1024x' }} 600w,
+      {{ other_image | img_url: '2048x' }} 1024w
+    {% endcapture %}
+
+    <div class="ProductGalleryDesktop-imagePlaceholder lazyload" data-sizes="auto" data-bgset="{{ other_image_sizes | strip_newlines | strip }}"></div>
+  {% endfor %}
+</section>

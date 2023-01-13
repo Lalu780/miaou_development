@@ -1,0 +1,14 @@
+{% layout none %}
+{% paginate search.results by 10 %}
+{% if search.performed %}
+{
+  "results_count": {{ search.results_count | json }},
+  "results": {{ search.results | json }}
+}
+{% else %}
+{
+  "results_count": 0,
+  "results": []
+}
+{% endif %}
+{% endpaginate %}

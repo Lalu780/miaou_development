@@ -1,0 +1,31 @@
+{% liquid
+  assign shared_url = ''
+  assign shared_text = ''
+  assign shared_image = ''
+  assign twitter_hashtags = ''
+
+  if product
+    assign shared_url = shop.url | append: product.url | url_param_escape
+    assign shared_text = product.title | url_param_escape
+    if product.featured_image
+      assign shared_image = product.featured_image | img_url: '2048x2048' | url_param_escape
+    endif
+    assign twitter_hashtags = shop.name | handle | replace: '-', '' | url_param_escape
+  endif
+
+  if template contains 'article' or template contains 'blog'
+    assign shared_url = shop.url | append: article.url | url_param_escape
+    assign shared_text = article.title | url_param_escape
+    if article.image
+      assign shared_image = article.image | img_url: '2048x2048' | url_param_escape
+    endif
+    assign twitter_hashtags = shop.name | handle | replace: '-', '' | url_param_escape
+  endif %}
+
+{% capture share_links %}
+  Facebook -- https://www.facebook.com/sharer.php?u={{ shared_url }}
+| Twitter -- https://twitter.com/intent/tweet?url={{ shared_url }}&text={{ shared_text }}&hashtags={{ twitter_hashtags }}
+| Google Plus -- https://plus.google.com/share?url={{ shared_url }}
+| Pinterest -- https://www.pinterest.com/pin/create/button/?url={{ shared_url }}&description={{ shared_text }}&media={{ shared_image }}
+{% endcapture %}
+{% assign share_links = share_links | strip_newlines | strip | split: '|' %}

@@ -1,0 +1,111 @@
+{% layout 'customer' %}
+
+<section class="Login">
+  <div class="Login-container">
+    <div class="Login-form">
+      <div id="customer-login">
+        <h4><strong>Login</strong></h4>
+        {% form 'customer_login' %}
+
+        {% if form.errors %}
+        <div class="error-message red">
+          <p>Sorry! Please try that again.</p>
+        </div>
+        {% endif %}
+
+        <div class="field-wrap email">
+          <input type="text" placeholder="Email" value="" name="customer[email]" class="Input">
+        </div>
+
+        <div class="field-wrap password">
+          <input type="password" name="customer[password]" class="Input" placeholder="Password">
+        </div>
+
+        <input type="submit" class="Button" value="Log In">
+        <div>
+          <a class="forgot-password uppercase opacity-25" href="#recover" onclick="showRecoverPasswordForm()">Forgot?</a>
+        </div>
+
+        {% endform %}
+      </div>
+
+      <div id="recover-password" class="account-form pr-0 md:pr-10">
+        <h4 class=""><strong>Reset Password</strong></h4>
+        {% form 'recover_customer_password' %}
+        <div class="field-wrap email -m-t-1">
+          <input type="text" placeholder="Email" value="" name="email" aria-label="Email" class="Input">
+        </div>
+
+        {% if form.errors %}
+        <div class="error-message text-red-500"><span>{{ form.errors | default_errors }}</span></div>
+        {% endif %}
+
+        <small class="message">We’ll send you an email to reset your password.</small>
+
+        <input type="submit" class="Button" value="Reset">
+        <br>
+        <a class="forgot-password uppercase opacity-25" href="#recover" onclick="hideRecoverPasswordForm()">Cancel</a>
+        {% endform %}
+      </div>
+
+    </div>
+
+    <div id="customer-create" class="Login-form">
+      <h4><strong>Create Account</strong></h4>
+      <div>
+        {% form 'create_customer' %}
+
+        {% if form.errors %}
+        <div class="error-message"><span>{{ form.errors | default_errors }}</span></div>
+        {% endif %}
+
+        <div class="field-wrap first-name">
+          <input type="text" value="" name="customer[first_name]" class="Input" placeholder="First Name">
+        </div>
+
+        <div class="field-wrap last-name">
+          <input type="text" placeholder="Last Name" value="" name="customer[last_name]" class="Input">
+        </div>
+
+        <div class="field-wrap email">
+          <input type="text" placeholder="Email" value="" name="customer[email]" class="Input">
+        </div>
+
+        <div class="field-wrap password">
+          <input type="password" placeholder="Password" value="" name="customer[password]" class="Input">
+        </div>
+
+        <input type="submit" class="Button" value="Create Account">
+
+        {% endform %}
+      </div>
+    </div>
+
+</section>
+
+<script>
+  if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+
+  function showRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'block';
+    document.getElementById('customer-login').style.display = 'none';
+    window.location.hash = '#recover';
+    return false;
+  }
+
+  function hideRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'none';
+    document.getElementById('customer-login').style.display = 'block';
+    return false;
+  }
+</script>
+
+<style>
+  .main {
+    background: url({{settings.login_bg_img | img_url: '1500x'}});
+  }
+
+  #recover-password {
+    display: none
+  }
+</style>

@@ -1,0 +1,50 @@
+{% paginate article.comments by 100 %}
+
+<article class="Article" role="main">
+  <div class="column row">
+
+    {% if article.image %}
+      {% capture article_image_sizes %}
+        {{ article.image | img_url: 'small' }} 100w,
+        {{ article.image | img_url: 'medium' }} 240w,
+        {{ article.image | img_url: 'large' }} 480w,
+        {{ article.image | img_url: 'grande' }} 600w,
+        {{ article.image | img_url: '1024x1024' }} 1024w,
+        {{ article.image | img_url: '2048x2048' }} 2048w
+      {% endcapture %}
+
+      <div class="Article-featuredIllustration">
+        <div class="Article-featuredIllustrationPlaceholder o-placeholder lazyload" data-bgset="{{ article_image_sizes | strip_newlines | strip }}" data-sizes="auto"></div>
+      </div>
+    {% endif %}
+
+    <header class="Article-header">
+      <h1 class="Article-title">
+        {{ article.title }}
+      </h1>
+      <div class="Article-info">
+        {% render 'article-author-on-date' %}
+      </div>
+    </header>
+
+    <div class="Article-content">
+      <div class="o-rte">
+        {{ article.content }}
+      </div>
+
+      {% render 'social-sharing' %}
+    </div>
+
+    {% if blog.comments_enabled? %}
+      {% render 'comments' %}
+    {% endif %}
+
+    <aside class="BackToBlog">
+      <a class="BackToBlog-link" href="{{ shop.url }}{{ blog.url }}">
+        {{ 'blogs.article.back_to_blog_html' | t }}
+      </a>
+    </aside>
+
+  </div>
+</article>
+{% endpaginate %}

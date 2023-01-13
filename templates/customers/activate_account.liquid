@@ -1,0 +1,39 @@
+<main class="Customer Customer--narrow" role="main">
+  <div class="column row">
+
+    <div class="Customer-form">
+      <h1 class="Customer-formTitle">
+        {{ 'customer.activate_account.heading' | t }}
+      </h1>
+      <p>
+        {{ 'customer.activate_account.subhead' | t }}
+      </p>
+
+      {% form 'activate_customer_password' %}
+        {% if form.errors %}
+          <div class="o-formErrors">
+            <p>{{ 'general.form.errors_were_encountered' | t }}</p>
+            {{ form.errors | default_errors }}
+          </div>
+        {% endif %}
+
+        <label for="password">
+          {{ 'customer.activate_account.password' | t }}
+        </label>
+        <input type="password" name="customer[password]" id="password" class="Customer-field" value="" />
+
+        <label for="password_confirmation">
+          {{ 'customer.activate_account.password_confirm' | t }}
+        </label>
+        <input type="password" name="customer[password_confirmation]" id="password_confirmation" class="Customer-field" value="" />
+
+        <input type="submit" class="o-button" value="{{ 'customer.activate_account.submit' | t }}" />
+
+        <a class="o-button o-button--transparent" href="/">
+          {{ 'customer.activate_account.cancel' | t }}
+        </a>
+      {% endform %}
+    </div>
+
+  </div>
+</main>

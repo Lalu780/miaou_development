@@ -1,0 +1,34 @@
+{% capture search_results %}
+{% for item in search.results %}
+
+<article class="SearchResult {% if forloop.last %}is-last{% endif %}">
+
+{% if item.featured_image %}
+<div class="SearchResult-image">
+  <a href="{{ item.url }}" class="SearchResult-imageLink" title="{{ item.title | escape }}">
+    <div class="SearchResult-imagePlaceholder o-placeholder" {% if item.featured_image %} style="background-image: url('{{ item.featured_image.src | img_url: 'large' }}');"{% endif %}>
+    </div>
+  </a>
+</div>
+{% endif %}
+
+<div class="SearchResult-info">
+  <h4 class="SearchResult-title">
+    {{ item.title | link_to: item.url }}
+  </h4>
+
+  {% assign result_excerpt = item.content | default: '' | strip_html | truncatewords: 50 %}
+  {% if result_excerpt != blank %}
+    <div class="SearchResult-excerpt">
+      <div class="o-rte">
+        {{ result_excerpt }}
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+</article>
+{% endfor %}
+{% endcapture %}
+
+{{ search_results | strip_newlines | strip }}

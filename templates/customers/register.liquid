@@ -1,0 +1,50 @@
+<main class="Customer Customer--narrow" role="main">
+<div class="column row">
+
+  <div class="Customer-form">
+    <h2 class="Customer-formTitle">
+      {{ 'customer.register.title' | t }}
+    </h2>
+
+    {% form 'create_customer' %}
+
+      {% if form.errors %}
+        <div class="o-formErrors">
+          <p>{{ 'general.form.errors_were_encountered' | t }}</p>
+          {{ form.errors | default_errors }}
+        </div>
+      {% endif %}
+
+      <label for="first_name">
+        {{ 'customer.register.first_name' | t }}
+      </label>
+      <input type="text" value="" name="customer[first_name]" id="first_name" size="30" />
+
+      <label for="last_name">
+        {{ 'customer.register.last_name' | t }}
+      </label>
+      <input type="text" value="" name="customer[last_name]" id="last_name" size="30" />
+
+      <label for="email">
+        {{ 'customer.register.email' | t }}
+      </label>
+      <input type="email" value="" name="customer[email]" id="email" size="30" />
+
+      <label for="password">
+        {{ 'customer.register.password' | t }}
+      </label>
+      <input type="password" value="" name="customer[password]" id="password" size="30" />
+
+      <button type="submit" class="o-button">
+        {{ 'customer.register.submit' | t }}
+      </button>
+
+      <a class="o-button o-button--transparent" href="{{ shop.url }}">
+        {{ 'customer.register.cancel' | t }}
+      </a>
+
+    {% endform %}
+  </div>
+
+</div>
+</main>

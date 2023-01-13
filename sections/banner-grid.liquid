@@ -1,0 +1,300 @@
+{% assign all_styles = '' %}
+
+{% if section.blocks.size > 0 %}
+<section class="BannerGrid-container {%if section.blocks.size > 1%} --scroll{%endif%}">
+  <div class="column">
+    <ul class="BannerGrid-items BannerGrid-items--{{ section.id }}" data-item-count="{{ section.blocks.size }}">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign image = block.settings.image
+          assign image_mobile = block.settings.image_mobile
+          assign heading = block.settings.heading | default: ''
+          assign subhead = block.settings.subhead | default: ''
+          assign cta = block.settings.cta | default: '' | strip
+          assign link = block.settings.link | default: '' | strip
+          assign bg_color = block.settings.bg_color | default: settings.color_gray_70
+          assign tint_color = block.settings.tint_color | default: settings.color_black
+          assign tint_strength = block.settings.tint_strength | default: '0.2' | times: 1
+          assign color = block.settings.color | default: settings.color_white
+          assign cta_bg_color = block.settings.cta_bg_color | default: settings.color_button_background
+          assign cta_color = block.settings.cta_color | default: settings.color_button_color
+          assign cta_style = block.settings.cta_style | default: 'solid'
+
+          assign css_class = '.BannerGrid-items--' | append: section.id | append: ' .BannerGrid-item--' | append: block.id -%}
+
+        {%- capture item_styles -%}
+          {{ css_class }} .BannerGrid-itemPlaceholder {
+            background-color: {{ bg_color }};
+          }
+          {% if block.settings.banner_height == 'image' %}
+            .BannerGrid-itemPlaceholder {
+              height: auto;
+              padding-bottom: calc({{image.height}} / {{image.width}} * 100%);
+            }           
+          {% endif %}
+          {{ css_class }} .BannerGrid-itemDimmer {
+            background-color: {{ tint_color }};
+            opacity: {{ tint_strength }};
+          }
+          {{ css_class }}:hover .BannerGrid-itemDimmer,
+          {{ css_class }} .BannerGrid-itemLink:focus .BannerGrid-itemDimmer {
+            opacity: {{ tint_strength | times: 1.5 }};
+          }
+          {{ css_class }} .BannerGrid-itemHeading {
+            color: {{ color }};
+          }
+          {{ css_class }} .BannerGrid-itemSubhead {
+            color: {{ color }};
+          }
+          {{ css_class }} .BannerGrid-itemButton {
+            background-color: {{ cta_bg_color }};
+            border-color: {{ cta_bg_color }};
+            color: {{ cta_color }};
+          }
+          {{ css_class }} .BannerGrid-itemButton.is-hollow {
+            background-color: transparent;
+            border-color: {{ cta_bg_color }};
+            color: {{ cta_bg_color }};
+          }
+          {{ css_class }} .BannerGrid-itemButton.is-hollow:hover,
+          {{ css_class }} .BannerGrid-itemButton.is-hollow:focus {
+            background-color: {{ cta_bg_color }};
+            border-color: {{ cta_bg_color }};
+            color: {{ cta_color }};
+          }
+        {%- endcapture -%}
+        {%- assign all_styles = all_styles | append: item_styles -%}
+
+        {%- assign image_sizes = '' -%}
+        {%- if image -%}
+          {%- capture image_sizes -%}
+            {% assign sizes = '320,480,640,800,960,1024,1280' | split: ',' %}
+            {% for size in sizes %}
+              {%- assign size_request = size | round | append: 'x' -%}
+              {{- image | img_url: size_request | append: ' ' | append: size | append: 'w' -}}
+              {%- unless forloop.last -%},{%- endunless -%}
+            {% endfor %}
+          {%- endcapture -%}
+          {%- assign image_sizes = image_sizes | strip_newlines | strip -%}
+        {%- endif -%}
+        {%- assign image_mobile_sizes = '' -%}
+        {%- if image_mobile != blank -%}
+          {%- capture image_mobile_sizes -%}
+            {% assign sizes = '320,480,640,800,960,1024,1280' | split: ',' %}
+            {% for size in sizes %}
+              {%- assign size_request = size | round | append: 'x' -%}
+              {{- image_mobile | img_url: size_request | append: ' ' | append: size | append: 'w' -}}
+              {%- unless forloop.last -%},{%- endunless -%}
+            {% endfor %}
+          {%- endcapture -%}
+          {%- assign image_mobile_sizes = image_mobile_sizes | strip_newlines | strip -%}
+        {%- endif -%}
+        {{- '' -}}        
+        <li class="BannerGrid-item BannerGrid-item--{{ block.id }} {% if block.settings.banner_height == 'image' %}--image-height{% endif %}" data-image-width="{{ image.width }}" data-image-height="{{ image.height }}">            
+          <div class="BannerGrid-wrapper {% if image_mobile_sizes != blank %}--has-mobile{% endif %}" onclick="(() => window.location.href = '{% if link != blank %}{{ link }}{% else %}/collections/all{% endif %}')()">
+            <div data-bgset="{{ image_sizes }}" data-sizes="auto" class="BannerGrid-itemPlaceholder o-placeholder lazyload"></div>
+
+            {% if image_mobile_sizes != blank %}
+              <div data-bgset="{{ image_mobile_sizes }}" data-sizes="auto" class="BannerGrid-itemPlaceholder o-placeholder lazyload --mobile"></div>
+            {% endif %}              
+
+            {% if heading != blank or subhead != blank or cta != blank %}
+              <div class="BannerGrid-itemDimmer"></div>
+              <div class="BannerGrid-caption --vertical-{{ block.settings.vertical_alignment }} --horizontal-{{ block.settings.horizontal_alignment }}">
+                {% if heading != blank %}
+                  <div class="BannerGrid-itemHeading" style="color: {{ block.settings.text_color }};">
+                    {{ heading }}
+                  </div>
+                {% endif %}
+                {% if subhead != blank %}
+                  <div class="BannerGrid-itemSubhead" style="color: {{ block.settings.text_color }};">
+                    {{ subhead }}
+                  </div>
+                {% endif %}
+                {% if cta != blank %}                  
+                  <a class="BannerGrid-itemButton o-button {{ cta_style | prepend: 'is-' }}" href="{% if link != blank %}{{ link }}{% else %}/collections/all{% endif %}" style="color: {{ block.settings.text_color }};">
+                    {{ cta }}
+                  </a>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+
+  </div>
+  <style>{{ all_styles }}</style>
+</section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Banner grid",
+    "class": "BannerGrid IndexSection",
+    "max_blocks": 3,
+    "settings": [],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image Desktop"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Image Mobile"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#dddedc"
+          },
+          {
+            "type": "color",
+            "id": "tint_color",
+            "label": "Tint color",
+            "default": "#000000"
+          },
+          {
+            "type": "select",
+            "id": "tint_strength",
+            "label": "Tint strength",
+            "options": [
+              { "value":   "0", "label": "No tint" },
+              { "value": "0.1", "label": "10%" },
+              { "value": "0.2", "label": "20%" },
+              { "value": "0.3", "label": "30%" },
+              { "value": "0.4", "label": "40%" },
+              { "value": "0.5", "label": "50%" },
+              { "value": "0.6", "label": "60%" },
+              { "value": "0.7", "label": "70%" },
+              { "value": "0.8", "label": "80%" },
+              { "value": "0.9", "label": "90%" }
+            ],
+            "default": "0.2"
+          },
+          {
+            "type": "richtext",
+            "id": "heading",
+            "label": "Heading",
+            "default": "<p>Banner <br/> block</p>"
+          },
+          {
+            "type": "text",
+            "id": "subhead",
+            "label": "Subheading",
+            "default": "Tell your brand's story through images"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "cta",
+            "label": "Button text",
+            "default": "Shop now"
+          },
+          {
+            "type": "color",
+            "id": "cta_color",
+            "label": "Button text color"
+          },
+          {
+            "type": "color",
+            "id": "cta_bg_color",
+            "label": "Button background color"
+          },
+          {
+            "type": "radio",
+            "id": "cta_style",
+            "label": "Button style",
+            "options": [
+              { "value": "solid", "label": "Solid" },
+              { "value": "hollow", "label": "Hollow" }
+            ],
+            "default": "solid"
+          },
+          {
+            "type": "select",
+            "id": "banner_height",
+            "label": "Banner Height",
+            "options": [
+              { "value": "window", "label": "Height of the window" },
+              { "value": "image", "label": "Height of the image" }
+            ],
+            "default": "window"
+          },
+          {
+            "type": "select",
+            "id": "vertical_alignment",
+            "label": "Vertical Text Alignment",
+            "options": [
+              { 
+                "value": "top", 
+                "label": "Top" 
+              },
+              { 
+                "value": "middle", 
+                "label": "Middle" 
+              },
+              { 
+                "value": "bottom", 
+                "label": "Bottom" 
+              }
+            ],
+            "default": "middle"   
+          },
+          {
+            "type": "select",
+            "id": "horizontal_alignment",
+            "label": "Horizontal Text Alignment",
+            "options": [
+              { 
+                "value": "left", 
+                "label": "Left" 
+              },
+              { 
+                "value": "middle", 
+                "label": "Middle" 
+              },
+              { 
+                "value": "right", 
+                "label": "Right" 
+              }
+            ],
+            "default": "middle"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Banner grid",
+      "category": "Grid",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }]
+  }
+{% endschema %}

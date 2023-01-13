@@ -1,0 +1,92 @@
+{% assign heading = section.settings.heading | default: '' %}
+{% assign subhead = section.settings.subhead | default: '' %}
+{% assign mailchimp_form_action = section.settings.mailchimp_form_action | default: '' %}
+
+<section class="Newsletter">
+  <div class="column row">
+
+    {% if heading != blank %}
+      <h3 class="Newsletter-heading o-sectionHeading">
+        {{ heading }}
+      </h3>
+    {% endif %}
+
+    {% if subhead != blank %}
+      <div class="Newsletter-subheading o-sectionSubhead o-rte">
+        {{ subhead }}
+      </div>
+    {% endif %}
+
+    {% if mailchimp_form_action != blank %}
+      <form action="{{ mailchimp_form_action }}" method="post" name="mc-embedded-subscribe-form" target="_blank">
+        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+        <div style="position: absolute; left: -5000px;">
+          <input type="text" name="b_85df1bbc05a1d0dfb3763c877_c784621d65" tabindex="-1" value="" />
+        </div>
+
+        <input type="email" name="EMAIL" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off" required />
+
+        <button type="submit" name="subscribe" class="o-button">
+          {{ 'general.newsletter_form.submit' | t }}
+        </button>
+      </form>
+    {% else %}
+      {% form 'customer' %}
+        {% if form.errors %}
+          <div class="o-formErrors">
+            <p>{{ 'general.form.errors_were_encountered' | t }}</p>
+            {{ form.errors | default_errors }}
+          </div>
+        {% endif %}
+
+        {% if form.posted_successfully? %}
+          <p class="o-formSuccess">
+            {{ 'general.newsletter_form.confirmation' | t }}
+          </p>
+        {% else %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+
+          <input type="email" name="contact[email]" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off" required />
+
+          <button type="submit" class="o-button" name="subscribe">
+            {{ 'general.newsletter_form.submit' | t }}
+          </button>
+        {% endif %}
+      {% endform %}
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Newsletter",
+    "class": "Newsletter IndexSection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Subscribe to our newsletter"
+      },
+      {
+        "type": "richtext",
+        "id": "subhead",
+        "label": "Subheading",
+        "default": "<p>Let your customers be first to hear about your new products, offers and events<\/p>"
+      },
+      {
+        "type": "text",
+        "id": "mailchimp_form_action",
+        "label": "MailChimp form action URL",
+        "info": "[Find your MailChimp form action URL](https://help.shopify.com/themes/customization/communication/get-a-mailchimp-form-action-url)"
+      }
+    ],
+    "presets": [{
+      "name": "Newsletter",
+      "category": "Newsletter",
+      "settings": {}
+    }]
+  }
+{% endschema %}
+

@@ -1,0 +1,59 @@
+<main class="ContactPage" role="main">
+    <div class="column row">
+  
+      <h1 class="ContactPage-title o-pageTitle">
+        {{ page.title }}
+      </h1>
+  
+      {% if page.content != blank %}
+        <div class="ContactPage-content o-rte">
+          {{ page.content }}
+        </div>
+      {% endif %}
+  
+      <div class="ContactForm">
+        {%- if page.content != blank -%}
+          <h4 class="ContactForm-title">
+            {{ 'contact_form.general.title' | t }}
+          </h4>
+        {%- endif -%}
+  
+        {% form 'contact' %}
+          {% if form.errors %}
+            <div class="o-formErrors">
+              <p>{{ 'contact_form.feedback.errors' | t }}</p>
+              {{ form.errors | default_errors }}
+            </div>
+          {% endif %}
+  
+          {% if form.posted_successfully? %}
+            <div class="o-formSuccess">
+              {{ 'contact_form.feedback.success_html' | t }}
+            </div>
+          {% else %}
+            <label class="ContactForm-label u-vhide" for="contactFormName">
+              {{ 'contact_form.labels.name' | t }}
+            </label>
+            <input type="text" name="contact[name]" id="contactFormName" class="ContactForm-field" placeholder="{{ 'contact_form.placeholders.name' | t }}" required />
+  
+            <label class="ContactForm-label u-vhide" for="contactFormEmail">
+              {{ 'contact_form.labels.email' | t }}
+            </label>
+            <input type="email" name="contact[email]" id="contactFormEmail" class="ContactForm-field" placeholder="{{ 'contact_form.placeholders.email' | t }}" required />
+  
+            <label class="ContactForm-label u-vhide" for="contactFormMessage">
+              {{ 'contact_form.labels.message' | t }}
+            </label>
+            <textarea name="contact[body]" id="contactFormMessage" class="ContactForm-textarea" rows="11" placeholder="{{ 'contact_form.placeholders.message' | t }}" required></textarea>
+  
+            <div class="ContactForm-buttonContainer">
+              <button type="submit" class="ContactForm-button o-button">
+                {{ 'contact_form.labels.send' | t }}
+              </button>
+            </div>
+          {% endif %}
+        {% endform %}
+      </div>  
+    </div>
+</main>
+  

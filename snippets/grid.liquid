@@ -1,0 +1,43 @@
+{% comment %}Snippet Parameters -->{% endcomment %}
+{%- assign items = items | default: grid -%}
+{% comment %}<-- Snippet Parameters{% endcomment %}
+
+{% comment %}
+  {% assign grid_limit = grid_limit | default: 48 %}
+  {% assign grid_align = grid_align | default: 'center' %}
+  {% assign grid_items_per_row = grid_items_per_row | default: 'small-1, medium-3, large-4' | split: ', ' %}
+
+  <!-- Grid item limit: {{ grid_limit }} -->
+
+  {% capture grid_classes %}
+  Grid
+  {{ grid_align | handle | capitalize | prepend: 'Grid--align' }}
+  {% for suffix in grid_items_per_row %}
+  {{ suffix | prepend: 'Grid--itemsPerRow-' | append: ' ' }}
+  {% endfor %}
+  {% endcapture %}
+{% endcomment %}
+
+<div class="Grid">
+  {% assign loop_counter = 0 %}
+  {% for item in items limit: grid_limit %}
+    {% assign loop_counter = loop_counter | plus: 1 %}
+    {% if item.metafields.pdp_extras.is_double_wide %}
+      {% assign position = loop_counter | modulo: 2 %}
+      {% if position == 0 %}
+        {% assign fill_grid = 1 %}
+      {% else %}
+        {% assign fill_grid = 0 %}
+        {% assign loop_counter = loop_counter | plus: 1 %}
+      {% endif %}
+    {% else %}
+      {% assign fill_grid = 0 %}
+    {% endif %}
+    {% render 'grid-item',
+      grid_item: item,
+      fill_grid: fill_grid,
+      position: forloop.index,
+      random_item: items[forloop.rindex]
+    %}
+  {% endfor %}
+</div>

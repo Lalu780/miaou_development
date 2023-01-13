@@ -1,0 +1,86 @@
+{% assign blog_handle = section.settings.blog | default: 'news' %}
+{% assign blog = blogs[blog_handle] %}
+{% assign heading = section.settings.heading | default: '' %}
+{% assign subhead = section.settings.subhead | default: '' %}
+
+{% if blog != empty and blog.articles_count > 0 %}
+<section class="IndexBlog">
+  <div class="column row">
+
+    {% if heading != blank %}
+      <h3 class="IndexBlog-heading o-sectionHeading">
+        {{ heading }}
+      </h3>
+    {% endif %}
+    {% if subhead != blank %}
+      <div class="IndexBlog-subhead o-sectionSubhead o-rte">
+        {{ subhead }}
+      </div>
+    {% endif %}
+
+    <ul class="IndexBlog-items">
+      {%- for article in blog.articles limit: 4 -%}
+        {%- assign image_sizes = '' -%}
+        {%- if article.image -%}
+          {%- capture image_sizes -%}
+            {%- render 'print-image-sizes', image: article.image -%}
+          {%- endcapture -%}
+        {%- endif -%}
+
+{{- '' -}}<li class="IndexBlog-item">
+          <a class="IndexBlog-itemLink" href="{{ article.url }}">
+            <div class="IndexBlog-itemImage {% if image_sizes != blank %}lazyload{% endif %}" data-bgset="{{ image_sizes }}" data-sizes="auto">
+              <div class="IndexBlog-itemDimmer {% if image_sizes == blank %}IndexBlog-itemDimmer--noImage{% endif %}"></div>
+              <div class="IndexBlog-itemCaption">
+
+                <p class="IndexBlog-itemInfo" aria-hidden="true">
+                  <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+                    {{ article.published_at | date: format: 'month_day_year' }}
+                  </time>
+                </p>
+                <h3 class="IndexBlog-itemTitle">
+                  {{ article.title }}
+                </h3>
+
+              </div>
+            </div>
+          </a>
+
+        </li>
+      {%- endfor -%}
+    </ul>
+
+  </div>
+</section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Blog",
+    "class": "Blog IndexSection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Latest from the blog"
+      },
+      {
+        "type": "richtext",
+        "id": "subhead",
+        "label": "Subheading",
+        "default": "<p>Engage your customers with news and product stories<\/p>"
+      },
+      {
+        "type": "blog",
+        "id": "blog",
+        "label": "Select blog"
+      }
+    ],
+    "presets": [{
+      "name": "Blog",
+      "category": "Blog",
+      "settings": {}
+    }]
+  }
+{% endschema %}

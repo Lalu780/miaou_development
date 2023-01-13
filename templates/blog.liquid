@@ -1,0 +1,69 @@
+{% paginate blog.articles by 6 %}
+
+<main class="Blog" role="main">
+
+  <!-- Begin content -->
+  <div class="column row">
+
+    <h1 class="Blog-title o-pageTitle">
+      {{ blog.title }}
+    </h1>
+
+    {% for article in blog.articles %}
+      <article class="BlogListItem">
+
+        <div class="BlogListItem-contentWrapper">
+          {% if article.image %}
+            {% capture article_image_sizes %}
+              {{ article.image | img_url: 'small' }} 100w,
+              {{ article.image | img_url: 'medium' }} 240w,
+              {{ article.image | img_url: 'large' }} 480w,
+              {{ article.image | img_url: 'grande' }} 600w,
+              {{ article.image | img_url: '1024x1024' }} 1024w,
+              {{ article.image | img_url: '2048x2048' }} 2048w
+            {% endcapture %}
+
+            <div class="BlogListItem-illustration">
+              <a class="BlogListItem-illustrationLink" href="{{ article.url }}">
+                <div class="BlogListItem-illustrationPlaceholder o-placeholder lazyload" data-bgset="{{ article_image_sizes | strip_newlines | strip }}" data-sizes="auto"></div>
+              </a>
+            </div>
+          {% endif %}
+
+          <header class="BlogListItem-header">
+            <h4 class="BlogListItem-title">
+              <a class="BlogListItem-titleLink" href="{{ article.url }}">
+                {{ article.title }}
+              </a>
+            </h4>
+            <div class="BlogListItem-info">
+              {% render 'article-author-on-date' %}
+            </div>
+          </header>
+
+          <div class="BlogListItem-content">
+            <div class="o-rte">
+              {% if article.excerpt and article.excerpt != blank %}
+                {{ article.excerpt }}
+              {% else %}
+                {{ article.content | strip_html | truncatewords: 28 }}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <div class="BlogListItem-linkWrapper">
+          <a class="BlogListItem-link" href="{{ article.url }}">
+            {{ 'blogs.article.read_more' | t }}
+          </a>
+        </div>
+
+      </article>
+    {% endfor %}
+
+  </div>
+  <!-- End content -->
+</main>
+
+{% render 'pagination', paginate: paginate %}
+{% endpaginate %}

@@ -1,0 +1,60 @@
+{% assign breadcrumbs_enabled = false %}
+{% if template contains 'product' or template contains 'collection' or template contains 'article' %}
+  {% assign breadcrumbs_enabled = true %}
+{% endif %}
+
+{% if breadcrumbs_enabled %}
+<nav class="Breadcrumbs" role="navigation">
+  <div class="column row">
+
+    <p id="breadcrumblabel" class="u-vhide">
+      {{ 'general.breadcrumbs.title' | t }}
+    </p>
+
+    <ol class="Breadcrumbs-items" aria-labelledby="breadcrumblabel">
+      <li class="Breadcrumbs-item is-home">
+        <a href="{{ shop.url }}" title="{{ 'general.breadcrumbs.home_link_title' | t }}">
+          {{ 'general.breadcrumbs.home' | t }}
+        </a>
+      </li>
+
+      {% if template contains "product" %}
+        {% if collection and collection.handle %}
+          <li class="Breadcrumbs-item">{{ collection.title | link_to: collection.url }}</li>
+          {% if settings.show_collection_tags and product.tags.size > 0 %}
+            <li class="Breadcrumbs-item">
+              <a href="{{ collection.url }}/{{ product.tags.first | handle }}">
+                {{ product.tags.first }}
+              </a>
+            </li>
+          {% endif %}
+        {% endif %}
+        <li class="Breadcrumbs-item Breadcrumbs-item--highlighted">{{ product.title }}</li>
+      {% endif %}
+
+      {% if template contains 'collection' %}
+        {% if current_tags.size > 0 %}
+          <li class="Breadcrumbs-item">
+            <a href="/collections/{{ collection.handle }}">
+              {{ collection.title }}
+            </a>
+          </li>
+          <li class="Breadcrumbs-item Breadcrumbs-item--highlighted">{{ current_tags.first }}</li>
+        {% else %}
+          <li class="Breadcrumbs-item">{{ collection.title }}</li>
+        {% endif %}
+      {% endif %}
+
+      {% if template contains 'article' %}
+        <li class="Breadcrumbs-item">
+          {{ blog.title | link_to: blog.url }}
+        </li>
+        <li class="Breadcrumbs-item Breadcrumbs-item--highlighted">
+          {{ article.title }}
+        </li>
+      {% endif %}
+    </ol>
+
+  </div>
+</nav>
+{% endif %}

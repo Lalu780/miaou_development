@@ -1,0 +1,9 @@
+
+<div class="page-InternationalCheckout" data-meta-title="{{ page.title }}">
+    <div id="geCheckoutContainer”" class="page-InternationalCheckout-container">
+      {% if customer.id  %}
+        <input type="hidden" name="customer_id" id="customer_id" value="{{ customer.id }}_{{ customer.id | append: "!#Gl0b@lE-$3cr3t!)%1#" | sha1 }}">
+      {% endif %}
+    </div>
+</div>
+  

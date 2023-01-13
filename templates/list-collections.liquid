@@ -1,0 +1,11 @@
+{% paginate collections by 12 %}
+
+<main class="ListCollections" role="main">
+  {% liquid
+    if collections.size > 0
+      render 'grid', items: collections, grid_items_per_row: 'small-1, medium-3, large-4'
+    endif %}
+</main>
+
+{% render 'pagination', paginate: paginate %}
+{% endpaginate %}

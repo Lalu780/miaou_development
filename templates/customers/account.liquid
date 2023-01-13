@@ -1,0 +1,144 @@
+<main class="Customer" role="main">
+  <div class="Customer-content">
+    <h1 class="Customer-title">
+      {{ 'customer.account.title' | t }}
+    </h1>
+
+    <div class="row">
+      <div class="medium-4 columns">
+        <h2 class="Customer-sectionTitle">
+          {{ 'customer.account.details' | t }}
+        </h2>
+
+        <p>
+          {% if customer.name %}
+            <strong>
+              {{ customer.name }}
+            </strong>
+            <br/>
+          {% endif %}
+          {{ customer.email }}
+        </p>
+      </div>
+
+      <div class="medium-4 columns">
+        <h2 class="Customer-sectionTitle">
+          {{ 'customer.addresses.title' | t }}
+        </h2>
+
+        <div class="Customer-addressDetails o-rte">
+          {% if customer.default_address and customer.default_address != blank %}
+            {{ customer.default_address | format_address }}
+            <p>{{ customer.default_address.phone }}
+            </p>
+          {% endif %}
+          <p>
+            <a id="view_address" href="/account/addresses" class="Customer-guestButton">
+              {{ 'customer.account.view_addresses' | t }}
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="medium-4 columns Customer-menu">
+        <h2 class="Customer-sectionTitle">
+          Info
+        </h2>
+
+        <a class="" href="/pages/rewards" alt="Rewards">
+          Rewards
+        </a>
+
+        <a class="" href="/pages/faqs" alt="Shipping">
+          Shipping
+        </a>
+
+        <a class="" href="https://miaou.loopreturns.com/#/" alt="Returns">
+          Returns
+        </a>
+
+        <a class="" href="/pages/contact" alt="Contact">
+          Contact
+        </a>
+
+        <a class="" href="/pages/size-guide" alt="Size Guides">
+          Size Guides
+        </a>
+
+        {{ 'customer.account.log_out' | t | customer_logout_link }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="medium-12 columns">
+        <h2 class="Customer-sectionTitle">
+          {{ 'customer.orders.title' | t }}
+        </h2>
+
+        <div class="o-rte">
+          {% if customer.orders.size != 0 %}
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col" data-type="order_number">
+                    {{ 'customer.orders.order_number' | t }}
+                  </th>
+                  <th scope="col" data-type="date">
+                    {{ 'customer.orders.date' | t }}
+                  </th>
+                  <th scope="col" data-type="payment_status">
+                    {{ 'customer.orders.payment_status' | t }}
+                  </th>
+                  <th scope="col" data-type="fulfillment_status">
+                    {{ 'customer.orders.fulfillment_status' | t }}
+                  </th>
+                  <th scope="col" data-type="total">
+                    {{ 'customer.orders.total' | t }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in customer.orders %}
+                  <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %}">
+                    <th scope="row" data-title="Order">
+                      {{ order.name | link_to: order.customer_url }}
+                      {% if order.cancelled %}
+                        {% assign cancellation_date = order.cancelled_at | date: format: 'month_day_year' %}
+                        <br/>
+                        <small>
+                          {{ 'customer.order.cancelled' | t: date: cancellation_date }}
+                        </small>
+                      {% endif %}
+                    </th>
+                    <td data-title="Date">
+                      {{ order.created_at | date: '%F' | replace: '-', '/' }}
+                    </td>
+                    <td data-title="Payment Status">
+                      <span class="status_{{ order.financial_status }}">
+                        {{ order.financial_status }}
+                      </span>
+                    </td>
+                    <td data-title="Fulfillment Status">
+                      <span class="status_{{ order.fulfillment_status }}">
+                        {{ order.fulfillment_status }}
+                      </span>
+                    </td>
+                    <td data-title="Total">
+                      <span class="total money">
+                        {{ order.total_price | money }}
+                      </span>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            <p>
+              {{ 'customer.orders.none' | t }}
+            </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

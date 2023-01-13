@@ -1,0 +1,163 @@
+
+{% capture grid_item_image_sizes %}
+{% liquid
+  if grid_item_type == 'product' and grid_item.featured_image
+    render 'print-image-sizes', image: grid_item.featured_image
+  elsif grid_item_type == 'collection'
+    if grid_item.image
+      render 'print-image-sizes', image: grid_item.image
+    elsif grid_item.all_products_count > 0
+      assign first_product = grid_item.products | first
+      if first_product.featured_image
+        render 'print-image-sizes', image: first_product.featured_image
+      endif
+    endif
+  endif %}
+{% endcapture %}
+{% assign grid_item_image_sizes = grid_item_image_sizes | strip_newlines | strip %}
+
+
+<article class="GridItem" data-item-type="{% if grid_item == blank %}none{%else%}product{%endif%}">
+  <div class="GridItem-imageContainer">
+    <a class="GridItem-link" href="{{ grid_item.url }}" aria-hidden="true">
+      <div class="GridItem-imagePlaceholder o-placeholder lazyload has-icon {% if grid_item.images.size > 1 %}has-secondImage{% endif %}" data-sizes="auto" data-bgset="{{ grid_item_image_sizes }}">
+        {% if grid_item_image_sizes == blank %}
+          {%- capture placeholder_svg_name -%}
+            {%- case block.type -%}
+              {%- when 'collection'-%}
+                {%- cycle 'col_svgs': 'collection-1', 'collection-2', 'collection-3', 'collection-4', 'collection-5', 'collection-6' -%}
+              {%- when 'product' -%}
+                {%- cycle 'product_svgs': 'product-1', 'product-2', 'product-3', 'product-4', 'product-5', 'product-6' -%}
+              {%- else -%}
+                image
+            {%- endcase -%}
+          {%- endcapture -%}
+          {{ placeholder_svg_name | strip_newlines | strip | placeholder_svg_tag: 'GridItem-placeholderSvg' }}
+        {% endif %}
+      </div>
+
+      {% if grid_item.images.size > 1 %}
+        {% capture grid_item_second_image_sizes %}
+          {%- render 'print-image-sizes', image: grid_item.images[1] -%}
+        {% endcapture %}
+        <div class="GridItem-secondImagePlaceholder o-placeholder lazyload" data-sizes="auto" data-bgset="{{ grid_item_second_image_sizes | strip_newlines | strip }}"></div>
+      {% endif %}
+    </a>
+
+    {% if grid_item.images.size > 1 and settings.grid_item_thumbs_enabled %}
+      <div class="GridItem-thumbs" aria-hidden="true">
+        <!-- inline-block spacing fix
+        {% assign thumb_count = 0 %}
+        {% for image in grid_item.images %}
+          {% liquid
+            if thumb_count == 3
+              break
+            endif
+
+            unless image.attached_to_variant?
+              continue
+            endunless
+            if image.src == grid_item.featured_image.src
+              continue
+            endif
+            if image.src == grid_item.images[1].src
+              continue
+            endif
+
+            assign variant_query = ''
+            for variant in image.variants
+              if variant.available
+                assign variant_query = variant.id | prepend: '?variant='
+                break
+              endif
+            endfor %}
+
+       --><div class="GridItem-thumb">
+            <a class="GridItem-link" href="{{ grid_item.url | append: variant_query }}">
+              <div class="GridItem-thumbImagePlaceholder o-placeholder lazyload" data-bgset="{{ image.src | img_url: 'large' }}">
+              </div>
+            </a>
+          </div><!-- inline-block spacing fix
+          {% assign thumb_count = thumb_count | plus: 1 %}
+        {% endfor %}
+        -->
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="GridItem-details">
+    <h3 class="GridItem-title">
+      <a class="GridItem-titleLink" href="{{ grid_item.url }}">
+        {% if title_override != blank %}
+          {{ title_override }}
+        {% else %}
+          {% assign default_title = 'general.miscellaneous.item' | t %}
+          {{ grid_item.title | default: default_title }}
+        {% endif %}
+      </a>
+    </h3>
+
+    <div class="GridItem-extraDetails">
+      {% if grid_item != blank %}
+        {% assign on_sale = false %}
+        {% if grid_item.compare_at_price > grid_item.price %}
+          {% assign on_sale = true %}
+        {% endif %}
+
+        {% assign sold_out = true %}
+        {% if grid_item.available %}
+          {% assign sold_out = false %}
+        {% endif %}
+
+        <div class="GridItem-price">
+          {% if on_sale %}
+            {% assign sale_price = grid_item.price | money %}
+            {% if grid_item.price_varies %}
+              {{ 'products.general.on_sale_from_html' | t: price: sale_price }}
+            {% else %}
+              {{ 'products.general.on_sale_html' | t: price: sale_price }}
+            {% endif %}
+          {% else %}
+            {% if grid_item.price_varies %}
+              {% assign price = grid_item.price | money %}
+              {{ 'products.general.from_text_html' | t: price: price }}
+            {% else %}
+              {{ grid_item.price | money }}
+            {% endif %}
+          {% endif %}
+
+          {% if sold_out %}
+            <br />
+            <strong>{{ 'products.product.sold_out' | t }}</strong>
+          {% endif %}
+
+          {% if on_sale %}
+            <span class="u-vhide">
+              {{ 'products.general.regular_price' | t }}
+            </span>
+            <br />
+            <del>{{ grid_item.compare_at_price | money }}</del>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+
+
+  <div class="GridItem-Add">
+    <div class="GridItem-AddContainer">
+    {%- for variant in grid_item.variants -%}
+    <div class="GridItem-AddItem">
+      <button type="submit" class="GridItem-AddBtn js-col-add" name="add" data-variant-id="{{variant.id}}" {%- unless variant.available -%}disabled="true"{%- endunless -%}>{{variant.option2}}</button>
+    {%- if variant.available -%}
+    <p class="GridItem-AddText">Add to cart</p>
+    {%- else -%}
+    <p class="GridItem-AddText">Join the waitlist</p>
+    {%- endif -%}
+    </div>
+    {%- endfor -%}
+  </div>
+  </div>
+
+</article>

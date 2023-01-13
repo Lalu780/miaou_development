@@ -1,0 +1,26 @@
+<div class="ProductDescTabs js-product-description" data-tabs-count="3">
+  <div class="ProductDescTabs-controls" data-tabs-count="3">
+    <a class="js-product-tab-control ProductDescTabs-controlButton is-active" data-tab-index="0">
+      {{ 'products.product.description' | t }}
+    </a>
+    <a class="js-product-tab-control ProductDescTabs-controlButton" data-tab-index="1">
+      DETAILS
+    </a>
+    <a class="js-sizing-open ProductDescTabs-controlButton" data-tab-index="2">
+      SIZING
+    </a>
+    <a href="#reviews" class="ProductDescTabs-controlButton" data-tab-index="2">
+      REVIEWS
+    </a>
+  </div>
+
+  <div class="ProductDescTabs-panels">
+    <div class="js-product-tab-panel ProductDescTabs-panel o-rte is-active" data-tab-index="0">
+      {{ product.description }}
+    </div>
+
+    <div class="js-product-tab-panel ProductDescTabs-panel o-rte" data-tab-index="1">
+      {{ product.metafields.pdp_extras.pdp_field_details }}
+    </div>
+  </div>
+</div>

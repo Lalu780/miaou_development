@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "sizes-page",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

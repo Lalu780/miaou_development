@@ -1,0 +1,134 @@
+<main class="Cart" role="main">
+  <div class="column row">
+    <h1 class="o-pageTitle">
+      {{ 'cart.general.title' | t }}
+    </h1>
+
+    {% if cart.item_count == 0 %}
+      <div class="o-pageSubtext o-rte">
+        {{ 'cart.general.empty' | t }}
+        {{ 'cart.general.continue_browsing_html' | t: url: '/collections/all' }}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if cart.item_count > 0 %}
+    <form action="/cart" method="post" id="cartform" class="Cart-form">
+
+      <div class="row">
+        <ul class="Cart-items">
+          <!-- inline-block fix
+          {% for item in cart.items %}
+         --><li class="CartItem" data-id="{{ item.variant_id }}">
+
+              <div class="CartItem-section is-image">
+                <a class="CartItem-imageLink" href="{{ item.url }}">
+                  <div class="CartItem-imagePlaceholder o-placeholder" style="background-image: url('{{ item.image | img_url: '150x' }}');"></div>
+                </a>
+              </div><!-- inline-block fix
+
+           --><div class="CartItem-section is-info">
+                <a class="CartItem-title" href="{{ item.url }}">
+                  {{ item.product.title }}
+                </a>
+                {% unless item.variant.title contains 'Default' %}
+                  <div class="CartItem-variantTitle">
+                    {{ item.variant.title }}
+                  </div>
+                {% endunless %}
+                {% assign property_size = item.properties | size %}
+                {% if property_size > 0 %}
+                  <dl class="CartItem-properties">
+                  {% for p in item.properties %}
+                    {% unless p.last == blank %}
+                      <dt class="CartItem-propertyTitle">
+                        {{ p.first }}
+                      </dt>
+                      <dd class="CartItem-propertyValue">
+                        {% if p.last contains '/uploads/' %}
+                          <a href="{{ p.last }}">
+                            {{ p.last | split: '/' | last | truncate: 156 }}
+                          </a>
+                        {% else %}
+                          {{ p.last }}
+                        {% endif %}
+                      </dd>
+                    {% endunless %}
+                  {% endfor %}
+                  </dl>
+                {% endif %}
+              </div><!-- inline-block fix
+
+           --><div class="CartItem-section is-qty">
+                <div class="o-qtyControls" data-product-id="{{ product.id }}">
+                  <a class="o-qtyControls-button" href="/cart/change?line={{ forloop.index }}&amp;quantity={% if item.quantity == 1 %}0{% else %}{{ item.quantity | minus: 1 }}{% endif %}" data-action="minus">
+                    <span class="u-vhide">
+                      {{ 'cart.general.reduce_quantity' | t }}
+                    </span>
+                    <div class="o-placeholder">
+                      {% liquid
+                        if item.quantity == 1
+                          render 'svg-cart-qty-remove'
+                        else
+                          render 'svg-cart-qty-reduce'
+                        endif %}
+                    </div>
+                  </a><!-- inline-block fix
+               --><div class="o-qtyControls-indicator">
+                    <span class="u-vhide">
+                      {{ 'cart.label.qty' | t }}
+                    </span>
+                    {{ item.quantity }}
+                  </div><!-- inline-block fix
+               --><a class="o-qtyControls-button" href="/cart/change?line={{ forloop.index }}&amp;quantity={{ item.quantity | plus: 1 }}" data-action="plus">
+                    <div class="o-placeholder">
+                      {%- render 'svg-cart-qty-increase' -%}
+                    </div>
+                    <span class="u-vhide">
+                      {{ 'cart.general.increase_quantity' | t }}
+                    </span>
+                  </a>
+                </div>
+              </div><!-- inline-block fix
+
+           --><div class="CartItem-section is-price">
+                <div class="CartItem-price">
+                  {{ item.line_price | money }}
+                </div>
+              </div>
+            </li><!-- inline-block fix
+          {% endfor %}
+          -->
+        </ul>
+      </div>
+
+      <div class="column row">
+        <div class="Cart-totalWrapper">
+          <span class="Cart-totalTitle">
+            {{ 'cart.general.subtotal' | t }}
+          </span>
+          <span class="Cart-totalPrice">
+            {{ cart.total_price | money }}
+          </span>
+        </div>
+
+        <div class="Cart-shippingAtCheckout">
+          {{ 'cart.general.shipping_at_checkout' | t }}
+        </div>
+ <div class="nosto_cart_element"><nosto-cart-placeholder></nosto-cart-placeholder></div>
+        <div class="Cart-checkoutWrapper">
+          <button type="submit" id="checkout" class="Cart-checkoutButton o-button" name="checkout">
+            {{ 'cart.general.checkout' | t }}
+          </button>
+
+          {% if additional_checkout_buttons %}
+            <div class="Cart-extraCheckoutButtons clearfix">
+              {{ content_for_additional_checkout_buttons }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+    </form>
+  {% endif %}
+</main>

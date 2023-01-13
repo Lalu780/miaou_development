@@ -1,0 +1,413 @@
+{
+  "sections": {
+    "banner": {
+      "type": "banner-grid",
+      "blocks": {
+        "b6714857-e544-423c-a1bc-31bf840fbd50": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/26540014n-2.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "shopify:\/\/collections\/new-womens-clothing",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid",
+            "banner_height": "window",
+            "vertical_alignment": "middle",
+            "horizontal_alignment": "middle"
+          }
+        }
+      },
+      "block_order": [
+        "b6714857-e544-423c-a1bc-31bf840fbd50"
+      ],
+      "settings": {
+      }
+    },
+    "4e95659a-f429-4d58-ac22-a091223d44b4": {
+      "type": "banner-text-grid",
+      "blocks": {
+        "template--16036322345139__4e95659a-f429-4d58-ac22-a091223d44b4-166619626221643906-0": {
+          "type": "text",
+          "settings": {
+            "heading": "WORKWEAR CAPSULE",
+            "content": "<p>PHOTOGRAPHER -  BI LAL EL KADHI <\/p><p>CREATIVE DIRECTOR -  ALEXIA ELKAIM <\/p><p>CREATIVE PRODUCER - SARA LEMIEUX <\/p><p>STYLIST - PERI ROSENZWEIG<\/p><p>ART DIRECTOR - CLYDE CORLEY<\/p><p>PRODUCTION ASSISTANT - DENNIS KIM <\/p><p>SOCIAL MEDIA - TALIA CASSEL<\/p><p>HAIR - TIAGO GOYA <\/p><p>MAKEUP - EDEN LATTANZIO<\/p><p>TALENT - JANE MOSELEY <\/p>",
+            "text_size": "default",
+            "vertical_alignment": "bottom",
+            "horizontal_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "template--16036322345139__4e95659a-f429-4d58-ac22-a091223d44b4-166619626221643906-0"
+      ],
+      "settings": {
+      }
+    },
+    "04f1db37-5247-44e9-a654-dd042db8a507": {
+      "type": "banner-grid",
+      "blocks": {
+        "template--16037371609267__04f1db37-5247-44e9-a654-dd042db8a507-1666200590f18d68b4-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/26500007.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "shopify:\/\/collections\/new-womens-clothing",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid",
+            "banner_height": "window",
+            "vertical_alignment": "middle",
+            "horizontal_alignment": "middle"
+          }
+        },
+        "template--16037371609267__04f1db37-5247-44e9-a654-dd042db8a507-1666200590f18d68b4-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/26610004.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid",
+            "banner_height": "window",
+            "vertical_alignment": "middle",
+            "horizontal_alignment": "middle"
+          }
+        },
+        "0d3b7707-c863-488b-98da-96d25149dc4c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/26560005.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0.2",
+            "heading": "<p>Banner <br\/> block<\/p>",
+            "subhead": "Tell your brand's story through images",
+            "text_color": "",
+            "link": "",
+            "cta": "Shop now",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid",
+            "banner_height": "image",
+            "vertical_alignment": "middle",
+            "horizontal_alignment": "middle"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__04f1db37-5247-44e9-a654-dd042db8a507-1666200590f18d68b4-0",
+        "template--16037371609267__04f1db37-5247-44e9-a654-dd042db8a507-1666200590f18d68b4-1",
+        "0d3b7707-c863-488b-98da-96d25149dc4c"
+      ],
+      "settings": {
+      }
+    },
+    "8969dc99-b2dd-41b4-bebe-af72deddb2f6": {
+      "type": "banner-grid",
+      "blocks": {
+        "template--16037371609267__8969dc99-b2dd-41b4-bebe-af72deddb2f6-1666201126b3980808-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/26550016_c524627c-307e-4203-a256-fdcc4e67663c.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid",
+            "banner_height": "window",
+            "vertical_alignment": "middle",
+            "horizontal_alignment": "middle"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__8969dc99-b2dd-41b4-bebe-af72deddb2f6-1666201126b3980808-0"
+      ],
+      "settings": {
+      }
+    },
+    "a0e768cf-f8b9-47df-8bf3-ad70e99815ea": {
+      "type": "banner-grid",
+      "blocks": {
+        "template--16037371609267__a0e768cf-f8b9-47df-8bf3-ad70e99815ea-1666201126b3980808-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/26550033.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid",
+            "banner_height": "window",
+            "vertical_alignment": "middle",
+            "horizontal_alignment": "middle"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__a0e768cf-f8b9-47df-8bf3-ad70e99815ea-1666201126b3980808-0"
+      ],
+      "settings": {
+      }
+    },
+    "176cef55-7339-4431-bb9b-38f2d077cb9c": {
+      "type": "banner-grid",
+      "blocks": {
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/26470011_fd7b2b94-89ee-4db7-87d3-1b04099fe0f7.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid",
+            "banner_height": "window",
+            "vertical_alignment": "middle",
+            "horizontal_alignment": "middle"
+          }
+        },
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-1": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/73044de6-aab2-4ef9-a660-94c407a4e77d_HO22_LookBook_Page_11.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid",
+            "banner_height": "window",
+            "vertical_alignment": "middle",
+            "horizontal_alignment": "middle"
+          }
+        },
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-2": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/a96a3b02-00d6-468f-af25-9f6eb93195de_HO22_LookBook_Page_12.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid",
+            "banner_height": "window",
+            "vertical_alignment": "middle",
+            "horizontal_alignment": "middle"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-0",
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-1",
+        "template--16037371609267__176cef55-7339-4431-bb9b-38f2d077cb9c-1666201338dfe7de9d-2"
+      ],
+      "settings": {
+      }
+    },
+    "6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08": {
+      "type": "banner-grid",
+      "disabled": true,
+      "blocks": {
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/b21d6e58-4ea1-4d55-a83a-a3ba8ce0bfb3_HO22_LookBook_Page_15.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid",
+            "banner_height": "window",
+            "vertical_alignment": "middle",
+            "horizontal_alignment": "middle"
+          }
+        },
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/7351c69e-1d2f-424e-a0ee-72cf14481d73_HO22_LookBook_Page_16.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "Shop now",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid",
+            "banner_height": "window",
+            "vertical_alignment": "middle",
+            "horizontal_alignment": "middle"
+          }
+        },
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/067d946f-09d2-42f6-81ab-dc503098cc6e_HO22_LookBook_Page_13.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "Shop now",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid",
+            "banner_height": "window",
+            "vertical_alignment": "middle",
+            "horizontal_alignment": "middle"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-0",
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-1",
+        "template--16037371609267__6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08-16662014208b0cbe13-2"
+      ],
+      "settings": {
+      }
+    },
+    "47283923-2816-441f-ad52-de2753112c2b": {
+      "type": "banner-grid",
+      "disabled": true,
+      "blocks": {
+        "template--16037371609267__47283923-2816-441f-ad52-de2753112c2b-16662014208b0cbe13-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/9f7811a8-5b76-4c25-9f91-9746cf6843ea_HO22_LookBook_Page_14.jpg",
+            "bg_color": "#dddedc",
+            "tint_color": "#000000",
+            "tint_strength": "0",
+            "heading": "",
+            "subhead": "",
+            "text_color": "",
+            "link": "",
+            "cta": "",
+            "cta_color": "",
+            "cta_bg_color": "",
+            "cta_style": "solid",
+            "banner_height": "window",
+            "vertical_alignment": "middle",
+            "horizontal_alignment": "middle"
+          }
+        }
+      },
+      "block_order": [
+        "template--16037371609267__47283923-2816-441f-ad52-de2753112c2b-16662014208b0cbe13-0"
+      ],
+      "settings": {
+      }
+    },
+    "310ebab3-3029-43b5-a846-19fbe9a3868a": {
+      "type": "fullbleed-banner",
+      "disabled": true,
+      "blocks": {
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/d039fdd5-dcc7-4270-8d38-7677cb6eb282_HO22_LookBook_Page_03_1.jpg"
+          }
+        },
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5_de20ecba-73d7-45f3-b575-413b072820a5.jpg"
+          }
+        },
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/MIAOU_ECOMM_4738.jpg"
+          }
+        },
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/PHOTO-2022-09-29-04-45-36.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-0",
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-1",
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-2",
+        "template--16036322345139__310ebab3-3029-43b5-a846-19fbe9a3868a-166619626278e1ffe2-3"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "4e95659a-f429-4d58-ac22-a091223d44b4",
+    "04f1db37-5247-44e9-a654-dd042db8a507",
+    "8969dc99-b2dd-41b4-bebe-af72deddb2f6",
+    "a0e768cf-f8b9-47df-8bf3-ad70e99815ea",
+    "176cef55-7339-4431-bb9b-38f2d077cb9c",
+    "6fb3bd63-2ab3-4e80-9347-b5e8e5d51a08",
+    "47283923-2816-441f-ad52-de2753112c2b",
+    "310ebab3-3029-43b5-a846-19fbe9a3868a"
+  ]
+}

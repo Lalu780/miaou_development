@@ -1,0 +1,382 @@
+{% comment %}Snippet Parameters -->{% endcomment %}
+{% assign grid_item = grid_item | default: grid-item %}
+{% comment %}<-- Snippet Parameters{% endcomment %}
+
+{% liquid
+       if grid_item.empty?
+         assign grid_item_type = 'none'
+       elsif grid_item.all_products_count
+         assign grid_item_type = 'collection'
+       elsif grid_item.variants
+         assign grid_item_type = 'product'
+       else
+         assign grid_item_type = 'unknown'
+       endif
+     
+       assign grid_item_url = grid_item.url
+     
+       if grid_item_type == 'product'
+         assign grid_item_url = grid_item.url | within: collection
+       endif %}
+
+{% assign double_wide = grid_item.metafields.pdp_extras.is_double_wide %}
+{% assign double_wide_image = grid_item.metafields.pdp_extras.double_wide_image %}
+
+{% if grid_item.metafields.pdp_extras.double_wide_image or grid_item.metafields.pdp_extras.pdp_additional_hero_image  %}
+    {% assign show_featured_as_second_image = 1 %}
+{% else %}
+  {% assign show_featured_as_second_image = 0 %}
+{% endif %}
+
+{% assign has_second_image = 0 %}
+{% if grid_item.images.size > 1 or grid_item.metafields.pdp_extras.pdp_additional_flat_image %}
+    {% assign has_second_image = 1 %}
+{% endif %}
+
+{% if grid_item.metafields.pdp_extras.is_hero_video %}
+    {% assign has_second_image = 0 %}
+{% endif %}
+
+{% capture grid_item_image_sizes %}
+  {% liquid 
+      if double_wide
+        if grid_item.metafields.pdp_extras.double_wide_image
+          render 'print-image-sizes', image: double_wide_image
+        else
+          render 'print-image-sizes', image: grid_item.metafields.pdp_extras.pdp_additional_hero_image
+        endif
+      else
+        if grid_item_type == 'product' and grid_item.featured_image
+          if grid_item.metafields.pdp_extras.pdp_additional_hero_image
+            render 'print-image-sizes', image: grid_item.metafields.pdp_extras.pdp_additional_hero_image
+          else
+            render 'print-image-sizes', image: grid_item.featured_image
+          endif
+        elsif grid_item_type == 'collection'
+          if grid_item.image
+            render 'print-image-sizes', image: grid_item.image
+          elsif grid_item.all_products_count > 0
+            assign first_product = grid_item.products | first
+            if first_product.featured_image
+              render 'print-image-sizes', image: first_product.featured_image
+            endif
+          endif
+        endif
+      endif %}
+{% endcapture %}
+{% assign grid_item_image_sizes = grid_item_image_sizes | strip_newlines | strip %}
+
+{% if fill_grid == 1 and grid_item_type == 'product' %}
+  {% capture random_item_image_sizes %}
+  {% render 'print-image-sizes', image: random_item.featured_image %}
+{% endcapture %}
+  {% assign random_item_image_sizes = random_item_image_sizes | strip_newlines | strip %}
+  <article class="GridItem desktop-hide" data-item-type="{{ grid_item_type }}" position="{{ position }}">
+    <div class="GridItem-imageContainer">
+      <a class="GridItem-link" href="{{ last_item.url }}" aria-hidden="true">
+        <div
+          class="GridItem-imagePlaceholder o-placeholder lazyload has-icon"
+          data-sizes="auto"
+          data-bgset="{{ random_item_image_sizes }}"
+        >
+          {% if random_item_image_sizes == blank %}
+            {%- capture placeholder_svg_name -%}
+            {%- case block.type -%}
+             {%- when 'product' -%}
+                {%- cycle 'product_svgs': 'product-1', 'product-2', 'product-3', 'product-4', 'product-5', 'product-6' -%}
+              {%- else -%}
+                image
+            {%- endcase -%}
+          {%- endcapture -%}
+            {{ placeholder_svg_name | strip_newlines | strip | placeholder_svg_tag: 'GridItem-placeholderSvg' }}
+          {% endif %}
+        </div>
+      </a>
+    </div>
+
+    <div class="GridItem-details">
+      <h3 class="GridItem-title">
+        <a class="GridItem-titleLink" href="{{ random_item.url }}">
+          {% if title_override != blank %}
+            {{ title_override }}
+          {% else %}
+            {% assign default_title = 'general.miscellaneous.item' | t %}
+            {{ random_item.title | default: default_title }}
+          {% endif %}
+        </a>
+      </h3>
+
+      <div class="GridItem-extraDetails">
+        {% if grid_item_type == 'product' %}
+          {% assign on_sale = false %}
+          {% if random_item.compare_at_price > random_item.price %}
+            {% assign on_sale = true %}
+          {% endif %}
+
+          {% assign sold_out = true %}
+          {% if random_item.available %}
+            {% assign sold_out = false %}
+          {% endif %}
+
+          <div class="GridItem-price">
+            {% if sold_out %}
+              <del>
+                <a class="GridItem-titleLink" style="z-index: 1;" href="{{ random_item.url }}"
+                  >SOLD OUT - JOIN THE WAITLIST
+                </a>
+              </del>
+            {% else %}
+              {% if on_sale %}
+                <span class="u-vhide --regular">
+                  {{ 'products.general.regular_price' | t }}
+                </span>
+                <del>{{ random_item.compare_at_price | money_without_trailing_zeros }} </del>
+              {% endif %}
+
+              {% if on_sale %}
+                {% assign sale_price = random_item.price | money_without_trailing_zeros %}
+                {{ sale_price }}
+              {% else %}
+                {% if random_item.price_varies %}
+                  {% assign price = random_item.price | money_without_trailing_zeros %}
+                  {{ 'products.general.from_text_html' | t: price: price }}
+                {% else %}
+                  {{ random_item.price | money_without_trailing_zeros }}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </article>
+{% endif %}
+<article
+  class="GridItem {% if double_wide %} --double-wide {% endif %}"
+  data-item-type="{{ grid_item_type }}"
+  position="{{ position }}"
+>
+  <div class="GridItem-imageContainer">
+    <a class="GridItem-link" href="{{ grid_item_url }}" aria-hidden="true">
+      {% if grid_item.metafields.pdp_extras.is_hero_video %}
+        {% if grid_item.metafields.pdp_extras.pdp_additional_hero_video %}
+          <div class="GridItem-imagePlaceholder o-placeholder lazyload has-icon">
+            <video playsinline autoplay loop muted controlsList="nodownload" src="{{ grid_item.metafields.pdp_extras.pdp_additional_hero_video | file_url }}" width="100%"></video>
+        {% endif %}
+      {% else %}
+        <div class="GridItem-imagePlaceholder o-placeholder lazyload has-icon {% if has_second_image == 1 %}has-secondImage{% endif %}" data-sizes="auto" data-bgset="{{ grid_item_image_sizes }}">
+      {% endif %}
+        {% if grid_item_image_sizes == blank %}
+          {%- capture placeholder_svg_name -%}
+            {%- case block.type -%}
+              {%- when 'collection'-%}
+                {%- cycle 'col_svgs': 'collection-1', 'collection-2', 'collection-3', 'collection-4', 'collection-5', 'collection-6' -%}
+              {%- when 'product' -%}
+                {%- cycle 'product_svgs': 'product-1', 'product-2', 'product-3', 'product-4', 'product-5', 'product-6' -%}
+              {%- else -%}
+                image
+            {%- endcase -%}
+          {%- endcapture -%}
+          {{ placeholder_svg_name | strip_newlines | strip | placeholder_svg_tag: 'GridItem-placeholderSvg' }}
+        {% endif %}
+      </div>
+
+      {% if has_second_image == 1 %}
+        {% capture grid_item_second_image_sizes %}
+          {% if show_featured_as_second_image == 1 %}
+            {%- render 'print-image-sizes', image: grid_item.images[0] -%}
+          {% else %}
+            {% if grid_item.metafields.pdp_extras.pdp_additional_flat_image  %}
+              {%- render 'print-image-sizes', image: grid_item.metafields.pdp_extras.pdp_additional_flat_image -%}
+            {% else %}
+              {%- render 'print-image-sizes', image: grid_item.images[1] -%}
+            {% endif %}
+          {% endif %}
+        {% endcapture %}
+        <div class="GridItem-secondImagePlaceholder o-placeholder lazyload" data-sizes="auto" data-bgset="{{ grid_item_second_image_sizes | strip_newlines | strip }}"></div>
+      {% endif %}
+    </a>
+
+    {% if grid_item.images.size > 1000 and settings.grid_item_thumbs_enabled %}
+      {% comment %}     bypass by value = 1000, actual value = 1 {% endcomment %}
+      <div class="GridItem-thumbs" aria-hidden="true">
+        <!--
+          inline-block spacing fix
+          {% assign thumb_count = 0 %}
+          {% for image in grid_item.images %}
+          {% liquid
+          if thumb_count == 3
+          break
+          endif
+
+          unless image.attached_to_variant?
+          continue
+          endunless
+          if image.src == grid_item.featured_image.src
+          continue
+          endif
+          if image.src == grid_item.images[1].src
+          continue
+          endif
+
+          assign variant_query = ''
+          for variant in image.variants
+          if variant.available
+          assign variant_query = variant.id | prepend: '?variant='
+          break
+          endif
+          endfor %}
+        -->
+        <div class="GridItem-thumb">
+          <a class="GridItem-link" href="{{ grid_item_url | append: variant_query }}">
+            <div
+              class="GridItem-thumbImagePlaceholder o-placeholder lazyload"
+              data-bgset="{{ image.src | img_url: 'large' }}"
+            ></div>
+          </a>
+        </div>
+        <!--
+          inline-block spacing fix
+          {% assign thumb_count = thumb_count | plus: 1 %}
+          {% endfor %}
+        -->
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="GridItem-details">
+    <h3 class="GridItem-title">
+      <a class="GridItem-titleLink" href="{{ grid_item_url }}">
+        {% if title_override != blank %}
+          {{ title_override }}
+        {% else %}
+          {% assign default_title = 'general.miscellaneous.item' | t %}
+          {{ grid_item.title | default: default_title }}
+        {% endif %}
+      </a>
+    </h3>
+
+    <div class="GridItem-extraDetails">
+      {% if grid_item_type == 'collection' %}
+        <div class="GridItem-productsCount">
+          {{ 'collections.general.items_with_count' | t: count: grid_item.all_products_count }}
+        </div>
+      {% endif %}
+
+      {% if grid_item_type == 'product' %}
+        {% assign on_sale = false %}
+        {% if grid_item.compare_at_price > grid_item.price %}
+          {% assign on_sale = true %}
+        {% endif %}
+
+        {% assign sold_out = true %}
+        {% if grid_item.available %}
+          {% assign sold_out = false %}
+        {% endif %}
+
+        <div class="GridItem-price">
+          {% if sold_out %}
+            <del>
+              <a class="GridItem-titleLink" style="z-index: 1;" href="{{ grid_item_url }}">SOLD OUT </a>
+            </del>
+          {% else %}
+            {% if on_sale %}
+              <span class="u-vhide --regular">
+                {{ 'products.general.regular_price' | t }}
+              </span>
+              <del>{{ grid_item.compare_at_price | money_without_trailing_zeros }} </del>
+            {% endif %}
+
+            {% if on_sale %}
+              {% assign sale_price = grid_item.price | money_without_trailing_zeros %}
+              {{ sale_price }}
+            {% else %}
+              {% if grid_item.price_varies %}
+                {% assign price = grid_item.price | money_without_trailing_zeros %}
+                {{ 'products.general.from_text_html' | t: price: price }}
+              {% else %}
+                {{ grid_item.price | money_without_trailing_zeros }}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% assign sold_out = true %}
+  {% if grid_item.available %}
+    {% assign sold_out = false %}
+  {% endif %}
+
+  {% if sold_out == false %}
+    <div class="GridItem-Add">
+      <div class="GridItem-AddContainer">
+        {%- for variant in grid_item.variants -%}
+          <div class="GridItem-AddItem">
+            {% comment %}
+              <form class="GridItem-AddForm" action="/cart/add" method="post" data-product-id="{{ grid_item.id }}" {% if settings.ajax_cart_enabled == false %}data-ajax-cart-disabled="disabled"{% endif %}>
+              <input type="hidden" name="variant_selector_dummy" class="js-variant-selector-dummy single-option-selector" data-product-id="{{ grid_item.id }}" value="{{ variant.id }}" />
+              <div class="is-hidden js-price-preview" data-product-id="{{ grid_item.id}}"> {% if variant.available %}
+              {{ variant.price | money_without_trailing_zeros }}
+              {% if variant.price < variant.compare_at_price %}
+              <del>{{ variant.compare_at_price | money_without_trailing_zeros }}</del>
+              {% endif %}
+              {% else %}
+              <del>
+              {{ variant.price | money_without_trailing_zeros }}
+              </del>
+              <strong>
+              {{ 'products.product.sold_out' | t }}
+              </strong>
+              {% endif %}</div>
+
+              <div class="js-product-options">
+              <script type="application/json">
+              {
+              "product": {{ product | json }},
+              "optionsWithValues": {{ grid_item.options_with_values | json }},
+              "selectedVariantId": {{ variant.id | json }},
+              "settings": {
+              "renderStyle": {{ render_style | json }}
+              }
+              }
+              </script>
+              <div class="js-product-options-render-target">
+              <input type="hidden" name="id" value="{{ variant.id }}" />
+              </div>
+              </div>
+              <input type="hidden" name="quantity" value="1" min="1" />
+              <button type="submit" class="GridItem-AddBtn" name="add" {%- unless variant.available -%}disabled="true"{%- endunless -%}>{{variant.option2}}</button>
+              </form>
+            {% endcomment %}
+            {% if grid_item.tags contains 'final-sale' %}
+              {% assign final_sale = 1 %}
+            {% else %}
+              {% assign final_sale = 0 %}
+            {% endif %}
+            <button
+              type="submit"
+              class="GridItem-AddBtn js-col-add"
+              name="add"
+              data-variant-id="{{variant.id}}"
+              {%- unless variant.available -%}
+                disabled="true"
+              {%- endunless -%}
+              terms="{% if final_sale == 1 %}FINAL SALE{% else %}{% endif %}"
+              final_sale="{% if final_sale == 1 %}true{% else %}false{% endif %}"
+              compare_at_price="{{ grid_item.compare_at_price }}"
+            >
+              {{ variant.option2 }}
+            </button>
+            {%- if variant.available -%}
+              <p class="GridItem-AddText">Add to cart</p>
+            {%- else -%}
+              {% comment %}               <p class="GridItem-AddText">Join the waitlist</p> {% endcomment %}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  {% endif %}
+</article>

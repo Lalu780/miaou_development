@@ -1,0 +1,52 @@
+{% assign collectionSeo = collection.metafields.custom.seo_rich_text_desctiption %}
+{% assign collectionKeywords = collection.metafields.custom.keywords %}
+
+{% unless collection.featured_image contains 'products' %}
+  <section class="HPHero">
+    {%- capture image_sizes -%}
+      {%- render 'print-image-sizes' with collection.featured_image -%}
+    {%- endcapture -%}
+
+    <div class="HPHero-container">
+      <div class="HPHero-imagePlaceholder o-placeholder lazyload" data-bgset="{{image_sizes}}"></div>
+
+      <h1 class="HPHero-title">{{ collection.title }}</h1>
+    </div>
+  </section>
+{% endunless %}
+
+{% assign collection_id_list = '91341783145,295502282931,293196890291,294812713139,289954234547,295613006003,153630244969' %}
+{% unless collection_id_list contains collection.id %}
+  <div class="nosto_element" id="categorypage-nosto-1"></div>
+{% endunless %}
+
+{% render 'collection-controls' %}
+{% paginate collection.products by 1000 %}
+  <main class="Collection" role="main" aria-label="{{ collection.title | escape }}">
+    <div class="Collection-products">
+      {% if collection.products.size > 0 %}
+        {% render 'grid', items: collection.products %}
+      {% else %}
+        <div class="o-pageSubtext o-rte">
+          {{ 'collections.general.empty_html' | t: url: '/collections/all' }}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if collectionSeo and collectionSeo != blank %}
+      <div class="Collection-seo">
+        <div class="Collection-seo--content">
+          {{ collectionSeo }}
+        </div>
+        <div class="read-more read-more-js">Read more</div>
+        <div class="read-more read-less-js">Collapse</div>
+      </div>
+    {% endif %}
+
+    {% if collectionKeywords and collectionKeywords != blank %}
+      <div class="Collection-keywords">
+        {{ collectionKeywords }}
+      </div>
+    {% endif %}
+  </main>
+{% endpaginate %}

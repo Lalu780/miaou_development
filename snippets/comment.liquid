@@ -1,0 +1,21 @@
+{% comment %}
+More information at
+https://help.shopify.com/themes/liquid/objects/comment
+{% endcomment %}
+
+<div class="Comment {{ comment.status | prepend: 'is-' }}">
+  <div class="Comment-info">
+    <div class="Comment-author">
+      <strong>{{ comment.author }}</strong>
+    </div>
+    <div class="Comment-createdAt">
+      <time datetime="{{ comment.created_at | date: '%Y-%m-%d' }}">
+        {{ comment.created_at | date: format: 'month_day_year' }}
+      </time>
+    </div>
+  </div>
+
+  <div class="Comment-content o-rte">
+    {{ comment.content }}
+  </div>
+</div>

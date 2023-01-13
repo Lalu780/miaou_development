@@ -1,0 +1,6 @@
+"use strict";(self["webpackChunk"]=self["webpackChunk"]||[]).push([[388],{104:(__unused_webpack_module,__unused_webpack___webpack_exports__,__webpack_require__)=>{var ky__WEBPACK_IMPORTED_MODULE_0__=__webpack_require__(31)
+;const logErrors=function(err){console.error(err)};const initInternationalCheckout=async function(){const{url:url}=await ky__WEBPACK_IMPORTED_MODULE_0__["default"].get("/checkout");const Url=new URL(url)
+;const segments=Url.pathname.split("/");const checkoutId=segments[segments.length-1];if(0===checkoutId.length)throw new Error("Checkout ID is invalid [17eb9cf4f82f49ee8c42154c29043cc4]");if("cart"===checkoutId)window.location.href="/cart"
+;const Location=new URL(window.location.href);Location.searchParams.set("checkoutId",checkoutId);window.history.replaceState(null,document.title,Location.toString());const s=document.createElement("script");s.type="text/javascript"
+;s.async=true;s.src="//gepi.global-e.com/includes/js/10000772";document.getElementsByTagName("head")[0].appendChild(s)};initInternationalCheckout().catch(logErrors)}},__webpack_require__=>{
+var __webpack_exec__=moduleId=>__webpack_require__(__webpack_require__.s=moduleId);__webpack_require__.O(0,[351],(()=>__webpack_exec__(104)));var __webpack_exports__=__webpack_require__.O()}]);

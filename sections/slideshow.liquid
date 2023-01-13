@@ -1,0 +1,384 @@
+{% capture all_styles %}
+{%- assign placeholder_width = section.settings.slideshow_width | default: 1920 -%}
+{%- assign placeholder_height = section.settings.slideshow_height | default: 824 -%}
+{%- assign placeholder_padding = 100.0 | times: placeholder_height | divided_by: placeholder_width -%}
+
+{{ section.id | prepend: '#shopify-section-' }} .Slideshow-placeholder,
+{{ section.id | prepend: '#shopify-section-' }} .SlideshowItem-imagePlaceholder {
+  padding-bottom: {{ placeholder_padding | times: 1.6182 | append: "%" | escape }};
+}
+
+@media screen and (min-width: 40em) {
+  {{ section.id | prepend: '#shopify-section-' }} .Slideshow-placeholder,
+  {{ section.id | prepend: '#shopify-section-' }} .SlideshowItem-imagePlaceholder {
+    padding-bottom: {{ placeholder_padding | append: "%" | escape }};
+  }
+}
+{% endcapture %}
+
+<div class="Slideshow-container" data-item-count="{{ section.blocks.size }}">
+  <div class="Slideshow-placeholder">
+    <div class="swiper-container" data-item-count="{{ section.blocks.size }}">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% liquid
+            assign image = block.settings.image
+            assign bg_color = block.settings.bg_color | default: settings.color_gray_60
+            assign tint_color = block.settings.tint_color | default: settings.color_black
+            assign tint_strength = block.settings.tint_strength | default: '0.2'
+            assign link = block.settings.link | default: '' | strip
+            assign caption_position = block.settings.caption_position | default: 'center middle'
+            assign heading = block.settings.heading | default: '' | strip
+            assign heading_color = block.settings.heading_color | default: settings.color_white
+            assign subhead = block.settings.subhead | default: '' | strip
+            assign subhead_color = block.settings.subhead_color | default: settings.color_white
+            assign cta = block.settings.cta | default: '' | strip
+            assign cta_color = block.settings.cta_color | default: settings.color_white
+            assign cta_bg_color = block.settings.cta_bg_color | default: settings.color_button_background
+            assign cta_style = block.settings.cta_style | default: 'solid'
+
+            assign css_class = '#shopify-section-' | append: section.id | append: ' ' | append: '.SlideshowItem[data-block-id="' | append: block.id | append: '"]' %}
+
+          {% capture item_styles %}
+            {{ css_class }} .SlideshowItem-imagePlaceholder {
+              background-color: {{ bg_color | default: '#ccc' }};
+            }
+            {{ css_class }} .SlideshowItem-imagePlaceholder > svg {
+              fill: {{ tint_color | color_modify: 'alpha', 0.25 }}
+            }
+
+            {%- if image -%}
+              {{ css_class }} .SlideshowItem-imagePlaceholder {
+                background-image: url("{{ image | img_url: '640x' }}");
+              }
+              @media screen and (min-width: 40em) {
+                {{ css_class }} .SlideshowItem-imagePlaceholder {
+                  background-image: url("{{ image | img_url: '1024x' }}");
+                }
+              }
+              @media screen and (min-width: 64em) {
+                {{ css_class }} .SlideshowItem-imagePlaceholder {
+                  background-image: url("{{ image | img_url: '1200x' }}");
+                }
+              }
+              @media screen and (min-width: 75em) {
+                {{ css_class }} .SlideshowItem-imagePlaceholder {
+                  background-image: url("{{ image | img_url: '1440x' }}");
+                }
+              }
+              @media screen and (min-width: 90em) {
+                {{ css_class }} .SlideshowItem-imagePlaceholder {
+                  background-image: url("{{ image | img_url: '1920x' }}");
+                }
+              }
+              @media screen and (min-width: 120em) {
+                {{ css_class }} .SlideshowItem-imagePlaceholder {
+                  background-image: url("{{ image | img_url: '2048x' }}");
+                }
+              }
+            {%- endif -%}
+
+            {{ css_class }} .SlideshowItem-dimmer {
+              background-color: {{ tint_color }};
+              opacity: {{ tint_strength }};
+            }
+            {{ css_class }} .SlideshowItem-heading {
+              color: {{ heading_color }};
+            }
+            {{ css_class }} .SlideshowItem-subhead {
+              color: {{ subhead_color }};
+            }
+            {{ css_class }} .SlideshowItem-cta {
+              color: {{ cta_color }};
+              background-color: {{ cta_bg_color }};
+              border-color: {{ cta_bg_color }};
+            }
+            {{ css_class }} .SlideshowItem-cta.is-hollow {
+              background-color: transparent;
+              border-color: {{ cta_bg_color }};
+              color: {{ cta_bg_color }};
+            }
+            {{ css_class }} .SlideshowItem-cta.is-hollow:hover,
+            {{ css_class }} .SlideshowItem-cta.is-hollow:focus {
+              background-color: {{ cta_bg_color }};
+              border-color: {{ cta_bg_color }};
+              color: {{ cta_color }};
+            }
+          {% endcapture %}
+          {% assign all_styles = all_styles | append: item_styles %}
+
+          <div class="swiper-slide">
+            <article class="SlideshowItem SlideshowItem--{{ block.id }}" data-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
+              {% if link != blank %}
+                <a class="SlideshowItem-link" href="{{ link }}">
+              {% endif %}
+
+                <div class="SlideshowItem-imagePlaceholder">
+                  {% unless image %}
+                    {% assign index_binary_modulo = forloop.index | modulo: 2 %}
+                    {% assign svg_name = 'lifestyle-1' %}
+                    {% if index_binary_modulo == 0 %}
+                      {% assign svg_name = 'lifestyle-2' %}
+                    {% endif %}
+                    {{ svg_name | placeholder_svg_tag: 'js-slideshow-svg-image SlideshowItem-svgImage' }}
+                  {% endunless %}
+
+                  {% if heading != blank or subhead != blank or cta != blank %}
+                    <div class="SlideshowItem-dimmer"></div>
+                    <div class="SlideshowItem-captionContainer" data-position="{{ caption_position }}">
+                      <div class="SlideshowItem-caption" data-position="{{ caption_position }}">
+                        {% if heading != blank %}
+                          <div class="SlideshowItem-heading">{{ heading }}</div>
+                        {% endif %}
+                        {% if subhead != blank %}
+                          <div class="SlideshowItem-subhead">{{ subhead }}</div>
+                        {% endif %}
+                        {% if cta != blank %}
+                          <div class="SlideshowItem-ctaContainer">
+                            <div class="SlideshowItem-cta o-button {{ cta_style | prepend: 'is-' }}">
+                              {{ cta }}
+                            </div>
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+
+              {% if link != blank %}
+                </a>
+              {% endif %}
+            </article>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% if section.blocks.size > 1 %}
+      <div class="slideshow-Pagination">
+        {%- for block in section.blocks -%}
+          <div class="slideshow-Pagination-item">
+            <input type="radio" id="slideshow-dot-{{ section.id }}-{{ block.id }}" class="js-slideshow-dot slideshow-Pagination-itemRadio" name="slideshow-dots-{{ section.id }}" value="Slide {{ forloop.index }}" data-slide-index="{{ forloop.index0 }}" {% if forloop.first %}checked="checked" {% endif %} />
+            <label for="slideshow-dot-{{ section.id }}-{{ block.id }}" class="slideshow-Pagination-itemLabel">
+              <span class="u-vhide">
+                {{ 'general.carousel.dot_name' | t: id: forloop.index }}
+              </span>
+            </label>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <div class="slideshow-NavigationArrow" data-action="prev">
+        <div class="slideshow-NavigationArrow-icon">
+          <div class="slideshow-NavigationArrow-iconPlaceholder">
+            {% render 'svg-slideshow-arrow-left' %}
+          </div>
+        </div>
+
+        <button type="button" class="js-slideshow-arrow slideshow-NavigationArrow-button" data-action="prev">
+          <div class="u-vhide">
+            {{ 'general.carousel.prev' | t }}
+          </div>
+        </button>
+      </div>
+
+      <div class="slideshow-NavigationArrow" data-action="next">
+        <div class="slideshow-NavigationArrow-icon">
+          <div class="slideshow-NavigationArrow-iconPlaceholder">
+            {% render 'svg-slideshow-arrow-right' %}
+          </div>
+        </div>
+
+        <button type="button" class="js-slideshow-arrow slideshow-NavigationArrow-button" data-action="next">
+          <div class="u-vhide">
+            {{ 'general.carousel.next' | t }}
+          </div>
+        </button>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>{{ all_styles }}</style>
+
+
+{%- schema %}
+  {
+    "name": "Slideshow",
+    "tag": "section",
+    "class": "js-slideshow Slideshow IndexSection IndexSection--flush",
+    "max_blocks": 6,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Auto-rotate slides",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "autoplay_speed",
+        "label": "Change slides every",
+        "options": [
+          { "value": "5000", "label": "5 seconds" },
+          { "value": "6000", "label": "6 seconds" },
+          { "value": "7000", "label": "7 seconds" },
+          { "value": "8000", "label": "8 seconds" },
+          { "value": "9000", "label": "9 seconds" },
+          { "value": "10000", "label": "10 seconds" }
+        ],
+        "default": "7000"
+      },
+      {
+        "type": "paragraph",
+        "content": "Slideshow images are fitted inside a responsive placeholder box. Change width and height values below to modify placeholder dimensions."
+      },
+      {
+        "type": "text",
+        "id": "slideshow_width",
+        "label": "Section width (relative to height)",
+        "default": "1920",
+        "info": "1920"
+      },
+      {
+        "type": "text",
+        "id": "slideshow_height",
+        "label": "Section height (relative to width)",
+        "default": "823",
+        "info": "823"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#dddedc"
+          },
+          {
+            "type": "color",
+            "id": "tint_color",
+            "label": "Tint color",
+            "default": "#000000"
+          },
+          {
+            "type": "select",
+            "id": "tint_strength",
+            "label": "Tint strength",
+            "options": [
+              { "value":   "0", "label": "No tint" },
+              { "value": "0.1", "label": "10%" },
+              { "value": "0.2", "label": "20%" },
+              { "value": "0.3", "label": "30%" },
+              { "value": "0.4", "label": "40%" },
+              { "value": "0.5", "label": "50%" },
+              { "value": "0.6", "label": "60%" },
+              { "value": "0.7", "label": "70%" },
+              { "value": "0.8", "label": "80%" },
+              { "value": "0.9", "label": "90%" }
+            ],
+            "default": "0.2"
+          },
+          {
+            "type": "select",
+            "id": "caption_position",
+            "label": "Caption position",
+            "options": [
+              { "label": "Top left",      "value": "left top" },
+              { "label": "Top center",    "value": "center top" },
+              { "label": "Top right",     "value": "right top" },
+              { "label": "Middle left",   "value": "left middle" },
+              { "label": "Middle center", "value": "center middle" },
+              { "label": "Middle right",  "value": "right middle" },
+              { "label": "Bottom left",   "value": "left bottom" },
+              { "label": "Bottom center", "value": "center bottom" },
+              { "label": "Bottom right",  "value": "right bottom" }
+            ],
+            "default": "center middle"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Image slide"
+          },
+          {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color"
+          },
+          {
+            "type": "text",
+            "id": "subhead",
+            "label": "Subheading",
+            "default": "Tell your brand's story through video and images"
+          },
+          {
+            "type": "color",
+            "id": "subhead_color",
+            "label": "Subheading color"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Slide link"
+          },
+          {
+            "type": "text",
+            "id": "cta",
+            "label": "Button text",
+            "default": "Shop now"
+          },
+          {
+            "type": "color",
+            "id": "cta_color",
+            "label": "Button text color"
+          },
+          {
+            "type": "color",
+            "id": "cta_bg_color",
+            "label": "Button background color"
+          },
+          {
+            "type": "radio",
+            "id": "cta_style",
+            "label": "Button style",
+            "options": [
+              { "value": "solid", "label": "Solid" },
+              { "value": "hollow", "label": "Hollow" }
+            ],
+            "default": "solid"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Slideshow",
+      "category": "Image",
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": "5000"
+      },
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }]
+  }
+{% endschema -%}

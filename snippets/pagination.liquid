@@ -1,0 +1,72 @@
+{% comment %}Snippet Parameters -->{% endcomment %}
+{%- assign paginate = paginate -%}
+{% comment %}<-- Snippet Parameters{% endcomment %}
+
+{% if paginate.pages > 1 %}
+<div class="Pagination">
+  <ul class="Pagination-items" role="menubar" aria-label="{{ 'general.pagination.title' | t }}">
+
+    {% if paginate.previous.is_link %}
+      <li class="Pagination-arrow is-prev">
+        <a class="Pagination-arrowLink" href="{{ paginate.previous.url }}" rel="prev">
+          <div class="u-vhide">
+            {{ 'general.pagination.previous' | t }}
+          </div>
+          <div class="o-placeholder">
+            {% render 'svg-pagination-arrow-left' %}
+          </div>
+        </a>
+      </li>
+    {% endif %}
+
+    {% for part in paginate.parts %}
+      {% assign item_class = '' %}
+
+      {% if paginate.current_page == part.title %}
+        {% assign item_class = 'current' %}
+      {% elsif part.is_link == false %}
+        {% assign item_class = 'dimmed' %}
+      {% elsif part.url == paginate.previous.url %}
+        {% assign item_class = 'prev' %}
+      {% elsif part.url == paginate.next.url %}
+        {% assign item_class = 'next' %}
+      {% endif %}
+
+      <li class="Pagination-item {% if item_class != blank %}{{ item_class | prepend: 'is-' }}{% endif %}">
+        {% if part.is_link or item_class == 'current' %}
+          <a class="Pagination-itemLink" href="{{ part.url | default: '#' }}" {% if item_class == 'current' %}aria-disabled="true"{% endif %}>
+            <div class="u-vhide">
+              {% if item_class == 'current' %}
+                {{ 'general.pagination.you_are_here' | t: page_number: part.title }}
+              {% else %}
+                {{ 'general.pagination.page' | t: page_number: part.title, pages: paginate.pages }}
+              {% endif %}
+            </div>
+            <span aria-hidden="true">
+              {{ part.title }}
+            </span>
+          </a>
+        {% else %}
+          <div role="button" class="Pagination-itemLink" aria-hidden="true">
+            {{ part.title }}
+          </div>
+        {% endif %}
+      </li>
+    {% endfor %}
+
+    {% if paginate.next.is_link %}
+      <li class="Pagination-arrow is-prev">
+        <a class="Pagination-arrowLink" href="{{ paginate.next.url }}" rel="next">
+          <div class="u-vhide">
+            {{ 'general.pagination.next' | t }}
+          </div>
+          <div class="o-placeholder">
+            {% render 'svg-pagination-arrow-right' %}
+          </div>
+        </a>
+      </li>
+    {% endif %}
+
+  </ul>
+</div>
+{% endif %}

@@ -1,0 +1,13 @@
+<script>
+  (function(){
+    window.objectData = window.objectData || {};
+    var collection_featured_image_array = {};
+    {% for collection in collections %}
+      {% if collection.products_count > 0 %}
+        collection_featured_image_array["{{collection.handle}}"] = {{collection.featured_image | json }};
+      {% endif %}
+    {% endfor %}
+
+    window.objectData.collections = collection_featured_image_array;
+  })();
+</script>

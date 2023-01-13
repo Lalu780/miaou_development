@@ -1,0 +1,50 @@
+{% assign toplink_utf_handle = toplink.title | strip | replace: ' ', '-' | url_encode | handle %}
+
+{% assign midlist = false %}
+{% for linklist in linklists %}
+  {% assign list_utf_handle = linklist.title | strip | replace: ' ', '-' | url_encode | handle %}
+  {% if list_utf_handle == toplink_utf_handle %}
+    {% assign midlist = linklist %}
+  {% endif %}
+{% endfor %}
+
+{% if midlist and midlist.links.size > 0 %}
+<div class="js-header-dropdown HeaderDropdown">
+  <ul class="HeaderDropdown-items">
+    <!-- inline-block fix
+    {% for midlink in midlist.links %}
+      {% assign midlink_utf_handle = midlink.title | strip | replace: ' ', '-' | url_encode | handle %}
+      {% assign bottomlist = false %}
+      {% for linklist in linklists %}
+        {% assign list_utf_handle = linklist.title | strip | replace: ' ', '-' | url_encode | handle %}
+        {% if list_utf_handle == midlink_utf_handle %}
+          {% assign bottomlist = linklist %}
+        {% endif %}
+      {% endfor %}
+
+      {% assign item_has_subitems = false %}
+      {% if bottomlist and bottomlist.links.size > 0 and midlink_utf_handle != toplink_utf_handle %}
+        {% assign item_has_subitems = true %}
+      {% endif %}
+
+   --><li class="HeaderDropdown-item {% if item_has_subitems %}has-subitems{% endif %}">
+        <a class="HeaderDropdown-itemLink {% if midlink.active %}is-active{% endif %}" href="{{ midlink.url }}" title="{{ midlink.title }}">
+          {{ midlink.title }}
+        </a>
+        {% if item_has_subitems %}
+          <ul class="HeaderDropdown-subItems">
+            {% for bottomlink in bottomlist.links %}
+              <li class="HeaderDropdown-subItem">
+                <a class="HeaderDropdown-subItemLink {% if bottomlink.active %}is-active{% endif %}" href="{{ bottomlink.url }}" title="{{ bottomlink.title }}">
+                  {{ bottomlink.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li><!-- inline-block fix
+    {% endfor %}
+    -->
+  </ul>
+</div>
+{% endif %}

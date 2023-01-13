@@ -1,0 +1,482 @@
+{%- assign clean_title = product.title | split: ' - ' -%}
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<div class="Product-container">
+  <div class="Product-sections {% if product.images.size == 0 %}Product-sections--noImages{% endif %}">
+    {% if product.images.size > 0 %}
+      <section class="Product-section Product-section--images">
+        {% render 'product-images' %}
+      </section>
+    {% endif %}
+
+    <section class="Product-section Product-section--details">
+      <div class="Product-section--details--content">
+        {% render 'product-details' %}
+      </div>
+    </section>
+  </div>
+
+  {% comment %}
+    {% if product.metafields.pdp_extras.pdp_additional_images_videos
+      or product.metafields.pdp_extras.pdp_additional_flat_lay
+    %}
+      <div class="Product-sections">
+        <section class="Product-section {% if product.metafields.pdp_extras.pdp_additional_images_videos %}Product-section--video{%else%}Product-section--extra{%endif%}">
+          {% if product.metafields.pdp_extras.pdp_additional_images_videos %}
+            <script type="text/javascript">
+              window.pdp_extras_videos = {{product.metafields.pdp_extras.pdp_additional_images_videos}};
+            </script>
+
+            <div class="ProductVideo-Holder">
+              <iframe
+                width="640"
+                height="360"
+                frameborder="0"
+                title="Additional video 0"
+                allow="autoplay; fullscreen"
+                webkitallowfullscreen=""
+                mozallowfullscreen=""
+                allowfullscreen="allowfullscreen"
+                class="ProductVideo-Video lazyload"
+                id="js-vimeo-desktop"
+                style="background: rgb(245, 245, 245);"
+              ></iframe>
+            </div>
+          {% else %}
+            <script type="text/javascript">
+              window.pdp_extras_videos = [];
+            </script>
+
+            <div class="ProductExtra-Holder --cover">
+              <div
+                data-bgset="{{ product.images | last | img_url: '2048x2048' }}"
+                class="ProductExtra-Image lazyload"
+              ></div>
+            </div>
+          {% endif %}
+        </section>
+
+        <section class="Product-section Product-section--extra">
+          {% if product.metafields.pdp_extras.pdp_additional_flat_lay %}
+            <script type="text/javascript">
+              window.pdp_extras_images = {{ product.metafields.pdp_extras.pdp_additional_flat_lay }};
+            </script>
+
+            <div class="js-extra-desktop ProductExtra-Holder"></div>
+          {% else %}
+            <script type="text/javascript">
+              window.pdp_extras_images = [];
+            </script>
+          {% endif %}
+        </section>
+      </div>
+    {% endif %}
+  {% endcomment %}
+
+  {% if product.metafields.pdp_extras.pdp_additional_video
+    or product.metafields.pdp_extras.pdp_additional_flat_lays_first
+    or product.metafields.pdp_extras.pdp_additional_flat_lays_second
+  %}
+    <div class="Product-sections">
+      <section class="Product-section {% if product.metafields.pdp_extras.pdp_additional_video %}Product-section--video{%else%}Product-section--extra{%endif%}">
+        {% if product.metafields.pdp_extras.pdp_additional_video %}
+          <div class="ProductVideo-Holder">
+            <video
+              class="ProductVideo-Video lazyload"
+              playsinline
+              autoplay
+              loop
+              muted
+              controlsList="nodownload"
+              src="{{ product.metafields.pdp_extras.pdp_additional_video | file_url }}"
+              style="background: rgb(245, 245, 245);"
+            ></video>
+          </div>
+        {% else %}
+          <div class="ProductExtra-Holder --cover">
+            <div
+              data-bgset="{{ product.images | last | img_url: '2048x2048' }}"
+              class="ProductExtra-Image lazyload"
+            ></div>
+          </div>
+        {% endif %}
+      </section>
+
+      <section class="Product-section Product-section--extra">
+        {% if product.metafields.pdp_extras.pdp_additional_flat_lays_first
+          or product.metafields.pdp_extras.pdp_additional_flat_lays_second
+        %}
+          <div class="js-extra-desktop ProductExtra-Holder" style="background-color: #fff;">
+            {% if product.metafields.pdp_extras.pdp_additional_flat_lays_first %}
+              <div
+                data-bgset="{{ product.metafields.pdp_extras.pdp_additional_flat_lays_first | img_url: '2048x2048' }}"
+                class="ProductExtra-Image lazyload"
+              ></div>
+            {% endif %}
+            {% if product.metafields.pdp_extras.pdp_additional_flat_lays_second %}
+              <div
+                data-bgset="{{ product.metafields.pdp_extras.pdp_additional_flat_lays_second | img_url: '2048x2048' }}"
+                class="ProductExtra-Image lazyload"
+              ></div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </section>
+    </div>
+  {% endif %}
+
+  <div class="js-product-details Product-details Product-Mobile">
+    <script type="application/json">
+      {
+        "currencyCode": {{ cart.currency.iso_code | json }},
+        "moneyFormat": {{ shop.money_format | json }}
+      }
+    </script>
+    <div>
+      <div class="Product-Mobile-Title">
+        <h1>{{ clean_title.first }}</h1>
+        <div class="Product-Mobile-price js-price-preview" data-product-id="{{ product.id }}">
+          {{ current_variant.price | money }}
+          {% if current_variant.price < current_variant.compare_at_price %}
+            <del>{{ current_variant.compare_at_price | money }} </del>
+          {% endif %}
+        </div>
+      </div>
+
+      {% assign clean_current = current_variant.title | split: ' / ' %}
+      <div class="Product-Mobile-Color">{{ clean_current[0] }}</div>
+
+      {% if product.available %}
+        <form
+          action="/cart/add"
+          method="post"
+          class="ProductForm"
+          data-product-id="{{ product.id }}"
+          {% if settings.ajax_cart_enabled == false %}
+            data-ajax-cart-disabled="disabled"
+          {% endif %}
+        >
+          {% comment %}TODO: Trigger change event with Preact side-effect{% endcomment %}
+          <input type="hidden" name="quantity" value="1" min="1">
+          <input
+            type="hidden"
+            name="variant_selector_dummy"
+            class="js-variant-selector-dummy single-option-selector"
+            data-product-id="{{ product.id }}"
+            value="{{ current_variant.id }}"
+          >
+
+          {% for t in product.tags %}
+            {% if t contains 'final-sale' %}
+              <input type="hidden" value="FINAL SALE" name="properties[Terms]">
+            {% endif %}
+          {% endfor %}
+
+          {% render 'product-options', product: product %}
+
+          <div class="js-product-form-error ProductForm-error"></div>
+          <div class="nosto_element" id="get-the-set-product-mobile"></div>
+        </form>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+ <div class="FourSixty-container --white-bg"> 
+  <h5>As Seen on Instagram</h5>
+  <script
+    src="//foursixty.com/media/scripts/fs.slider.v2.5.js"
+    data-feed-id="miaou"
+    data-theme="slider_v2_5"
+    data-shopify-add-to-cart="false"
+    data-open-links-in-same-page="false"
+    data-cell-size="25%"
+    data-has-posts-selector="#foursixty-hideable-container"
+    data-for-url="true"
+  ></script>
+</div> 
+
+<style>
+  .fs-has-links::after { padding:5px 7.5px;background-color:#ffffff;color:rgba(0, 0, 0, 0.8);content:"SHOP IT"; } .fs-showcase_v2_5.fs-desktop .fs-entry-container { width:25% !important;padding-top:25% !important; } .fs-showcase_v2_5.fs-mobile .fs-entry-container { width:100% !important;padding-top:100% !important; } .fs-wrapper div.fs-text-container .fs-entry-title, div.fs-detail-title { font-family:Times New Roman, serif;font-style:normal;font-weight:normal;font-size:14px; } div.fs-text-container .fs-entry-date, div.fs-detail-container .fs-post-info, div.fs-wrapper div.fs-has-links::after, .fs-text-product, .fs-overlink-text { font-family:Helvetica Neue, Helvetica, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:14px; } .fs-wrapper div.fs-text-container * { color:#ffffff; } .fs-wrapper div.fs-text-container { background-color:rgba(0, 0, 0, 0.8);margin:0px; } div.fs-entry-date { display:none; } div.fs-entry-title { display:none; } .fs-showcase_v2_5.fs-wrapper div.fs-timeline-entry { margin:0px; }
+</style>
+
+{% if product.metafields.pdp_extras.pdp_similar_products %}
+  {% assign is_empty = true %}
+  <section class="ProductRecommendation">
+    {% assign productArr = product.metafields.pdp_extras.pdp_similar_products | split: ',' %}
+    <h1 class="ProductRecommendation-Title">You May Also Like</h1>
+    <div class="Grid">
+      {% for single_product in productArr limit: 4 %}
+        {% assign item_data = all_products[single_product] %}
+        {% if item_data != blank %}
+          {% assign is_empty = false %}
+          <div class="Grid-item">
+            {% render 'grid-item', grid_item: item_data %}
+          </div>
+        {% endif %}
+      {% endfor %}
+      {% if is_empty == true %}
+        {% assign collProds = product.collections.last.products %}
+        {% for single_product in collProds limit: 4 %}
+          <div class="Grid-item">
+            {% render 'grid-item', grid_item: single_product %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
+
+<div class="nosto_element" id="productpage-nosto-2"></div>
+<div class="nosto_element" id="productpage-nosto-3"></div>
+
+<div
+  id="reviews"
+  class="yotpo yotpo-main-widget"
+  data-product-id="{{ product.id }}"
+  data-name="{{ product.title | escape }}"
+  data-url="{{ shop.url }}{{ product.url }}"
+  data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+  data-price="{{ variant.price | money_without_currency }}"
+  data-currency="{{ shop.currency }}"
+  data-description="{{ product.description | escape }}"
+></div>
+
+<div class="js-sizing-parent PanelSizing">
+  <div class="PanelSizing-bg js-sizing-close"></div>
+  <div class="PanelSizing-content">
+    <div class="PanelSizing-Close js-sizing-close">
+      {% render 'svg-close' %}
+    </div>
+    <div class="PanelSizing-tabs">
+      <a class="js-sizing-tab is-active" data-tab="0"> PRODUCT MEASUREMENTS </a>
+      <a class="js-sizing-tab " data-tab="1"> SIZE CONVERSION GUIDE </a>
+    </div>
+    <div class="PanelSizing-Tables" style="margin-top:3em;">
+      <div class="js-sizing-panel" data-tab="0">
+        <select id="sizing-unit-switcher-1" style="width:auto;float:right;margin:0;">
+          <option value="in">IN</option>
+          <option value="cm">CM</option>
+        </select>
+        <table class="js-sizing-table">
+          <tbody>
+            {% for info in product.metafields.pdp_extras.pdp_size_guide.value %}
+              {% assign size_values = info.size | split: ',' %}
+              <tr>
+                {% for size_value in size_values %}
+                  <td width="80">{{ size_value }}</td>
+                {% endfor %}
+              </tr>
+              {% for inches in info.IN %}
+                {% for inches_data in inches %}
+                  {% assign inches_values = inches_data | split: ',' %}
+                  <tr class="sizing-in-1">
+                    {% for inch_value in inches_values %}
+                      <td width="80">
+                        {% if forloop.index == 1 %}
+                          {{ inch_value }} (IN)
+                        {% else %}
+                          {{ inch_value }}
+                        {% endif %}
+                      </td>
+                    {% endfor %}
+                  </tr>
+                  <tr class="sizing-cm-1 hide-sizing-unit">
+                    {% for inch_value in inches_values %}
+                      <td width="80">
+                        {% if forloop.index == 1 %}
+                          {{ inch_value }} (CM)
+                        {% else %}
+                          {{ inch_value | times: 2.54 | round: 3 }}
+                        {% endif %}
+                      </td>
+                    {% endfor %}
+                  </tr>
+                {% endfor %}
+              {% endfor %}
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="PanelSizing-Model">
+          <p class="PanelSizing-Model-Title">MODEL MEASUREMENTS</p>
+          <br>
+          {{ product.metafields.pdp_extras.pdp_field_model_stats }}
+        </div>
+      </div>
+      <div class="js-sizing-panel" data-tab="1">
+        <select id="sizing-unit-switcher-2" style="width:auto;float:right;margin:0;">
+          <option value="in">IN</option>
+          <option value="cm">CM</option>
+        </select>
+        <table class="js-sizing-table">
+          <tbody>
+            <tr>
+              <td width="80">Size</td>
+              <td width="50">XS</td>
+              <td width="50">S</td>
+              <td width="50">M</td>
+              <td width="50">L</td>
+              <td width="50">XL</td>
+              <td width="50">1XL</td>
+              <td width="50">2XL</td>
+              <td width="50">3XL</td>
+              <td width="50">4XL</td>
+            </tr>
+            <tr class="sizing-in-2">
+              <td width="80">Bust (in)</td>
+              <td width="50">30-32</td>
+              <td width="50">33-35</td>
+              <td width="50">35.5-37.5</td>
+              <td width="50">38-40</td>
+              <td width="50">40.5-43.5</td>
+              <td width="50">44-46</td>
+              <td width="50">46.5-48.5</td>
+              <td width="50">49-51</td>
+              <td width="50">51.5-53.5</td>
+            </tr>
+            <tr class="sizing-cm-2 hide-sizing-unit">
+              <td width="80">Bust (cm)</td>
+              <td width="50">76.2-81.3</td>
+              <td width="50">83.8-88.9</td>
+              <td width="50">90.2-95.3</td>
+              <td width="50">96.5-101.6</td>
+              <td width="50">102.9-110.5</td>
+              <td width="50">111.8-116.8</td>
+              <td width="50">118.1-123.2</td>
+              <td width="50">124.5-129.5</td>
+              <td width="50">130.8-135.9</td>
+            </tr>
+            <tr class="sizing-in-2">
+              <td width="80">Waist (in)</td>
+              <td width="50">24-25.5</td>
+              <td width="50">26-28</td>
+              <td width="50">29-30</td>
+              <td width="50">31-32</td>
+              <td width="50">33-36</td>
+              <td width="50">37-39</td>
+              <td width="50">39.5-41.5</td>
+              <td width="50">42-44</td>
+              <td width="50">44.5-47.5</td>
+            </tr>
+            <tr class="sizing-cm-2 hide-sizing-unit">
+              <td width="80">Waist (cm)</td>
+              <td width="50">61-64.8</td>
+              <td width="50">66-71.1</td>
+              <td width="50">73.7-76.2</td>
+              <td width="50">78.7-81.3</td>
+              <td width="50">83.8-91.4</td>
+              <td width="50">94-99.1</td>
+              <td width="50">100.3-105.4</td>
+              <td width="50">106.7-111.8</td>
+              <td width="50">113-120.7</td>
+            </tr>
+            <tr class="sizing-in-2">
+              <td width="80">Hips (in)</td>
+              <td width="50">34-35.5</td>
+              <td width="50">36-38</td>
+              <td width="50">39-40</td>
+              <td width="50">41-42</td>
+              <td width="50">43-46</td>
+              <td width="50">47-49</td>
+              <td width="50">49.5-51.5</td>
+              <td width="50">52-54</td>
+              <td width="50">54.5-56.5</td>
+            </tr>
+            <tr class="sizing-cm-2 hide-sizing-unit">
+              <td width="80">Hips (cm)</td>
+              <td width="50">86.4-91.4</td>
+              <td width="50">91.4-96.5</td>
+              <td width="50">99.1-101.6</td>
+              <td width="50">104.1-106.7</td>
+              <td width="50">109.2-116.8</td>
+              <td width="50">119.4-124.5</td>
+              <td width="50">125.7-130.8</td>
+              <td width="50">132.1-137.2</td>
+              <td width="50">138.4-143.5</td>
+            </tr>
+            <tr>
+              <td width="80">USA</td>
+              <td width="50">0-2</td>
+              <td width="50">4-6</td>
+              <td width="50">6-8</td>
+              <td width="50">8-10</td>
+              <td width="50">12-14</td>
+              <td width="50">14-16</td>
+              <td width="50">18</td>
+              <td width="50">20</td>
+              <td width="50">22</td>
+            </tr>
+            <tr>
+              <td width="80">Australia &amp; UK</td>
+              <td width="50">4-6</td>
+              <td width="50">8-10</td>
+              <td width="50">10-12</td>
+              <td width="50">12-14</td>
+              <td width="50">16-18</td>
+              <td width="50">18-20</td>
+              <td width="50">22</td>
+              <td width="50">24</td>
+              <td width="50">26</td>
+            </tr>
+            <tr>
+              <td width="80">Italy</td>
+              <td width="50">36-38</td>
+              <td width="50">40-42</td>
+              <td width="50">42-44</td>
+              <td width="50">44-46</td>
+              <td width="50">46-48</td>
+              <td width="50">48-50</td>
+              <td width="50">50-52</td>
+              <td width="50">52-54</td>
+              <td width="50">54-56</td>
+            </tr>
+            <tr>
+              <td width="80">France</td>
+              <td width="50">32-34</td>
+              <td width="50">34-36</td>
+              <td width="50">36-38</td>
+              <td width="50">38-40</td>
+              <td width="50">40-42</td>
+              <td width="50">42-44</td>
+              <td width="50">44-46</td>
+              <td width="50">46-48</td>
+              <td width="50">48-50</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).on("change", "#sizing-unit-switcher-1", function(){
+    $(".sizing-in-1, .sizing-cm-1").toggleClass("hide-sizing-unit");
+  });
+
+  $(document).on("change", "#sizing-unit-switcher-2", function(){
+    $(".sizing-in-2, .sizing-cm-2").toggleClass("hide-sizing-unit");
+  });
+</script>
+<style>
+  .hide-sizing-unit {
+    display: none;
+  }
+</style>
+
+{%- schema %}
+{
+  "name": "Product Main",
+  "tag": "section",
+  "class": "js-product-main Product js-product-smp",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "social_sharing_enabled",
+      "label": "Show social sharing buttons",
+      "default": true
+    }
+  ]
+}
+{%- endschema %}
+

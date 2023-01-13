@@ -1,0 +1,19 @@
+{%- assign selected_variant = product.selected_or_first_available_variant -%}
+{%- assign render_style = settings.product_options_style | default: 'radios' -%}
+
+<div class="js-product-options">
+  <script type="application/json">
+    {
+      "product": {{ product | json }},
+      "optionsWithValues": {{ product.options_with_values | json }},
+      "selectedVariantId": {{ selected_variant.id | json }},
+      "selectedVariantPrice": {{ selected_variant.price | json }},
+      "settings": {
+        "renderStyle": {{ render_style | json }}
+      }
+    }
+  </script>
+  <div class="js-product-options-render-target">
+    <input type="hidden" name="id" value="{{ selected_variant.id }}" />
+  </div>
+</div>

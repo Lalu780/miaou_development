@@ -1,0 +1,53 @@
+<section class="FullbleedImages">
+  {%- if section.blocks.size > 0 -%}
+    {%- for block in section.blocks -%}
+      <div class="FullbleedImages-item">
+        {%- assign image = block.settings.image -%}
+
+        {% capture image_sizes %}
+          {%- render 'print-image-sizes', image: image -%}
+        {% endcapture %}
+
+        <div class="lazyload o-placeholder" data-sizes="auto" data-bgset="{{ image_sizes | strip_newlines | strip }}"></div>
+      </div>
+    {%- endfor -%}
+  {%- endif -%}
+</section>
+
+{% schema %}
+  {
+    "name": "Full Bleed Images",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Full Bleed Images",
+        "category": "Grid",
+        "settings": {},
+        "blocks": [
+          {
+            "type": "image"
+          }, {
+            "type": "image"
+          }, {
+            "type": "image"
+          }, {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

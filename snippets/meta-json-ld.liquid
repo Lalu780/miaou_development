@@ -1,0 +1,30 @@
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type" : "WebSite",
+    "name" : {{ shop.name | json }},
+    "url" : {{ shop.url | json }}
+  }
+</script>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name" : {{ shop.name | json }},
+    "url" : {{ shop.url | json }},
+    "logo": {{ 'logo.png' | asset_url | prepend: 'https:' | json }},
+    "sameAs": [
+      {{ settings.pinterest | json }},
+      {{ settings.facebook | json }},
+      {{ settings.instagram | json }},
+      {{ settings.twitter | json }}
+    ]
+  }
+</script>
+
+{% if template.name == 'product' %}
+  {% render 'meta-json-ld-product' %}
+{% endif %}
+<!-- End of JSON-LD Structured Data -->

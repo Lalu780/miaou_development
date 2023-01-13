@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "blank-page",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

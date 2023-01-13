@@ -1,0 +1,225 @@
+<footer class="Footer-container" role="contentinfo">
+  <div class="Footer-sections">
+    <div class="Footer-section Footer-section--left">
+      
+      {% for menu_index in (1..3) %}
+        {%- assign menu_poi = 'menu_' | append: menu_index -%}
+        {%- assign menu_handle = section.settings[menu_poi] | default: '' -%}
+        {%- assign menu = linklists[menu_handle] -%}
+        {%- if menu_index == 1 -%}
+          {%- assign menu_header = "SHOP" -%}
+        {%- elsif menu_index == 2 -%}
+          {%- assign menu_header = "MIAOU" -%}
+        {%- else menu_index == 3 -%}
+          {%- assign menu_header = "SOCIAL" -%}
+        {%- endif -%}
+        {%- if menu.links.size > 0 -%}
+       <div class="FooterMenu" style="max-width:33%;">
+            <p style="text-transform:uppercase;font-weight:bold;margin-bottom:20px;">{{ menu_header }}</p>
+            <ul class="FooterMenu-items">
+              {% for link in menu.links %}
+                <li class="FooterMenu-item">
+                  <a class="FooterMenu-itemLink" href="{{ link.url }}">
+                    {{ link.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {%- endif -%}
+      {% endfor %}
+    </div>
+    
+    <div class="Footer-section Footer-section--right">
+      <p class="Footer-NewsletterCTA">
+        JOIN THE MUSES & GET 10% OFF
+      </p>
+      <div class="Footer-Newsletter">
+      {% if mailchimp_form_action != blank %}
+        <form action="{{ mailchimp_form_action }}" method="post" name="mc-embedded-subscribe-form" target="_blank">
+          <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+          <div style="position: absolute; left: -5000px;">
+            <input type="text" name="b_85df1bbc05a1d0dfb3763c877_c784621d65" tabindex="-1" value="" />
+          </div>
+  
+          <input type="email" name="EMAIL" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off" required />
+  
+          <button type="submit" name="subscribe" class="o-button">
+            {{ 'general.newsletter_form.submit' | t }}
+          </button>
+        </form>
+      {% else %}
+        {% form 'customer' %}
+          {% if form.errors %}
+            <div class="o-formErrors">
+              <p>{{ 'general.form.errors_were_encountered' | t }}</p>
+              {{ form.errors | default_errors }}
+            </div>
+          {% endif %}
+  
+          {% if form.posted_successfully? %}
+            <p class="o-formSuccess">
+              {{ 'general.newsletter_form.confirmation' | t }}
+            </p>
+          {% else %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+  
+            <input type="email" name="contact[email]" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="EMAIL" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off" required />
+  
+            <button type="submit" class="o-button" name="subscribe">
+              {% render 'svg-fa-right-long' %}
+            </button>
+          {% endif %}
+        {% endform %}
+      {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="Footer-lowerSection">
+
+                  <img id="spotify_image" src="https://cdn.shopify.com/s/files/1/1231/1148/files/screen_shot_2023-01-06_at_2.04.36_pm__1.png?v=1673521684">
+
+    <div class="column row" style="max-width:25rem;float:right;">
+        <div style="display: grid;grid-template-columns: 3fr 1fr;">
+            <span style="text-align:left;">
+
+              <span style="font-size:1.4em;"><img id="spotify_logo" src="https://cdn.shopify.com/s/files/1/1231/1148/files/CITYPNG.COM_HD_Spotify_Round_Outline_White_Icon_PNG_-_1324x1324_5a528394-8f93-4ef5-aced-a96826bcc0c0.png?v=1673525412">LISTEN THE MIAOU MIX</span>
+              <br/>
+              <a href="https://open.spotify.com/playlist/7fZ7wjYQ75fOlJbPtWPX3V" target="_blank" id="playlink" style="text-decoration:underline;text-underline-offset:3px;">PLAY ON SPOTIFY</a>
+            </span>
+            <span style="display:flex;align-items:flex-end"><small>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | link_to: shop.url }}</small></span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "class": "Footer",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu_1",
+        "label": "Menu 1",
+        "default": "footer"
+      },
+      {
+        "type": "link_list",
+        "id": "menu_2",
+        "label": "Menu 2"
+      },
+      {
+        "type": "link_list",
+        "id": "menu_3",
+        "label": "Menu 3"
+      },
+      {
+        "type": "header",
+        "content": "Shop address"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_default_shop_address",
+        "label": "Show default shop address",
+        "default": true
+      },
+      {
+        "type": "richtext",
+        "id": "extra_info",
+        "label": "Extra information"
+      },
+      {
+        "type": "header",
+        "content": "Contacts"
+      },
+      {
+        "type": "text",
+        "id": "email",
+        "label": "Email"
+      },
+      {
+        "type": "text",
+        "id": "phone",
+        "label": "Phone number",
+        "default": "202-555-0108"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_icons_enabled",
+        "label": "Show social media icons",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "designed_by_link_enabled",
+        "label": "Show \"Designed by\" link",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "menu",
+        "name": "menu",
+        "settings": [
+          {
+        "type": "link_list",
+        "id": "menu_1",
+        "label": "Menu 3"
+        }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "settings": [
+        {
+        "type": "text",
+        "id": "text_test",
+        "label": "Menu 3"
+        }
+        ]
+      },
+      {
+        "type": "links",
+        "name": "links",
+        "settings": [
+          {
+        "type": "link_list",
+        "id": "menu_3",
+        "label": "Menu 3"
+        }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+<style>
+  @media (max-width: 768px) {
+    .Footer-NewsletterCTA {
+      margin-top: 1em;
+    }
+  }
+  #playlink:after {
+    content: " \25B7";
+}
+  img#spotify_image {
+    height: 45px;
+}
+img#spotify_logo {
+    height: 27px;
+    padding: 1px;
+}
+ 
+ @media (max-width: 1000px) {
+img#spotify_image {
+    max-width: 14% !important;
+}
+.column.row {
+    max-width: 85% !important;
+}
+ }
+</style>

@@ -1,0 +1,130 @@
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<div class="js-product-details Product-details">
+  <script type="application/json">
+    {
+      "currencyCode": {{ cart.currency.iso_code | json }},
+      "moneyFormat": {{ shop.money_format | json }}
+    }
+  </script>
+  {%- assign clean_title = product.title | split: ' - ' -%}
+  <h3 class="Product-title">
+    {{ clean_title.first }}
+  </h3>
+
+  <div class="Product-price-container">
+    <div class="js-price-preview current_price Product-price" data-product-id="{{ product.id }}">
+      {{ current_variant.price | money }}
+      {% if current_variant.price < current_variant.compare_at_price %}
+        <del>{{ current_variant.compare_at_price | money }} </del>
+      {% endif %}
+    </div>
+
+    {% for t in product.tags %}
+      {% if t contains 'final-sale' %}
+        <span class="final-sale">Final Sale</span>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- SMP swatches -->
+  {%- assign smp_handle = '' -%}
+  {%- for tag in product.tags -%}
+    {%- if tag contains 'pdp:' -%}
+      {%- assign smp_handle = tag | replace: 'pdp:', '' -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if smp_handle != '' -%}
+    {%- assign smp_collection = collections[smp_handle] -%}
+  {%- endif -%}
+
+  {%- if smp_collection.title != blank -%}
+    <div class="Product-Swatches-SMP">
+      {%- for prod in smp_collection.products -%}
+        {%- assign pdp_swatch_image = prod.metafields.pdp_extras.pdp_swatch_image -%}
+
+        <div
+          class="Product-SwatchesItem js-smp-swatch"
+          style="background-image: url(' {{ pdp_swatch_image }} ');"
+          smp-product-handle="{{ prod.handle }}"
+          product-title="{{ prod.title }}"
+        ></div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+  <!-- END SMP swatches -->
+
+  {% render 'product-description' %}
+
+  <div class="ProductDesktop">
+    <form
+      action="/cart/add"
+      method="post"
+      class="ProductForm"
+      data-product-id="{{ product.id }}"
+      {% if settings.ajax_cart_enabled == false %}
+        data-ajax-cart-disabled="disabled"
+      {% endif %}
+    >
+      {% comment %}TODO: Trigger change event with Preact side-effect{% endcomment %}
+      <input type="hidden" name="quantity" value="1" min="1">
+      <input
+        type="hidden"
+        name="variant_selector_dummy"
+        class="js-variant-selector-dummy single-option-selector"
+        data-product-id="{{ product.id }}"
+        value="{{ current_variant.id }}"
+      >
+
+      {% for t in product.tags %}
+        {% if t contains 'final-sale' %}
+          <input type="hidden" value="FINAL SALE" name="properties[Terms]">
+          <input type="hidden" value="{{ current_variant.compare_at_price }}" name="properties[_compare_at_price]">
+          <input type="hidden" value="true" name="properties[_final_sale]">
+        {% endif %}
+      {% endfor %}
+
+      {% render 'product-options', product: product %}
+
+      <div class="js-product-form-error ProductForm-error"></div>
+
+      <div class="nosto_element" id="get-the-set"></div>
+
+      {%- if product.metafields.pdp_extras.pdp_message_override_1 != blank -%}
+        <span class="ProductDescTabs-messageOverride">
+          {{ product.metafields.pdp_extras.pdp_message_override_1 }}
+          <input
+            type="hidden"
+            name="properties[message_1]"
+            value="{{ product.metafields.pdp_extras.pdp_message_override_1 }}"
+          >
+        </span>
+      {%- endif -%}
+
+      {%- if product.metafields.pdp_extras.pdp_message_override_2 != blank -%}
+        <span class="ProductDescTabs-messageOverride">
+          {{ product.metafields.pdp_extras.pdp_message_override_2 }}
+          <input
+            type="hidden"
+            name="properties[message_2]"
+            value="{{ product.metafields.pdp_extras.pdp_message_override_2 }}"
+          >
+        </span>
+      {%- endif -%}
+
+      {%- if product.metafields.pdp_extras.pdp_message_override_3 != blank -%}
+        <span class="ProductDescTabs-messageOverride">
+          {{ product.metafields.pdp_extras.pdp_message_override_3 }}
+          <input
+            type="hidden"
+            name="properties[message_3]"
+            value="{{ product.metafields.pdp_extras.pdp_message_override_3 }}"
+          >
+        </span>
+      {%- endif -%}
+    </form>
+  </div>
+</div>
+
+{% render 'back-to-stock' %}

@@ -1,0 +1,33 @@
+<style>
+/* ===================================================== */
+/* CSS styles with complex Liquid computations */
+/* ===================================================== */
+/* {% assign product_image_placeholder_width = settings.product_image_placeholder_width | default: 1024 %} */
+/* {% assign product_image_placeholder_height = settings.product_image_placeholder_height | default: 1024 %} */
+/* {% assign product_image_placeholder_padding = 100 | times: 100 | times: product_image_placeholder_height | divided_by: product_image_placeholder_width | money_without_currency | append: "%" | escape %} */
+/* {% assign product_image_size = settings.product_image_size | default: 'contain' %} */
+.CartItem-imagePlaceholder {
+  background-size: {{ product_image_size }};
+}
+
+.GridItem-imagePlaceholder {
+  background-size: {{ product_image_size }};
+}
+.GridItem-secondImagePlaceholder {
+  padding-bottom: {{ product_image_placeholder_padding }};
+  background-size: {{ product_image_size }};
+}
+.GridItem-thumbImagePlaceholder {
+  padding-bottom: {{ product_image_placeholder_padding }};
+  background-size: {{ product_image_size }};
+}
+
+/* {% if settings.product_image_size == 'cover' %} */
+.GridItem-imageContainer {
+  margin: 0;
+  padding: 0;
+}
+
+/* {% endif %} */
+
+</style>

@@ -1,0 +1,101 @@
+{% assign firstLinkList = linklists[section.settings.main_linklist] %}
+{% assign secondLinkList = linklists[section.settings.second_linklist] %}
+
+
+<header class="Header-container" role="banner">
+  <div class="container-sections main-menu__wrap">    
+    <div class="Header-sections ">
+      <div class="Header-section">
+        <div class="Header-logo__header">
+          <a class="Header-logoLink" href="{{ shop.url }}">
+            <div class="Header-logoImagePlaceholder">
+              <span class="u-vhide">
+                {{ shop.name }}
+              </span>
+              {% render 'svg-logo' %}
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- inline-block fix
+
+      -->
+
+      <nav class="Header-section">
+          <div class="HeaderMenu">
+            {%- if firstLinkList.title contains '[COL]' or firstLinkList.title contains '[ROW]' -%}
+              {%- assign clean_title =  firstLinkList.title | replace: " [COL]", "" | replace: " [ROW]", "" | strip | downcase -%}
+    
+              <a class="HeaderMenu-itemLink js-offcanvas-trigger" data-drawer-name="{{clean_title}}" title="{{clean_title}}">{{clean_title}}
+              </a>
+            {%- else -%}
+    
+              <a class="HeaderMenu-itemLink" href="{{ firstLinkList.url }}" title="{{firstLinkList.title}}">{{firstLinkList.title}}
+              </a>
+            {%- endif -%}
+    
+    
+    
+            {%- if secondLinkList.title contains '[COL]' or secondLinkList.title contains '[ROW]' -%}
+              {%- assign clean_title_2 =  secondLinkList.title | replace: " [COL]", "" | replace: " [ROW]", "" | strip | downcase -%}
+    
+              <a class="HeaderMenu-itemLink js-offcanvas-trigger" data-drawer-name="{{clean_title_2}}" title="{{clean_title_2}}">{{clean_title_2}}
+              </a>
+            {%- else -%}
+    
+              <a class="HeaderMenu-itemLink" href="{{ secondLinkList.url }}" title="{{secondLinkList.title}}">{{secondLinkList.title}}
+              </a>
+            {%- endif -%}
+    
+            <a class="HeaderMenu-itemLink js-offcanvas-trigger" data-drawer-name="search" title="Search">
+              <span class="HeaderMenu-SearchTitle">Search</span>
+              <div class="HeaderMenu-SearchIcon">{% render 'svg-search' %}
+              </div>
+            </a>
+            <a href="/account" class="HeaderMenu-itemLink" title="Account">
+              {% if customer %}
+                <span class="HeaderMenu-SearchTitle">Account</span>
+              {% else %}
+                <span class="HeaderMenu-SearchTitle">Login</span>
+              {% endif %}
+              <div class="HeaderMenu-AccountIcon">
+                {% render 'svg-account' %}
+              </div>
+            </a>
+            <a class="HeaderMenu-itemLink js-offcanvas-trigger" data-drawer-name="cart" title="Cart">
+              <div class="HeaderMenu-CartTitle">Cart</div>
+              <div class="HeaderMenu-CartCount js-cart-item-count" data-item-count="0">0</div>
+            </a>      
+        </div>
+      </nav>     
+  </div>
+</header>
+
+{%- assign clean_title =  firstLinkList.title | replace: " [COL]", "" | replace: " [ROW]", "" | strip | downcase -%}
+{%- assign clean_title_2 =  secondLinkList.title | replace: " [COL]", "" | replace: " [ROW]", "" | strip | downcase -%}
+
+
+{% render 'offcanvas', col_drawer_name: clean_title, col_list: linklists[section.settings.main_linklist].links, row_drawer_name: clean_title_2, row_list: linklists[section.settings.second_linklist].links %}
+
+{% schema %}
+  {
+    "name": "Header",
+    "class": "js-header Header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      }, {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "First Menu",
+        "default": "main-menu"
+      }, {
+        "type": "link_list",
+        "id": "second_linklist",
+        "label": "Second Menu"
+      }
+    ]
+  }
+{% endschema %}
