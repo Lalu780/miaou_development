@@ -1,7 +1,222 @@
+<header class="header custom-header">
+    <div class="nav">
+        <div class="header-logo">
+            <a class="header-logo-link" href="{{ shop.url }}">
+                <div class="header-image-placeholder">
+                    <span class="u-vhide">
+                        {{ shop.name }}
+                    </span>
+                    {% render 'svg-logo' %}
+                </div>
+            </a>
+        </div>
+        <nav class="navigation-menu">
+            <a href="javascript:void(0);" class="mobile-menu-trigger" id="navigation-menu-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation"
+                    class="icon icon-hamburger" fill="none" viewBox="0 0 18 16">
+                    <path
+                        d="M1 .5a.5.5 0 100 1h15.71a.5.5 0 000-1H1zM.5 8a.5.5 0 01.5-.5h15.71a.5.5 0 010 1H1A.5.5 0 01.5 8zm0 7a.5.5 0 01.5-.5h15.71a.5.5 0 010 1H1a.5.5 0 01-.5-.5z"
+                        fill="currentColor">
+                </svg>
+            </a>
+            <ul class="menu menu-bar" id="accessibleNav">
+                {% for link in linklists[section.settings.menu].links %}
+                {% assign child_list_handle = link.title | handleize %}
+                {% if linklists[child_list_handle].links != blank %}
+                <li class="main-sub-nav site-nav--has-dropdown{% if link.active %} site-nav--active{% endif %}"
+                    aria-label="{{ link.title }}">
+                    <a class="menu-link menu-bar-link" href="javascript:void(0);" aria-haspopup="true">
+                        {{ link.title }}
+                    </a>
+                    <ul class="mega-menu mega-menu--multiLevel">
+                        {% for childlink in linklists[child_list_handle].links %}
+                        <li class="{% if childlink.active %}site-nav--active {% endif %}">
+                            {% if childlink.links != blank %}
+                            <a class="menu-link mega-menu-link site-sub-nav--has-dropdown" href="javascript:void(0);"
+                                aria-haspopup="true">{{ childlink.title | escape }}</a>
+                            <ul class="menu menu-list">
+                                {% for grandchild_link in childlink.links %}
+                                <li {% if grandchild_link.active
+                                    %}class="active {% if grandchild_link.child_active %}child-active{% endif %}" {%
+                                    endif %}>
+                                    <a class="menu-link mega-menu-link" href="{{ grandchild_link.url }}">{{
+                                        grandchild_link.title }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% else %}
+                            <a class="menu-link mega-menu-link no-sub-dropdown" href="{{ childlink.url }}">{{
+                                childlink.title | escape }}</a>
+                            {% endif %}
+                        </li>
+                </li>
+                {% endfor %}
+                <li class="navigation-nosto-section">
+                    <div class="navigation-image-grid">
+                        <div class="navigation-image-item">
+                            <div class="image-block">
+                                <img
+                                    src="https://cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_12228_R_640x.jpg?v=1664389037%20320w">
+                            </div>
+                            <div class="text-block">
+                                <p> DEIA CORSET</p>
+                            </div>
+                        </div>
+                        <div class="navigation-image-item">
+                            <div class="image-block">
+                                <img src="https://cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_640x.jpg?v=1657129426 320w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_750x.jpg?v=1657129426 375w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_960x.jpg?v=1657129426 480w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_1024x.jpg?v=1657129426 600w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_2048x.jpg?v=1657129426 1024w"">
+                                </div>
+                                <div class=" text-block">
+                                <p>APHEX CORSET</p>
+                            </div>
+                        </div>
+                        <div class="navigation-image-item">
+                            <div class="image-block">
+                                <img
+                                    src="//cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_640x.jpg?v=1665599800 320w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_750x.jpg?v=1665599800 375w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_960x.jpg?v=1665599800 480w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_1024x.jpg?v=1665599800 600w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_2048x.jpg?v=1665599800 1024w">
+                            </div>
+                            <div class="text-block">
+                                <p>LIBRA CORSET</p>
+                            </div>
+                        </div>
+                        <div class="navigation-image-item">
+                            <div class="image-block">
+                                <img
+                                    src="//cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_640x.jpg?v=1657559372 320w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_750x.jpg?v=1657559372 375w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_960x.jpg?v=1657559372 480w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_1024x.jpg?v=1657559372 600w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_2048x.jpg?v=1657559372 1024w">
+                            </div>
+                            <div class="text-block">
+                                <p>IMOGENE CORSET</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="mobile-menu-back-item">
+                    <a href="javascript:void(0);" class="menu-link mobile-menu-back-link">Back</a>
+                </li>
+            </ul>
+            </li>
+            {% else %}
+            <li class="main-sub-nav {% if link.active %} site-nav--active {% endif %}" aria-label="{{ link.title }}">
+                <a class="menu-link mega-menu-link" href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+            <li class="mobile-menu-header">
+                <a href="javascript:void(0);" class="">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation"
+                        class="icon icon-close" id="hamburger-menu-close" fill="none" viewBox="0 0 18 17">
+                        <path
+                            d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z"
+                            fill="currentColor">
+                    </svg>
+                </a>
+                <a class="header-logo-link" href="{{ shop.url }}">
+                    <div class="header-image-placeholder">
+                        <span class="u-vhide">
+                            {{ shop.name }}
+                        </span>
+                        {% render 'svg-logo' %}
+                    </div>
+                </a>
+
+            </li>
+            </ul>
+        </nav>
+        <div class="header_icons">
+            <nav class="navigation-menu navigation-menu-universe">
+                <ul class="menu menu-bar" id="accessibleNav">
+                    {% for link in linklists[section.settings.menu].links %}
+                    {% assign child_list_handle = link.title | handleize %}
+                    {% if linklists[child_list_handle].links != blank %}
+                    <li class="main-sub-nav site-nav--has-dropdown{% if link.active %} site-nav--active{% endif %}"
+                        aria-label="{{ link.title }}">
+                        <a class="menu-link menu-bar-link" href="javascript:void(0);" aria-haspopup="true">
+                            {{ link.title }}
+                        </a>
+                        <ul class="mega-menu mega-menu--multiLevel">
+                            {% for childlink in linklists[child_list_handle].links %}
+                            <li class="{% if childlink.active %}site-nav--active {% endif %}">
+                                {% if childlink.links != blank %}
+                                <a class="menu-link mega-menu-link site-sub-nav--has-dropdown"
+                                    href="javascript:void(0);" aria-haspopup="true">{{ childlink.title | escape }}</a>
+                                <ul class="menu menu-list">
+                                    {% for grandchild_link in childlink.links %}
+                                    <li {% if grandchild_link.active
+                                        %}class="active {% if grandchild_link.child_active %}child-active{% endif %}" {%
+                                        endif %}>
+                                        <a class="menu-link mega-menu-link" href="{{ grandchild_link.url }}">{{
+                                            grandchild_link.title }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                {% else %}
+                                <a class="menu-link mega-menu-link no-sub-dropdown" href="{{ childlink.url }}">{{
+                                    childlink.title | escape }}</a>
+                                {% endif %}
+                            </li>
+                    </li>
+                    {% endfor %}
+                    <li class="mobile-menu-back-item">
+                        <a href="javascript:void(0);" class="menu-link mobile-menu-back-link">Back</a>
+                    </li>
+                </ul>
+                </li>
+                {% else %}
+                <li class="main-sub-nav {% if link.active %} site-nav--active {% endif %}"
+                    aria-label="{{ link.title }}">
+                    <a class="menu-link mega-menu-link" href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+                </ul>
+            </nav>
+            <a class="HeaderMenu-itemLink js-offcanvas-trigger" data-drawer-name="search" title="Search">
+                <div class="HeaderMenu-SearchIcon">{% render 'svg-search' %}
+                </div>
+                <span class="HeaderMenu-SearchTitle">Search</span>
+            </a>
+            <a href="/account" class="HeaderMenu-itemLink" title="Account">
+                {% if customer %}
+                <span class="HeaderMenu-SearchTitle">Account</span>
+                {% else %}
+                <span class="HeaderMenu-SearchTitle">Login</span>
+                {% endif %}
+                <div class="HeaderMenu-AccountIcon">
+                    {% render 'svg-account' %}
+                </div>
+            </a>
+            <a class="HeaderMenu-itemLink js-offcanvas-trigger" data-drawer-name="cart" title="Cart">
+                <div class="HeaderMenu-CartTitle">
+                    {% render 'icon-cart' %}
+                </div>
+                <div class="HeaderMenu-CartCount js-cart-item-count" data-item-count="0">0</div>
+            </a>
+
+        </div>
+
+
+    </div>
+
+</header>
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "Custom Header",
+    "class": "section-header",
+    "settings": [
+    {
+    "type": "link_list",
+    "id": "menu",
+    "default": "main-menu",
+    "label": "Select Menu"
+    },
+    {
+    "type": "link_list",
+    "id": "universe_menu",
+    "default": "main-menu",
+    "label": "Select Menu"
+    }
+    ]
   }
 {% endschema %}
 
@@ -9,4 +224,5 @@
 {% endstylesheet %}
 
 {% javascript %}
+
 {% endjavascript %}

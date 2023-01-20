@@ -558,19 +558,19 @@
           if ("cart" === drawerName) cart.refresh();
         });
         machine.start();
-        jquery_min_default()("[data-col-image]").on("mouseenter", function (e) {
-          var ref;
-          const elem = e.target;
-          const imageHolder =
-            null === (ref = elem.closest(".Offcanvas-Drawer-Col")) ||
-            void 0 === ref
-              ? void 0
-              : ref.querySelector(".Offcanvas-Drawer-ColImg");
-          imageHolder.style.backgroundImage = `url('${elem.getAttribute(
-            "data-col-image"
-          )}')`;
-          imageHolder.style.opacity = "1";
-        });
+        // jquery_min_default()("[data-col-image]").on("mouseenter", function (e) {
+        //   var ref;
+        //   const elem = e.target;
+        //   const imageHolder =
+        //     null === (ref = elem.closest(".Offcanvas-Drawer-Col")) ||
+        //     void 0 === ref
+        //       ? void 0
+        //       : ref.querySelector(".Offcanvas-Drawer-ColImg");
+        //   imageHolder.style.backgroundImage = `url('${elem.getAttribute(
+        //     "data-col-image"
+        //   )}')`;
+        //   imageHolder.style.opacity = "1";
+        // });
         jquery_min_default()("[data-col-image]").on("mouseleave", function (e) {
           var ref;
           const elem = e.target;

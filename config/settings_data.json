@@ -379,6 +379,32 @@
           "horizontal_alignment": "middle",
           "text_color": "#000000"
         }
+      },
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement-bar-0": {
+            "type": "announcement",
+            "settings": {
+              "text": "Free shipping to India on all orders above ₹12173",
+              "color_scheme": "#000000",
+              "text_color": "#ffffff",
+              "text_alignment": "center",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "announcement-bar-0"
+        ],
+        "settings": {
+        }
+      },
+      "custom-header": {
+        "type": "custom-header",
+        "settings": {
+          "menu": "megamenu"
+        }
       }
     },
     "content_for_index": [

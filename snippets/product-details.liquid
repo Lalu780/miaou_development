@@ -42,7 +42,7 @@
   {%- if smp_collection.title != blank -%}
     <div class="Product-Swatches-SMP">
       {%- for prod in smp_collection.products -%}
-        {%- assign pdp_swatch_image = prod.metafields.pdp_extras.pdp_swatch_image -%}
+        {%- assign pdp_swatch_image = prod.metafields.pdp_extras.pdp_swatch_image_upload -%}
 
         <div
           class="Product-SwatchesItem js-smp-swatch"

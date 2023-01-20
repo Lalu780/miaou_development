@@ -26,6 +26,7 @@
   <!-- Stylesheets -->
   {{ 'theme.css' | asset_url | stylesheet_tag }}
   {{ 'custom-css.css' | asset_url | stylesheet_tag }}
+  {{ 'custom-component.css' | asset_url | stylesheet_tag }}
   {% render 'inline-css' %}
 
   <!-- Global-E styles -->
@@ -62,24 +63,14 @@
  {% include 'talkable-partial' %}
 </head>
 
-<body 
-id="{{ page_title | handle }}"
+<body id="{{ page_title | handle }}"
 class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if template == blank %}no-template{% endif %}" data-shopify-template="{{ template | handleize }}">
 <script>window.KlarnaThemeGlobals={};{%case template.name%} {%when"product"%} {% if product.first_available_variant.price %}window.KlarnaThemeGlobals.data_purchase_amount = {{ product.first_available_variant.price }};{% endif %}window.KlarnaThemeGlobals.productVariants={{product.variants|json}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%when"cart"%} window.KlarnaThemeGlobals.data_purchase_amount={{cart.total_price}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%endcase%}</script>
 
-
-
-
-
-
-
-
-
-
-
+  {% section 'announcement-bar' %}
 
   {%- unless template.suffix == 'international-checkout' -%}
-    {% section 'header' %}
+    {% section 'custom-header' %}
   {%- endunless -%}
 
   <!-- Begin content-->
@@ -102,7 +93,7 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
 
   {% render 'scripts' %}
 
- 
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
   <script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=14102"></script>
   <script id="gorgias-chat-shopify-install">!function(_){_.SHOPIFY_PERMANENT_DOMAIN="miaouxx.myshopify.com",_.SHOPIFY_CUSTOMER_ID="",_.SHOPIFY_CUSTOMER_EMAIL=""}(window||{});</script>
@@ -152,6 +143,7 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
       attach: ".CartDrawer-checkoutButton"
   	});
   </script>
+  {% comment %}
   <script>
       $(function(){
         setTimeout(function(){
@@ -161,6 +153,35 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
           }
         }, 15000);
       });
+  </script>
+  {% endcomment %}
+  <script>
+    $(document).ready(function () {
+      $('#navigation-menu-toggle').click(function () {
+        $('#accessibleNav').addClass('is-open');
+        $('#accessibleNav').removeClass('is-close');
+        $('.navigation-menu').addClass('menu-open');
+        $('body').addClass('overflow-hidden');
+      });
+      $('#hamburger-menu-close').click(function () {
+        $('#accessibleNav').addClass('is-close');
+        $('#accessibleNav').removeClass('is-open');
+        $('.navigation-menu').removeClass('menu-open');
+        $('body').removeClass('overflow-hidden');
+      });
+      $('.mega-menu.mega-menu--multiLevel .menu-link.mega-menu-link').click(function () {
+        $('.mega-menu.mega-menu--multiLevel .menu-link.mega-menu-link').not(this).removeClass('is-submenu-open');
+        $(this).toggleClass('is-submenu-open');
+        $('.mega-menu.mega-menu--multiLevel >li:first-child').removeClass('first-child-menu');
+      });
+      $('.mega-menu.mega-menu--multiLevel >li:first-child').addClass('first-child-menu');
+
+      $('.main-sub-nav.site-nav--has-dropdown .menu-link').mouseenter(function () {
+        $('.header.custom-header .nav').addClass('black-bg');
+      }).mouseleave(function () {
+        $('.header.custom-header .nav').removeClass('black-bg');
+      });
+    })
   </script>
 </body>
 </html>
