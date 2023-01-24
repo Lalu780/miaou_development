@@ -20,87 +20,6 @@
                 </svg>
             </a>
             <ul class="menu menu-bar" id="accessibleNav">
-                {% for link in linklists[section.settings.menu].links %}
-                {% assign child_list_handle = link.title | handleize %}
-                {% if linklists[child_list_handle].links != blank %}
-                <li class="main-sub-nav site-nav--has-dropdown{% if link.active %} site-nav--active{% endif %}"
-                    aria-label="{{ link.title }}">
-                    <a class="menu-link menu-bar-link" href="javascript:void(0);" aria-haspopup="true">
-                        {{ link.title }}
-                    </a>
-                    <ul class="mega-menu mega-menu--multiLevel">
-                        {% for childlink in linklists[child_list_handle].links %}
-                        <li class="{% if childlink.active %}site-nav--active {% endif %}">
-                            {% if childlink.links != blank %}
-                            <a class="menu-link mega-menu-link site-sub-nav--has-dropdown" href="javascript:void(0);"
-                                aria-haspopup="true">{{ childlink.title | escape }}</a>
-                            <ul class="menu menu-list">
-                                {% for grandchild_link in childlink.links %}
-                                <li {% if grandchild_link.active
-                                    %}class="active {% if grandchild_link.child_active %}child-active{% endif %}" {%
-                                    endif %}>
-                                    <a class="menu-link mega-menu-link" href="{{ grandchild_link.url }}">{{
-                                        grandchild_link.title }}</a>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                            {% else %}
-                            <a class="menu-link mega-menu-link no-sub-dropdown" href="{{ childlink.url }}">{{
-                                childlink.title | escape }}</a>
-                            {% endif %}
-                        </li>
-                </li>
-                {% endfor %}
-                <li class="navigation-nosto-section">
-                    <div class="navigation-image-grid">
-                        <div class="navigation-image-item">
-                            <div class="image-block">
-                                <img
-                                    src="https://cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_12228_R_640x.jpg?v=1664389037%20320w">
-                            </div>
-                            <div class="text-block">
-                                <p> DEIA CORSET</p>
-                            </div>
-                        </div>
-                        <div class="navigation-image-item">
-                            <div class="image-block">
-                                <img src="https://cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_640x.jpg?v=1657129426 320w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_750x.jpg?v=1657129426 375w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_960x.jpg?v=1657129426 480w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_1024x.jpg?v=1657129426 600w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_2048x.jpg?v=1657129426 1024w"">
-                                </div>
-                                <div class=" text-block">
-                                <p>APHEX CORSET</p>
-                            </div>
-                        </div>
-                        <div class="navigation-image-item">
-                            <div class="image-block">
-                                <img
-                                    src="//cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_640x.jpg?v=1665599800 320w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_750x.jpg?v=1665599800 375w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_960x.jpg?v=1665599800 480w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_1024x.jpg?v=1665599800 600w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_2048x.jpg?v=1665599800 1024w">
-                            </div>
-                            <div class="text-block">
-                                <p>LIBRA CORSET</p>
-                            </div>
-                        </div>
-                        <div class="navigation-image-item">
-                            <div class="image-block">
-                                <img
-                                    src="//cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_640x.jpg?v=1657559372 320w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_750x.jpg?v=1657559372 375w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_960x.jpg?v=1657559372 480w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_1024x.jpg?v=1657559372 600w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_2048x.jpg?v=1657559372 1024w">
-                            </div>
-                            <div class="text-block">
-                                <p>IMOGENE CORSET</p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="mobile-menu-back-item">
-                    <a href="javascript:void(0);" class="menu-link mobile-menu-back-link">Back</a>
-                </li>
-            </ul>
-            </li>
-            {% else %}
-            <li class="main-sub-nav {% if link.active %} site-nav--active {% endif %}" aria-label="{{ link.title }}">
-                <a class="menu-link mega-menu-link" href="{{ link.url }}">{{ link.title }}</a>
-            </li>
-            {% endif %}
-            {% endfor %}
             <li class="mobile-menu-header">
                 <a href="javascript:void(0);" class="">
                     <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation"
@@ -118,8 +37,160 @@
                         {% render 'svg-logo' %}
                     </div>
                 </a>
-
+            
             </li>
+            <li class="navigation-nosto-section navigation-nosto-section-mobile">
+                <div class="navigation-image-grid">
+                    <div class="navigation-image-item">
+                        <a href="#" class="navigation-image-item-link">
+                            <div class="image-block">
+                                <img
+                                    src="https://cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_12228_R_640x.jpg?v=1664389037%20320w">
+                            </div>
+                            <div class="text-block">
+                                <p> DEIA CORSET</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="navigation-image-item">
+                        <a href="#" class="navigation-image-item-link">
+                            <div class="image-block">
+                                <img src="https://cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_640x.jpg?v=1657129426 320w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_750x.jpg?v=1657129426 375w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_960x.jpg?v=1657129426 480w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_1024x.jpg?v=1657129426 600w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_2048x.jpg?v=1657129426 1024w"">
+                                                                                                                                                                                        </div>
+                                                                                                                                                                                        <div class="
+                                    text-block">
+                                <p>APHEX CORSET</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="navigation-image-item">
+                        <a href="#" class="navigation-image-item-link">
+                            <div class="image-block">
+                                <img
+                                    src="//cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_640x.jpg?v=1665599800 320w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_750x.jpg?v=1665599800 375w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_960x.jpg?v=1665599800 480w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_1024x.jpg?v=1665599800 600w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_2048x.jpg?v=1665599800 1024w">
+                            </div>
+                            <div class="text-block">
+                                <p>LIBRA CORSET</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="navigation-image-item">
+                        <a href="#" class="navigation-image-item-link">
+                            <div class="image-block">
+                                <img
+                                    src="//cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_640x.jpg?v=1657559372 320w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_750x.jpg?v=1657559372 375w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_960x.jpg?v=1657559372 480w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_1024x.jpg?v=1657559372 600w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_2048x.jpg?v=1657559372 1024w">
+                            </div>
+                            <div class="text-block">
+                                <p>IMOGENE CORSET</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+                {% for link in linklists[section.settings.menu].links %}
+                {% assign child_list_handle = link.title | handleize %}
+                {% if linklists[child_list_handle].links != blank %}
+                <li class="main-sub-nav site-nav--has-dropdown{% if link.active %} site-nav--active{% endif %}"
+                    aria-label="{{ link.title }}">
+                    <a class="menu-link menu-bar-link" href="javascript:void(0);" aria-haspopup="true">
+                        {{ link.title }}
+                    </a>
+                    <ul class="mega-menu mega-menu--multiLevel">
+                        <li class="mobile-menu-back-item">
+                            <a href="javascript:void(0);" class="menu-link mobile-menu-back-link">Back</a>
+                        </li>
+                        <li class="navigation-nosto-section">
+                            <div class="navigation-image-grid">
+                                <div class="navigation-image-item">
+                                    <a href="#" class="navigation-image-item-link">
+                                        <div class="image-block">
+                                            <img src="https://cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_12228_R_640x.jpg?v=1664389037%20320w">
+                                            </div>
+                                            <div class="text-block">
+                                                <p> DEIA CORSET</p>
+                                            </div>
+                                    </a>
+                                </div>
+                                <div class="navigation-image-item">
+                                    <a href="#" class="navigation-image-item-link">
+                                        <div class="image-block">
+                                            <img src="https://cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_640x.jpg?v=1657129426 320w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_750x.jpg?v=1657129426 375w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_960x.jpg?v=1657129426 480w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_1024x.jpg?v=1657129426 600w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7268b_2048x.jpg?v=1657129426 1024w"">
+                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                <div
+                                                                                                                                                                    class="
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                text-block">
+                                                                                                                                                                    <p>APHEX CORSET</p>
+                                                                                                                                                                </div>
+                                        </a>
+                                </div>
+                                <div class="navigation-image-item">
+                                    <a href="#" class="navigation-image-item-link">
+                                        <div class="image-block">
+                                            <img
+                                                src="//cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_640x.jpg?v=1665599800 320w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_750x.jpg?v=1665599800 375w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_960x.jpg?v=1665599800 480w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_1024x.jpg?v=1665599800 600w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_HOLIDAY_9137_R_2048x.jpg?v=1665599800 1024w">
+                                        </div>
+                                        <div class="text-block">
+                                            <p>LIBRA CORSET</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="navigation-image-item">
+                                    <a href="#" class="navigation-image-item-link">
+                                        <div class="image-block">
+                                            <img
+                                                src="//cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_640x.jpg?v=1657559372 320w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_750x.jpg?v=1657559372 375w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_960x.jpg?v=1657559372 480w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_1024x.jpg?v=1657559372 600w,      //cdn.shopify.com/s/files/1/1231/1148/products/MIAOU_ECOMM_7444_2048x.jpg?v=1657559372 1024w">
+                                        </div>
+                                        <div class="text-block">
+                                            <p>IMOGENE CORSET</p>
+                                        </div>
+                                    </a>
+                                    </div>
+                                    </div>
+                                    </li>
+                                    <li class="universe-banner-section">
+                                        <div class="universe-banner">
+                                            <div class="universe-image-container">
+                                                <img src="https://cdn.shopify.com/s/files/1/1231/1148/files/universe-banner.jpg?v=1674542652"
+                                                    alt="universe-banner" />
+                                            </div>
+                                            <div class="universe-text-container">
+                                                <h5>Join Miaou Rewards</h5>
+                                                <p>Start earning points and exclusive rewards every time you shop</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% for childlink in linklists[child_list_handle].links %}
+                                    <li class="{% if childlink.active %}site-nav--active {% endif %}">
+                                        {% if childlink.links != blank %}
+                                        <a class="menu-link mega-menu-link site-sub-nav--has-dropdown" href="javascript:void(0);" aria-haspopup="true">{{
+                                            childlink.title | escape }}</a>
+                                        <ul class="menu menu-list">
+                                            {% for grandchild_link in childlink.links %}
+                                            <li {% if grandchild_link.active %}class="active {% if grandchild_link.child_active %}child-active{% endif %}"
+                                                {% endif %}>
+                                                <a class="menu-link mega-menu-link" href="{{ grandchild_link.url }}">{{
+                                                    grandchild_link.title }}</a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% else %}
+                                        <a class="menu-link mega-menu-link no-sub-dropdown" href="{{ childlink.url }}">{{
+                                            childlink.title | escape }}</a>
+                                        {% endif %}
+                                    </li>
+                                    </li>
+                        {% endfor %}
+
+            </ul>
+            </li>
+            {% else %}
+            <li class="main-sub-nav {% if link.active %} site-nav--active {% endif %}" aria-label="{{ link.title }}">
+                <a class="menu-link mega-menu-link" href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+            
             </ul>
         </nav>
         <div class="header_icons">
@@ -159,6 +230,19 @@
                     <li class="mobile-menu-back-item">
                         <a href="javascript:void(0);" class="menu-link mobile-menu-back-link">Back</a>
                     </li>
+                    <li class="universe-banner-section">
+                        <div class="universe-banner">
+                            <div class="universe-image-container">
+                                <img src="https://cdn.shopify.com/s/files/1/1231/1148/files/universe-banner.jpg?v=1674542652"
+                                    alt="universe-banner" />
+                            </div>
+                            <div class="universe-text-container">
+                                <h5>Join Miaou Rewards</h5>
+                                <p>Start earning points and exclusive rewards every time you shop</p>
+                            </div>
+                    
+                        </div>
+                    </li>
                 </ul>
                 </li>
                 {% else %}
@@ -192,9 +276,45 @@
                 <div class="HeaderMenu-CartCount js-cart-item-count" data-item-count="0">0</div>
             </a>
 
-        </div>
+            {% render 'offcanvas' %}
+            </div>
+    </div>
+    <div class="mobile-fixed-menu">
+        <ul>
+            {%- for link in linklists[section.settings.mobile-fixed-menu].links -%}
+            <li>
+                <a href="{{ link.url }}" {% if link.active %}aria-current="page" {% endif %}>
+                    {{ link.title }}
+                </a>
+    
+                {%- if link.links != blank -%}
+                <ul>
+                    {%- for child_link in link.links -%}
+                    <li>
+                        <a href="{{ child_link.url }}" {% if child_link.active %}aria-current="page" {% endif %}>
+                            {{ child_link.title }}
+                        </a>
 
+                    {%- if child_link.links != blank -%}
+                    <ul>
+                        {%- for grandchild_link in child_link.links -%}
+                        <li>
+                            <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page" {% endif %}>
+                                {{ grandchild_link.title }}
+                            </a>
+                        </li>
+                        {%- endfor -%}
+                    </ul>
+                    {%- endif -%}
 
+                </li>
+                {%- endfor -%}
+                </ul>
+                {%- endif -%}
+                
+                </li>
+                {%- endfor -%}
+                </ul>
     </div>
 
 </header>
@@ -212,9 +332,15 @@
     },
     {
     "type": "link_list",
+    "id": "mobile-fixed-menu",
+    "default": "main-menu",
+    "label": "Select mobile fixed menu"
+    },
+    {
+    "type": "link_list",
     "id": "universe_menu",
     "default": "main-menu",
-    "label": "Select Menu"
+    "label": "Select Universe menu"
     }
     ]
   }

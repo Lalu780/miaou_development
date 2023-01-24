@@ -1,6 +1,6 @@
 <aside class="js-offcanvas Offcanvas --hidden">
   <div id="js-offcanvas-bg"></div>
-
+{%- comment -%}
   <div class="js-offcanvas-drawer Offcanvas-Drawer Offcanvas-Drawer-Col" data-drawer-names="{{col_drawer_name}}">
     {%- for link in col_list -%}
 
@@ -33,10 +33,8 @@
   
     <div class="Offcanvas-Drawer-ColImg o-placeholder"></div>
    
-  </div>
-
-
-
+  </div> {%- endcomment -%}
+  {%- comment -%}
   <div class="js-offcanvas-drawer Offcanvas-Drawer Offcanvas-Drawer-Row" data-drawer-names="{{row_drawer_name}}">
     {%- for link in row_list -%}
 
@@ -59,11 +57,7 @@
 
     {%- endfor -%}
   </div>
-
-
-
-
-
+{%- endcomment -%}
   <div class="js-offcanvas-drawer Offcanvas-Drawer Search-Drawer" data-drawer-names="search">
     <div class="Search-InputHolder">
       <input class="js-search-input Search-Input" type="text" />

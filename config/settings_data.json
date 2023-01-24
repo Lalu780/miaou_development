@@ -403,7 +403,9 @@
       "custom-header": {
         "type": "custom-header",
         "settings": {
-          "menu": "megamenu"
+          "menu": "megamenu",
+          "mobile-fixed-menu": "mobile-fixed-menu",
+          "universe_menu": "main-menu"
         }
       }
     },
