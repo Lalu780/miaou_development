@@ -493,9 +493,10 @@ nav a:hover, nav a:visited {
     position: fixed;
     width: 100%;
     z-index: 2;
-    background: transparent;
+    /* background: transparent; */
     margin-top: 40px;
-    border-bottom: 1px solid #ffffff;  
+    border-bottom: 1px solid #ffffff; 
+    background: #dad9d3; 
 }
 
 .header.custom-header .nav{
@@ -698,6 +699,37 @@ nav a:hover, nav a:visited {
 .navigation-image-item .text-block p{
     color: #ffffff;
 }
+.site-nav--active .menu-link{
+    color: #d2fa4a;
+}
+
+#popular-collections{
+    text-align: center;
+    padding-top: 20px;
+}
+#popular-collections > h5{
+    color: #ffffff;
+    text-transform: uppercase;
+}
+.collection-item > a{
+    color: #ffffff;
+    text-decoration: underline;
+    display: block;
+}
+#popular-collections .search-collection-grid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    width: 60%;
+    margin: 0 auto;
+}
+.search-collection-grid .collection-item{
+    min-width: 15%;
+
+}
+
 
 @media (max-width: 950px) {
     .main-sub-nav.site-nav--has-dropdown[aria-label="Shop"] .navigation-nosto-section .navigation-image-grid{
@@ -720,3 +752,22 @@ nav a:hover, nav a:visited {
             z-index: 999999; */
     }  
     }
+
+    /* popular searches */
+
+    /* #popular-collections {
+        position: absolute;
+        width: 100%;
+        z-index: 9999;
+        padding: 10px;
+        border-radius: 3px;
+        top: 100%;
+    }
+    .collection-item {
+        padding: 10px;
+        cursor: pointer;
+        display: none;
+    }
+    .Search-Drawer{
+        position: relative;
+    } */

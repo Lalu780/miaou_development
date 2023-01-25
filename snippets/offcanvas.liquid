@@ -60,8 +60,24 @@
 {%- endcomment -%}
   <div class="js-offcanvas-drawer Offcanvas-Drawer Search-Drawer" data-drawer-names="search">
     <div class="Search-InputHolder">
-      <input class="js-search-input Search-Input" type="text" />
+      <input class="js-search-input Search-Input" id="custom-search-bar" type="text" />
     </div>
+    <div id="popular-collections" class="hidden">
+      <h5 id="popular-search-heading">Popular Searches</h5>
+      <div class="search-collection-grid">
+        {% for collection in collections %}
+        {%- if collection.metafields.custom.trending_collections.value != blank -%}
+        <div class="collection-item" data-title="{{ collection.title }}" data-handle="{{ collection.handle }}">
+          <a class="collection-item-link" href="{{ collection.url }}">
+            {{ collection.metafields.custom.trending_collections.value }}
+          </a>
+        </div>
+        {%- endif -%}
+        {% endfor %}
+      </div>
+    
+    </div>
+
     <div class="js-search-feed Search-Feed">
       <script type="application/json">
         {
