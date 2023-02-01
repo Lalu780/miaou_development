@@ -29,6 +29,8 @@
   {{ 'custom-component.css' | asset_url | stylesheet_tag }}
   {% render 'inline-css' %}
 
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
   <!-- Global-E styles -->
   <link id="GEPIStyles" rel="stylesheet" href="//gepi.global-e.com/includes/css/10000772" />
 
@@ -176,7 +178,7 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
       });
       $('.mega-menu.mega-menu--multiLevel >li:nth-child(4)').addClass('first-child-menu');
 
-      $('.main-sub-nav.site-nav--has-dropdown .menu-link, .mega-menu.mega-menu--multiLevel, .navigation-nosto-section').mouseenter(function () {
+      $('.menu.menu-bar .menu-link, .mega-menu.mega-menu--multiLevel, .navigation-nosto-section').mouseenter(function () {
         $('.header.custom-header .nav').addClass('black-bg');
       }).mouseleave(function () {
         $('.header.custom-header .nav').removeClass('black-bg');
@@ -205,6 +207,40 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
     }
   });
 </script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  $(document).ready(function () {
+    var found = setInterval(function () {
+      if ($(".navigation-nosto-section.navigation-nosto-section-mobile .navigation-image-grid").length) {
+        clearInterval(found);
+      }
+      $(".navigation-nosto-section.navigation-nosto-section-mobile .navigation-image-grid").slick({
+        dots: !1,
+        arrows: false,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        mobileFirst: true,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1,
+            }
+          },
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1,
+            }
+          },
+        ]
+      })
+    }, 200);
+  });
+</script>
+
 </body>
 </html>
 
