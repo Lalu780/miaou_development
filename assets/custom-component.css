@@ -14,7 +14,7 @@
     width: 100%;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid #ffffff;
+    /* border-bottom: 1px solid #ffffff; */
 }
 .announcement-bar .announcement-bar__message{
     margin-bottom: 0;
@@ -530,7 +530,9 @@ nav a:hover, nav a:visited {
     /* background: transparent; */
     margin-top: 40px;
     border-bottom: 1px solid #ffffff; 
-    background: #dad9d3; 
+    border-top: 1px solid #ffffff; 
+    background: transparent;
+    background-image: linear-gradient(rgba(0,0,0,.5),transparent);
 }
 
 .header.custom-header .nav{
@@ -555,8 +557,8 @@ nav a:hover, nav a:visited {
 }
 
 .navigation-nosto-section .navigation-image-grid{
-    display: flex;
-    column-gap: 10px;
+    /* display: flex;
+    column-gap: 10px; */
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 20px;
@@ -646,9 +648,22 @@ nav a:hover, nav a:visited {
     .template-index .mobile-fixed-menu{
         display: initial;
     }
-    .mobile-fixed-menu.mobile-fixed-menu-scrolled{
-        background-color: #dad9d3;
+    .mobile-fixed-menu.mobile-fixed-menu-white-menu.mobile-fixed-menu-scrolled{     
+        background-color: #000000;
+    } 
+    .mobile-fixed-menu.mobile-fixed-menu-black-menu.mobile-fixed-menu-scrolled{
+        background-color: #ffffff;
     }
+    .mobile-fixed-menu.mobile-fixed-menu-black-menu ul li{
+        border-right: 1px solid #000000;
+    }
+    .mobile-fixed-menu.mobile-fixed-menu-black-menu ul li a{
+        color: #000000;
+    }
+    .mobile-fixed-menu.mobile-fixed-menu-black-menu{
+        border-bottom: 1px solid #000000;
+    }
+
     .mobile-fixed-menu ul{
         display: flex;
         justify-content:space-around;
@@ -731,9 +746,13 @@ nav a:hover, nav a:visited {
     width: 17px;
     height: 17px;
    }
-   .header.custom-header .nav.black-bg{
+   .header.custom-header .nav.white-menu.black-bg{
     background: #000000;
     border-bottom: 1px solid #ffffff;
+}
+.header.custom-header .nav.black-menu.black-bg{
+    background: #ffffff;
+    border-bottom: 1px solid #000000;
 }
 .main-sub-nav.site-nav--has-dropdown[aria-label="Shop"] .navigation-nosto-section{
     order: 1;
@@ -894,11 +913,49 @@ nav a:hover, nav a:visited {
  .template-index .body-main{
         margin-top: 0;      
 }
-.template-collection .HPHero .HPHero-imagePlaceholder{
+/* .template-collection .HPHero .HPHero-imagePlaceholder{
         margin-top: 80px !important;
- }
+ } */
  .template-collection .body-main .nosto_element .nosto-block{
         margin-top: 80px !important;
  }
  
+ /* menu black styles */
+ .header.custom-header .nav.black-menu .header-logo .header-image-placeholder svg g{
+    fill: #000000;
+ }
+ .header.custom-header .nav.black-menu .header_icons .HeaderMenu-SearchIcon .icon-search{
+    stroke: #000000;
+ }
+ .header.custom-header .nav.black-menu .header_icons .HeaderMenu-itemLink, .ge-switcher-flag{
+    color: #000000;
+ }
+ .header.custom-header .nav.black-menu .header_icons .icon.icon-cart{
+    stroke: #000000;
+ }
+ .header.custom-header .nav.black-menu .HeaderMenu-AccountIcon svg{
+    fill: #000000;
+ }
+ .header.custom-header .nav.black-menu .navigation-menu .icon-hamburger{
+    stroke: #000000;
+ }
+ .header.custom-header .nav.black-menu{
+    border-bottom: 1px solid #000000;
+    border-top: 1px solid #000000;
+ }
+ .nav.white-menu.header-fixed-scroll{
+    background-color: #000000;
+ }
+ .nav.black-menu.header-fixed-scroll{
+    background-color: #ffffff;
+ }
+
+ @media(min-width:1024px){
+    .header.custom-header .nav.black-menu .navigation-menu .main-sub-nav >a::after{
+        background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1397521/arrowBottom.svg#black);
+     }
+     .header.custom-header .nav.black-menu .navigation-menu .main-sub-nav >a{
+        color: #000000;
+     }
+ }
    

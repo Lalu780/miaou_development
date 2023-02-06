@@ -169,11 +169,13 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
       });
       $('.mega-menu.mega-menu--multiLevel >li:nth-child(4)').addClass('first-child-menu');
 
-      $('.menu.menu-bar .menu-link, .mega-menu.mega-menu--multiLevel, .navigation-nosto-section').mouseenter(function () {
+
+      $('.menu.menu-bar .menu-link, .mega-menu.mega-menu--multiLevel, .navigation-nosto-section, .universe-banner').mouseenter(function () {
         $('.header.custom-header .nav').addClass('black-bg');
       }).mouseleave(function () {
         $('.header.custom-header .nav').removeClass('black-bg');
       });
+
 
       $('.main-sub-nav.site-nav--has-dropdown .mobile-menu-back-item').on('click', function () {
         $(this).parent('.mega-menu.mega-menu--multiLevel').css('left', '100%');
@@ -181,15 +183,30 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
       $('.main-sub-nav.site-nav--has-dropdown .menu-link.menu-bar-link').on('click', function () {
         $(this).next('.mega-menu.mega-menu--multiLevel').css('left', '0');
       }); 
-      var mobileFixedMenu = document.querySelector('.mobile-fixed-menu')
+
+      var headerFixedScroll = document.querySelector('.header.custom-header .nav');
+      var mobileFixedMenu = document.querySelector('.mobile-fixed-menu');
       window.onscroll = function () {
         // pageYOffset or scrollY
         if (window.pageYOffset > 200) {
+          headerFixedScroll.classList.add('header-fixed-scroll');
+          mobileFixedMenu.classList.add('mobile-fixed-menu-scrolled');
+        } else {
+          headerFixedScroll.classList.remove('header-fixed-scroll');
+          mobileFixedMenu.classList.remove('mobile-fixed-menu-scrolled')
+        }
+      }
+      {% comment %}
+      var mobileFixedMenu = document.querySelector('.mobile-fixed-menu');
+      window.onscroll = function () {
+        // pageYOffset or scrollY
+        if (window.pageYOffset > 100) {
           mobileFixedMenu.classList.add('mobile-fixed-menu-scrolled')
         } else {
           mobileFixedMenu.classList.remove('mobile-fixed-menu-scrolled')
         }
       }
+      {% endcomment %}
 
     })
   </script>
@@ -222,6 +239,7 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
         slidesToShow: 3,
         slidesToScroll: 1,
         mobileFirst: true,
+        infinite: false,
         responsive: [
           {
             breakpoint: 1024,
