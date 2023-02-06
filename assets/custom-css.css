@@ -107,3 +107,16 @@ body#private-sale .Header-container {
 
 
 /*======= My Css =======*/
+
+/* size gudes styles */
+
+.size_guide_image_section > div{
+  margin-bottom: 20px;
+
+}
+@media (min-width:1024px){
+  .size_guide_image_section{
+    display: flex;
+    column-gap: 20px;
+  } 
+}

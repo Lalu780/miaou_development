@@ -304,8 +304,7 @@ nav a:hover, nav a:visited {
    .menu-bar .main-sub-nav:first-of-type .menu-link[aria-haspopup="true"]:after,
    .menu-bar .main-sub-nav:nth-of-type(2) .menu-link[aria-haspopup="true"]:after,
    .menu-bar .main-sub-nav:nth-of-type(3) .menu-link[aria-haspopup="true"]:after,
-   .menu-bar .main-sub-nav:nth-of-type(4) .menu-link[aria-haspopup="true"]:after,
-   .menu-bar .main-sub-nav:nth-of-type(5) .menu-link[aria-haspopup="true"]:after{
+   .menu-bar .main-sub-nav:nth-of-type(4) .menu-link[aria-haspopup="true"]:after{
     background-image: none;
     /* right: -2px; */
    }
@@ -354,7 +353,7 @@ nav a:hover, nav a:visited {
         background-color: #000000;
    }
     .menu-bar > li > [aria-haspopup="true"] ~ ul > li > [aria-haspopup="true"] {
-        font-size: 14px;
+        font-size: 12px;
    }
     .menu-bar > li > [aria-haspopup="true"] ~ ul > li > [aria-haspopup="true"] ~ ul a {
         /* padding-left: 40px; */
@@ -591,6 +590,7 @@ nav a:hover, nav a:visited {
     .navigation-menu{
         order: -1;
     }
+    
 
 }
 /* @media (max-width: 950px) {
@@ -638,10 +638,16 @@ nav a:hover, nav a:visited {
     .mobile-fixed-menu{
         position: fixed;
         width: 100%;
-        margin-top: 85px;
+        margin-top: 80px;
         z-index: 1;
         border-bottom: 1px solid #ffffff;
-          
+        display: none;      
+    }
+    .template-index .mobile-fixed-menu{
+        display: initial;
+    }
+    .mobile-fixed-menu.mobile-fixed-menu-scrolled{
+        background-color: #dad9d3;
     }
     .mobile-fixed-menu ul{
         display: flex;
@@ -756,6 +762,7 @@ nav a:hover, nav a:visited {
 }
 .navigation-image-item .text-block p{
     color: #ffffff;
+    text-align: center;
 }
 .site-nav--active .menu-link{
     color: #d2fa4a;
@@ -795,7 +802,8 @@ nav a:hover, nav a:visited {
     }
     .menu-bar>li>[aria-haspopup=true]~ul,
        .menu-bar {
-          display: inherit !important;
+          /* display: inherit !important; */
+          display: block !important;
         }
         /* .menu-bar .main-sub-nav:first-of-type, .menu-bar .main-sub-nav:nth-of-type(2), .menu-bar .main-sub-nav:nth-of-type(3),.menu-bar .main-sub-nav:nth-of-type(4),.menu-bar .main-sub-nav:nth-of-type(5)  {
           display: inline-block;
@@ -817,19 +825,80 @@ nav a:hover, nav a:visited {
     }
 
     @media(max-width:767px){
-        .menu-bar .main-sub-nav:first-of-type, .menu-bar .main-sub-nav:nth-of-type(2), .menu-bar .main-sub-nav:nth-of-type(3),.menu-bar .main-sub-nav:nth-of-type(4),.menu-bar .main-sub-nav:nth-of-type(5)  {
-            display: inline-block;
+        .menu-bar .main-sub-nav:first-of-type, .menu-bar .main-sub-nav:nth-of-type(2), .menu-bar .main-sub-nav:nth-of-type(3),.menu-bar .main-sub-nav:nth-of-type(4)  {
+            display: inline-grid;
             width: auto;
-            min-width: 30%;
+            min-width: 49%;
+            vertical-align: top;
+            /* display: inline-block; */
           } 
+        
     }
 
     @media(min-width:768px) and (max-width:1023px){
-        .menu-bar .main-sub-nav:first-of-type, .menu-bar .main-sub-nav:nth-of-type(2), .menu-bar .main-sub-nav:nth-of-type(3),.menu-bar .main-sub-nav:nth-of-type(4),.menu-bar .main-sub-nav:nth-of-type(5)  {
-            display: inline-block;
+        .menu-bar .main-sub-nav:first-of-type, .menu-bar .main-sub-nav:nth-of-type(2), .menu-bar .main-sub-nav:nth-of-type(3),.menu-bar .main-sub-nav:nth-of-type(4) {
+            /* display: inline-block; */
             width: auto;
-            min-width: 33%;
+            /* min-width: 33%; */
+            min-width: 49%;   
+            vertical-align: top;
+            display: inline-grid;
           }  
+          .menu-bar .main-sub-nav[aria-label="Universe"]{
+            text-align: center;
+          }
     }
 
+ @media(max-width:1023px){
+    /* .menu-bar .main-sub-nav > a{
+        font-size: 14px;
+    } */
+    .menu-bar .main-sub-nav[aria-label="Shop"] > [aria-haspopup="true"]{
+        color: #d2fa4a;
+        font-weight: bold;
+    }
+    .menu-bar .main-sub-nav[aria-label="Universe"] > [aria-haspopup="true"]{
+        font-weight: bold;
+    }
+    .menu-bar .main-sub-nav[aria-label="Shop"] > [aria-haspopup="true"] ~ ul{
+        position: inherit;
+        margin-top: 0;
+        height: auto;
+    }
+    .menu-bar .main-sub-nav[aria-label="Shop"] > [aria-haspopup="true"] ~ ul .menu-link.mega-menu-link.site-sub-nav--has-dropdown{
+        font-weight: normal;
+        opacity: 0.8;
+    }
+    .menu-bar .main-sub-nav[aria-label="Shop"] > [aria-haspopup="true"] ~ ul .mobile-menu-back-item{
+        display: none;
+    }
+    .menu-bar .main-sub-nav[aria-label="Shop"] > [aria-haspopup="true"] ~ ul .first-child-menu .menu.menu-list{
+        max-height: 0;
+        opacity: 0;
+    }
+    .menu-bar .main-sub-nav[aria-label="New"],
+    .menu-bar .main-sub-nav[aria-label="Sale"],
+    .menu-bar .main-sub-nav[aria-label="The Corset Shop"]{
+        display: none;
+    }
+    .menu-bar .main-sub-nav[aria-label="Shop"] > [aria-haspopup="true"] ~ ul .menu-link.mega-menu-link.site-sub-nav--has-dropdown::after{
+        background-image: none !important;
+    }
+ }
+
+ .template-product .body-main{
+    margin-top: 80px;
+}
+ 
+.template-collection .body-main,
+ .template-index .body-main{
+        margin-top: 0;      
+}
+.template-collection .HPHero .HPHero-imagePlaceholder{
+        margin-top: 80px !important;
+ }
+ .template-collection .body-main .nosto_element .nosto-block{
+        margin-top: 80px !important;
+ }
+ 
    
