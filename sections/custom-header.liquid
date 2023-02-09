@@ -1,7 +1,7 @@
 <header class="header custom-header">
     <div class="nav {{ section.settings.main_menu_color }}">
         <div class="header-logo">
-            <a class="header-logo-link" href="{{ shop.url }}">
+            <a class="header-logo-link" href="/">
                 <div class="header-image-placeholder">
                     <span class="u-vhide">
                         {{ shop.name }}
@@ -29,17 +29,15 @@
                             fill="currentColor">
                     </svg>
                 </a>
-                <a class="header-logo-link" href="{{ shop.url }}">
                     <div class="header-image-placeholder">
                         <span class="u-vhide">
                             {{ shop.name }}
                         </span>
                         {% render 'svg-logo' %}
                     </div>
-                </a>
-            
             </li>
             <li class="navigation-nosto-section navigation-nosto-section-mobile">
+                <div class="nosto-image-grid-main">
                 <div class="navigation-image-grid">
                     <div class="navigation-image-item">
                         <a href="/collections/new-womens-clothing" class="navigation-image-item-link">
@@ -85,6 +83,8 @@
                         </a>
                     </div>
                 </div>
+                </div>
+
             </li>
 
                 {% for link in linklists[section.settings.menu].links %}
@@ -158,11 +158,11 @@
                                         </div>
                                     </li>
                                     {% for childlink in linklists[child_list_handle].links %}
-                                    <li class="{% if childlink.active %}site-nav--active {% endif %}">
+                                    <li class="site-sub-nav--has-submenu-dropdown {% if childlink.active %}site-nav--active{% endif %}">
                                         {% if childlink.links != blank %}
                                         <a class="menu-link mega-menu-link site-sub-nav--has-dropdown" href="javascript:void(0);" aria-haspopup="true">{{
                                             childlink.title | escape }}</a>
-                                        <ul class="menu menu-list">
+                                        <ul class="menu menu-list submenu-sub-dropdown-list">
                                             {% for grandchild_link in childlink.links %}
                                             <li {% if grandchild_link.active%}class="grand_child_active{% if grandchild_link.child_active %}child-active{% endif %}"
                                                 {% endif %}>
@@ -266,7 +266,7 @@
                     {% render 'svg-account' %}
                 </div>
             </a>
-            <a class="HeaderMenu-itemLink js-offcanvas-trigger" data-drawer-name="cart" title="Cart">
+            <a class="HeaderMenu-itemLink js-offcanvas-trigger" data-drawer-name="cart" title="Cart" id="cart_link">
                 <div class="HeaderMenu-CartTitle">
                     {% render 'icon-cart' %}
                 </div>
