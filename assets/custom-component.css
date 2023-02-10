@@ -110,13 +110,14 @@ nav a:hover, nav a:visited {
     content: "";
     background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1397521/arrowRight.svg#light');
     background-size: 14px;
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     font-size: 12px;
     position: absolute;
-    right: 10px;
+    /* right: 10px; */
     top: 50%;
     transform: translateY(-50%);
+    margin-left: 10px;
 }
 .mega-menu-header {
     font-size: 1.2em;
@@ -246,7 +247,7 @@ nav a:hover, nav a:visited {
     color: #ffffff;
     text-align: center;
 }
-.site-nav--active .menu-link{
+.site-nav--active >a.menu-link{
     color: #d2fa4a;
 }
 
@@ -316,8 +317,15 @@ nav a:hover, nav a:visited {
  .nav.black-menu.header-fixed-scroll{
     background-color: #ffffff;
  }
+ .login-block{
+    display: none;
+ }
  
 @media all and (min-width: 951px) {
+    .menu-link[aria-haspopup="true"]:after{
+        right: 10px;
+        margin-left: 0;
+    }
     .nav {
         margin-top: 40px;
         /* background: #ffffff; */
@@ -326,8 +334,11 @@ nav a:hover, nav a:visited {
         align-items: center;
    }
     .nav > nav {
-        max-width: 900px;
-        margin: 0 auto;
+        /* max-width: 900px;
+        margin: 0 auto; */
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 40px;
    }
     .menu [aria-haspopup="true"] ~ ul {
         display: none;
@@ -353,7 +364,7 @@ nav a:hover, nav a:visited {
     .menu-bar > li:hover > [aria-haspopup="true"] ~ ul {
         display: flex;
         margin-top: 1px;
-        padding: 20px 60px;
+        padding: 20px 20px 20px 60px;
        
    }
     .menu-bar > li > [aria-haspopup="true"]:focus, 
@@ -426,9 +437,48 @@ nav a:hover, nav a:visited {
    .menu-bar > li > [aria-haspopup="true"] ~ ul > li > [aria-haspopup="true"] ~ ul a{
     opacity: 0.8;
     padding: 5px 10px;
+    font-size: 11px;
    }
 }
-@media(min-width:1024px){    
+@media(min-width:1024px){
+    .header_icons .HeaderMenu-itemLink[title="Account"]{
+        display: none;
+    }
+    .mega-menu.mega-menu--multiLevel >li a{
+        font-size: 11px;
+    }
+    .login-block{
+        display: flex;
+        align-items: center;
+    }
+    .login-block .HeaderMenu-AccountIcon{
+        display: block;
+        padding-right: 3px;
+    }
+    .login-block .HeaderMenu-itemLink{
+        display: flex;
+        align-items: center;
+    }
+    .login-block .HeaderMenu-AccountIcon svg{
+        width: 12px;
+        height: 12px;
+        fill: #ffffff;
+    }
+    .announcement-bar .page-width{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 40px;
+        align-items: center;
+    }
+    .announcement-bar .page-width .announcement-text-block{
+        width: 100%;
+    }
+    .menu-bar .main-sub-nav[aria-label="Shop"] >ul li[aria-label="Extended Sizes"],
+    .menu-bar .main-sub-nav[aria-label="Shop"] >ul li[aria-label="Matching Sets"]
+    {
+        display: none;
+
+    }
     .header_icons{
         display: flex;
     }
@@ -443,13 +493,15 @@ nav a:hover, nav a:visited {
         color: #ffffff;
         padding-right: 25px;
     }
-    .menu.menu-bar .main-sub-nav[aria-label="Universe"]{
+    .menu.menu-bar .main-sub-nav[aria-label="Universe"],
+    .menu.menu-bar .main-sub-nav[aria-label="Rewards"]{
         display: none;
     }
     .navigation-menu.navigation-menu-universe .menu.menu-bar .main-sub-nav{
         display: none;
     }
-    .navigation-menu.navigation-menu-universe .menu.menu-bar .main-sub-nav[aria-label="Universe"]{
+    .navigation-menu.navigation-menu-universe .menu.menu-bar .main-sub-nav[aria-label="Universe"],
+    .navigation-menu.navigation-menu-universe .menu.menu-bar .main-sub-nav[aria-label="Rewards"]{
         display: initial;
     }
     .mega-menu{
@@ -566,13 +618,16 @@ nav a:hover, nav a:visited {
    .menu-bar > li{
     width: 100%;
    } 
-   .menu-bar .main-sub-nav:first-of-type .menu-link[aria-haspopup="true"]:after,
+   .menu-bar .main-sub-nav:nth-of-type(3) .menu-link[aria-haspopup="true"]:after{
+    background-image: none;
+   }
+   /* .menu-bar .main-sub-nav:first-of-type .menu-link[aria-haspopup="true"]:after,
    .menu-bar .main-sub-nav:nth-of-type(2) .menu-link[aria-haspopup="true"]:after,
    .menu-bar .main-sub-nav:nth-of-type(3) .menu-link[aria-haspopup="true"]:after,
    .menu-bar .main-sub-nav:nth-of-type(4) .menu-link[aria-haspopup="true"]:after{
     background-image: none;
-    /* right: -2px; */
-   }
+   } */
+  
   
    .menu-bar > li > [aria-haspopup="true"] ~ ul > li > [aria-haspopup="true"]:after{
     background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1397521/arrowRight.svg#light) !important;
@@ -610,6 +665,8 @@ nav a:hover, nav a:visited {
         /* padding-left: 40px; */
         font-size: 10px;
         opacity: 0.8;
+        
+
    }
     .menu-bar > li > [aria-haspopup="true"] ~ ul > li > [aria-haspopup="true"] ~ ul > li > [aria-haspopup="true"] ~ ul a {
         padding-left: 80px;
@@ -700,7 +757,7 @@ nav a:hover, nav a:visited {
    .site-sub-nav--has-submenu-dropdown .menu.menu-list.submenu-sub-dropdown-list.is_submenu_open{
     display: block;
     max-height: 500px;
-    animation: dropdown .3s forwards ease-out;
+    animation: dropdown .3s forwards;
     transform: scaleY(1);
     opacity: 1;
     max-height: 500px;
@@ -888,39 +945,46 @@ nav a:hover, nav a:visited {
     }
 
     @media(max-width:767px){
-        .menu-bar .main-sub-nav:first-of-type, .menu-bar .main-sub-nav:nth-of-type(2), .menu-bar .main-sub-nav:nth-of-type(3),.menu-bar .main-sub-nav:nth-of-type(4)  {
+        /* .menu-bar .main-sub-nav:first-of-type, 
+        .menu-bar .main-sub-nav:nth-of-type(2), 
+        .menu-bar .main-sub-nav:nth-of-type(3),
+        .menu-bar .main-sub-nav:nth-of-type(4)  {
             display: inline-grid;
             width: auto;
             min-width: 49%;
             vertical-align: top;
-            /* display: inline-block; */
-          } 
-          #accessibleNav .header-image-placeholder{
-            margin-left: 15px;
-          }       
+           
+          }  */
+            
     }
 
     @media(min-width:768px) and (max-width:1023px){
-        .menu-bar .main-sub-nav:first-of-type, .menu-bar .main-sub-nav:nth-of-type(2), .menu-bar .main-sub-nav:nth-of-type(3),.menu-bar .main-sub-nav:nth-of-type(4) {
-            /* display: inline-block; */
+        /* .menu-bar .main-sub-nav:first-of-type, 
+        .menu-bar .main-sub-nav:nth-of-type(2), 
+        .menu-bar .main-sub-nav:nth-of-type(3),
+        .menu-bar .main-sub-nav:nth-of-type(4) {
+           
             width: auto;     
             min-width: 49%;   
             vertical-align: top;
             display: inline-grid;
-          }  
-          .menu-bar .main-sub-nav[aria-label="Universe"]{
+          }   */
+          /* .menu-bar .main-sub-nav[aria-label="Universe"]{
             text-align: center;
-          }
+          } */
     }
 
  @media(max-width:1023px){
+    #accessibleNav .header-image-placeholder{
+        margin-left: 15px;
+      }    
     .menu-bar .main-sub-nav[aria-label="Shop"] > [aria-haspopup="true"]{
-        color: #d2fa4a;
+        /* color: #d2fa4a; */
         font-weight: bold;
     }
-    .menu-bar .main-sub-nav[aria-label="Universe"] > [aria-haspopup="true"]{
+    /* .menu-bar .main-sub-nav[aria-label="Universe"] > [aria-haspopup="true"]{
         font-weight: bold;
-    }
+    } */
     .menu-bar .main-sub-nav[aria-label="Shop"] > [aria-haspopup="true"] ~ ul{
         position: inherit;
         margin-top: 0;
@@ -941,10 +1005,42 @@ nav a:hover, nav a:visited {
     }
     .menu-bar .main-sub-nav[aria-label="New"],
     .menu-bar .main-sub-nav[aria-label="Sale"],
-    .menu-bar .main-sub-nav[aria-label="The Corset Shop"]{
+    .menu-bar .main-sub-nav[aria-label="The Corset Shop"],
+    .menu-bar .main-sub-nav[aria-label="Matching Sets"],
+    .menu-bar .main-sub-nav[aria-label="Extended Sizes"]{
         display: none;
     }
     .menu-bar .main-sub-nav[aria-label="Shop"] > [aria-haspopup="true"] ~ ul .menu-link.mega-menu-link.site-sub-nav--has-dropdown::after{
         background-image: none !important;
     }
+    .main-sub-nav.site-nav--has-dropdown[aria-label="Shop"] .mega-menu.mega-menu--multiLevel{
+        border-bottom: 1px solid #ffffff;
+        padding-bottom: 100px;
+        margin-bottom: 10px;
+    }
+    .main-sub-nav.site-nav--has-dropdown[aria-label="Shop"] .mega-menu.mega-menu--multiLevel >li a{
+        opacity: 0.8;
+    }
  }
+/* video section styles */
+.video-main-section{
+    position: relative;
+}
+.video-main-section .video-section-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);   
+    text-align: center;
+    width: 90%;
+}
+@media(max-width:767px){
+    .VideoSection, .VideoSection iframe{
+        height: 100vh;
+    }
+}
+@media print, screen and (min-width: 64em){
+    .video-main-section .video-section-content{
+        max-width: 70%;
+    }
+}

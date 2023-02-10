@@ -403,13 +403,24 @@
       "custom-header": {
         "type": "custom-header",
         "settings": {
+          "main_menu_color": "white-menu",
           "menu": "megamenu",
           "mobile-fixed-menu": "mobile-fixed-menu",
           "universe_menu": "main-menu"
         }
+      },
+      "76a2e490-ac39-46b6-9408-e0930e177993": {
+        "type": "video",
+        "settings": {
+          "video_heading": "New Collection",
+          "video_cta": "Shop Drop One",
+          "video_cta_id": "shopify:\/\/collections\/new-womens-clothing",
+          "video": "https:\/\/player.vimeo.com\/video\/796802440"
+        }
       }
     },
     "content_for_index": [
+      "76a2e490-ac39-46b6-9408-e0930e177993",
       "hp-hero",
       "166059286295ef2d0d",
       "1660593266445103ce",

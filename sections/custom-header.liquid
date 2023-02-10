@@ -158,8 +158,9 @@
                                         </div>
                                     </li>
                                     {% for childlink in linklists[child_list_handle].links %}
-                                    <li class="site-sub-nav--has-submenu-dropdown {% if childlink.active %}site-nav--active{% endif %}">
                                         {% if childlink.links != blank %}
+                                    <li class="site-sub-nav--has-submenu-dropdown {% if childlink.active %}site-nav--active{% endif %}" aria-label="{{
+                                                                                                                childlink.title | escape }}">
                                         <a class="menu-link mega-menu-link site-sub-nav--has-dropdown" href="javascript:void(0);" aria-haspopup="true">{{
                                             childlink.title | escape }}</a>
                                         <ul class="menu menu-list submenu-sub-dropdown-list">
@@ -171,11 +172,14 @@
                                             </li>
                                             {% endfor %}
                                         </ul>
-                                        {% else %}
-                                        <a class="menu-link mega-menu-link no-sub-dropdown" href="{{ childlink.url }}">{{
-                                            childlink.title | escape }}</a>
-                                        {% endif %}
                                     </li>
+                                    {% else %}
+                                <li class="{% if childlink.active %}site-nav--active{% endif %}" aria-label="{{
+                                                                    childlink.title | escape }}">
+                                    <a class="menu-link mega-menu-link no-sub-dropdown" href="{{ childlink.url }}">{{
+                                            childlink.title | escape }}</a>
+                                    </li>
+                                {% endif %}
                                     </li>
                         {% endfor %}
 

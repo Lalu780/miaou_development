@@ -177,6 +177,9 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
       $('.main-sub-nav.site-nav--has-dropdown .menu-link.menu-bar-link').on('click', function () {
         $(this).next('.mega-menu.mega-menu--multiLevel').css('left', '0');
       }); 
+
+
+
                                                             $('.site-sub-nav--has-submenu-dropdown >a').each(function () {
                                                               $(this).on('touchend click', function () {
                                                                 event.stopPropagation();
@@ -192,15 +195,15 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
                                                                   $(this).toggleClass('is_submenu_link_open');
                                                                 }
 
-                                                              })
-                                                            });
+                                                            })
+                                                          });
 
                                                             var universeFirstOpen = $('.main-sub-nav.site-nav--has-dropdown[aria-label="Universe"] .mega-menu.mega-menu--multiLevel')
                                                             $(universeFirstOpen).each(function () {
                                                               $('.main-sub-nav.site-nav--has-dropdown[aria-label="Universe"] .mega-menu.mega-menu--multiLevel > li:nth-child(4) >ul').addClass('is_submenu_open');
                                                               $('.main-sub-nav.site-nav--has-dropdown[aria-label="Universe"] .mega-menu.mega-menu--multiLevel > li:nth-child(4) >a').addClass('is_submenu_link_open');
                                                             })
-      
+                                                          
 
       var headerFixedScroll = document.querySelector('.header.custom-header .nav');
       var mobileFixedMenu = document.querySelector('.mobile-fixed-menu');

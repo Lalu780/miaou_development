@@ -1,8 +1,23 @@
-<div class="VideoSection">        
-    {% if section.settings.video != blank %}
-        <iframe src="{{ section.settings.video | escape }}?background=1&amp;autoplay=1&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=0" width="640" height="320" frameborder="0" allow="autoplay; fullscreen" allowfullscreen="" class="fluidvids-item" data-fluidvids="loaded"></iframe>
+<div class="video-main-section">
+    <div class="VideoSection">
+        {% if section.settings.video != blank %}
+    <iframe
+        src="{{ section.settings.video | escape }}?background=1&amp;autoplay=1&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=0"
+        width="100%" height="320" frameborder="0" allow="autoplay; fullscreen" allowfullscreen="allowfullscreen"
+        class="fluidvids-item" data-fluidvids="loaded"></iframe>
+    {% endif %}
+    
+    </div>
+    <div class="video-section-content">
+        {% if section.settings.video_heading != blank %}
+        <h1 class="HPHero-title">{{ section.settings.video_heading }}</h1>
+        {% endif %}
+        {% if section.settings.video_cta != blank and section.settings.video_cta_id != blank%}
+        <a class="HPHero-cta" href="{{section.settings.video_cta_id}}" target="_blank">{{ section.settings.video_cta }}</a>
     {% endif %}
 </div>
+</div>
+
 
 {% schema %}
 {
@@ -10,6 +25,21 @@
     "class": "VideoSection",    
     "settings": [
         {
+            "type": "text",
+            "id":"video_heading",
+            "label": "Video Heading"
+            },
+            {
+            "type": "text",
+            "id": "video_cta",
+            "label": "Video CTA"
+            },
+            {
+            "type": "url",
+            "id": "video_cta_id",
+            "label": "Video CTA Link"
+            },
+            {
             "type": "video_url",
             "id": "video",
             "label": "Video",
