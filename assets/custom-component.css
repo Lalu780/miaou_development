@@ -823,7 +823,17 @@ nav a:hover, nav a:visited {
     .navigation-nosto-section.navigation-nosto-section-mobile .navigation-image-grid{
         display: flex;
     }
+    .mobile-fixed-menu ul li{
+        width: 33.33%;
+    }
+    .mobile-fixed-menu ul{
+        justify-content: space-between;
+        margin-left:0;
+        margin-right:0;
+    }
 }
+
+
 
 @media (max-width:1023px){
     .header.custom-header .nav{
@@ -870,12 +880,15 @@ nav a:hover, nav a:visited {
     .mobile-fixed-menu{
         position: fixed;
         width: 100%;
-        margin-top: 80px;
+        margin-top: 84px;
         z-index: 1;
         border-bottom: 1px solid #ffffff;
         display: none;      
     }
     .template-index .mobile-fixed-menu{
+        display: initial;
+    }
+    .mobile-fixed-menu > ul li:nth-of-type(1) .icon-flame{
         display: initial;
     }
     .mobile-fixed-menu.mobile-fixed-menu-white-menu.mobile-fixed-menu-scrolled{     
@@ -896,31 +909,34 @@ nav a:hover, nav a:visited {
 
     .mobile-fixed-menu ul{
         display: flex;
-        justify-content:space-around;
         align-items: center;
         text-align: center;
         margin-bottom: 0;
         margin-left: 0;   
-        padding: 8px 25px;
+        padding: 0;
+        margin-right: 0;
     }
     .mobile-fixed-menu ul li{
         list-style: none;
         border-right: 1px solid #ffffff;
-        min-width: 20%;
+        /* min-width: 20%; */
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        padding: 8px 20px;
     }
     .mobile-fixed-menu ul li:last-child{
        border-right: 0;
     }
     .mobile-fixed-menu ul li a{
-        color: #ffffff;
-        opacity: 0.8;
+        color: rgba(255, 255, 255, 0.8);
         font-size: 12px;
         text-transform: uppercase;
-        padding-right: 15px;
+        /* display: block; */
     }
-    .mobile-fixed-menu ul li:last-child a{
+    /* .mobile-fixed-menu ul li:last-child a{
         padding-right: 0;
-    }
+    } */
     .navigation-nosto-section.navigation-nosto-section-mobile .navigation-image-grid .slick-list{
         margin-bottom: 0 !important;
     }
@@ -955,6 +971,20 @@ nav a:hover, nav a:visited {
             vertical-align: top;
            
           }  */
+          .mobile-fixed-menu ul{
+            justify-content: center;
+          }
+          /* .mobile-fixed-menu ul li{
+            min-width: 20%;
+          } */
+          .mobile-fixed-menu ul li:nth-child(1),
+          .mobile-fixed-menu ul li:nth-child(3)
+          {
+            width:30%
+          }
+          .mobile-fixed-menu ul li:nth-child(2){
+            width:40%;
+          }
             
     }
 
@@ -1021,6 +1051,7 @@ nav a:hover, nav a:visited {
     .main-sub-nav.site-nav--has-dropdown[aria-label="Shop"] .mega-menu.mega-menu--multiLevel >li a{
         opacity: 0.8;
     }
+    
  }
 /* video section styles */
 .video-main-section{
@@ -1043,4 +1074,21 @@ nav a:hover, nav a:visited {
     .video-main-section .video-section-content{
         max-width: 70%;
     }
+}
+
+.mobile-menu-trigger:hover,
+.mobile-menu-trigger:focus,
+.mobile-menu-trigger:active{
+    color: #ffffff;
+}
+.main-sub-nav.site-nav--has-dropdown[aria-label="Shop"] .mega-menu.mega-menu--multiLevel >li a:focus{
+    color: #d2fa4a;
+}
+.navigation-menu a:hover,
+.navigation-menu a:focus{
+    color: #d2fa4a;
+}
+
+.icon-flame{
+    display: none;
 }
