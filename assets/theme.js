@@ -590,6 +590,20 @@
               null === (ref = elem.parentNode) || void 0 === ref
                 ? void 0
                 : ref.querySelector(".hidden-3-deep");
+            // jquery_min_default()(".menu-hover-effect").removeClass("menu-hover-effect");
+            imageHolder.classList.add("menu-hover-effect");
+          }
+        );
+                jquery_min_default()(".Offcanvas-Drawer-ColLink").on(
+          "mouseenter",
+          function (e) {
+            var ref;
+            const elem = e.target;
+            const imageHolder =
+              null === (ref = elem.parentNode) || void 0 === ref
+                ? void 0
+                : ref.querySelector(".hidden-3-deep");
+            jquery_min_default()(".menu-hover-effect").removeClass("menu-hover-effect");
             imageHolder.classList.add("menu-hover-effect");
           }
         );
@@ -602,6 +616,7 @@
               null === (ref = elem.parentNode) || void 0 === ref
                 ? void 0
                 : ref.querySelector(".hidden-3-deep");
+            jquery_min_default()(".menu-hover-effect").removeClass("menu-hover-effect");
             imageHolder.classList.add("menu-hover-effect");
             elem.remove();
           }

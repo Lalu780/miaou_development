@@ -453,7 +453,7 @@ nav a:hover, nav a:visited {
     }
     .login-block .HeaderMenu-AccountIcon{
         display: block;
-        padding-right: 3px;
+        padding-right: 5px;
     }
     .login-block .HeaderMenu-itemLink{
         display: flex;
@@ -815,6 +815,13 @@ nav a:hover, nav a:visited {
         width: 100%;
         height: 150px !important;
     }
+  .mobile-fixed-menu ul li:nth-child(1),
+  .mobile-fixed-menu ul li:nth-child(3){
+    width:30%
+  }
+  .mobile-fixed-menu ul li:nth-child(2){
+    width:40%;
+  }
 }
 @media(min-width:768px) and (max-width:1023px){
     .navigation-nosto-section.navigation-nosto-section-mobile{
@@ -823,7 +830,7 @@ nav a:hover, nav a:visited {
     .navigation-nosto-section.navigation-nosto-section-mobile .navigation-image-grid{
         display: flex;
     }
-    .mobile-fixed-menu ul li{
+   .mobile-fixed-menu ul li{
         width: 33.33%;
     }
     .mobile-fixed-menu ul{
@@ -831,9 +838,10 @@ nav a:hover, nav a:visited {
         margin-left:0;
         margin-right:0;
     }
+  .mobile-fixed-menu ul li{
+    width:33.33%;
+  }
 }
-
-
 
 @media (max-width:1023px){
     .header.custom-header .nav{
@@ -888,9 +896,6 @@ nav a:hover, nav a:visited {
     .template-index .mobile-fixed-menu{
         display: initial;
     }
-    .mobile-fixed-menu > ul li:nth-of-type(1) .icon-flame{
-        display: initial;
-    }
     .mobile-fixed-menu.mobile-fixed-menu-white-menu.mobile-fixed-menu-scrolled{     
         background-color: #000000;
     } 
@@ -908,37 +913,41 @@ nav a:hover, nav a:visited {
     }
 
     .mobile-fixed-menu ul{
-        display: flex;
+        display: flex;      
         align-items: center;
         text-align: center;
-        margin-bottom: 0;
-        margin-left: 0;   
+        margin-bottom: 0;  
         padding: 0;
+        margin-left: 0;   
         margin-right: 0;
     }
     .mobile-fixed-menu ul li{
         list-style: none;
         border-right: 1px solid #ffffff;
-        /* min-width: 20%; */
+/*         min-width: 20%; */
         display: flex;
         justify-content: center;
         text-align: center;
-        padding: 8px 20px;
+        padding: 8px 0;
     }
     .mobile-fixed-menu ul li:last-child{
        border-right: 0;
     }
     .mobile-fixed-menu ul li a{
-        color: rgba(255, 255, 255, 0.8);
+       color: rgba(255, 255, 255, 0.8);
         font-size: 12px;
         text-transform: uppercase;
-        /* display: block; */
+        display: inline-block;
+        text-align:center;
     }
-    /* .mobile-fixed-menu ul li:last-child a{
+/*     .mobile-fixed-menu ul li:last-child a{
         padding-right: 0;
     } */
     .navigation-nosto-section.navigation-nosto-section-mobile .navigation-image-grid .slick-list{
         margin-bottom: 0 !important;
+    }
+  .mobile-fixed-menu > ul li:nth-of-type(1) .icon-flame{
+        display: initial;
     }
 }
 
@@ -971,20 +980,15 @@ nav a:hover, nav a:visited {
             vertical-align: top;
            
           }  */
-          .mobile-fixed-menu ul{
-            justify-content: center;
+      .mobile-fixed-menu ul{
+            justify-content: flex-start;
+            width:100%;
           }
-          /* .mobile-fixed-menu ul li{
-            min-width: 20%;
-          } */
-          .mobile-fixed-menu ul li:nth-child(1),
-          .mobile-fixed-menu ul li:nth-child(3)
-          {
-            width:30%
-          }
-          .mobile-fixed-menu ul li:nth-child(2){
-            width:40%;
-          }
+       .mobile-fixed-menu ul li{
+         width:33.33%;
+         padding-left:0;
+         padding-right:0;
+       }
             
     }
 
@@ -1051,7 +1055,6 @@ nav a:hover, nav a:visited {
     .main-sub-nav.site-nav--has-dropdown[aria-label="Shop"] .mega-menu.mega-menu--multiLevel >li a{
         opacity: 0.8;
     }
-    
  }
 /* video section styles */
 .video-main-section{
@@ -1075,7 +1078,6 @@ nav a:hover, nav a:visited {
         max-width: 70%;
     }
 }
-
 .mobile-menu-trigger:hover,
 .mobile-menu-trigger:focus,
 .mobile-menu-trigger:active{
@@ -1089,6 +1091,154 @@ nav a:hover, nav a:visited {
     color: #d2fa4a;
 }
 
+/* hero video starts */
+
+div#video-section-desk
+{
+      position: relative;
+      padding-bottom: 69.25%;
+      padding-top: 35px;
+      height: 0;
+      overflow: hidden;
+}
+iframe#fluidvids-item-desk{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+}
+@media only screen and (max-width: 1570px) and (min-width: 1227px) {
+iframe#fluidvids-item-desk {
+    top: -24vh !important;
+}
+}
+@media only screen and (max-width: 1849px) and (min-width: 1571px) {
+iframe#fluidvids-item-desk {
+    top: -35vh !important;
+}
+}
+
+@media only screen and  (min-width: 2049px)  {
+iframe#fluidvids-item-desk {
+    top: -90vh !important;
+}
+}
+
+@media only screen and (min-height: 1079px) and (max-height: 1500px) (min-width: 1300px) {
+iframe#fluidvids-item-desk {
+    top: 3vh!important;
+}
+  div#video-section-desk {
+    padding-bottom: 80.25% !important;
+}
+}
+
+@media only screen and (min-height: 899px) and (max-height: 1078px) {
+  div#video-section-desk {
+    padding-bottom: 86.25% !important;
+}
+}
+@media only screen and (min-width: 768px) and (max-width: 898px) {
+iframe#fluidvids-item-desk {
+    top: 17px !important;
+}
+}
+
+@media only screen and (min-height: 1501px)   {
+iframe#fluidvids-item-desk {
+    top: -23vh !important;
+}
+}
+@media only screen and (min-width: 1024px) and (max-width: 1226px) and (min-height: 899px) and (max-height: 1079px) {
+  .VideoSection, .VideoSection iframe {
+    height: 67vh !important;
+}
+}
+@media only screen and  (min-height: 1080px) {
+.VideoSection, .VideoSection iframe {
+    height: 64vh !important;
+}
+  iframe#fluidvids-item-desk {
+    height: 100vh !important;
+}
+}
+@media only screen and (min-width: 1024px) and (max-width: 1226px) and (min-height: 1080px) {
+iframe#fluidvids-item-desk {
+    top: -18vh !important;
+}
+}
+@media only screen and (min-width: 1500px) and (max-width: 1724px) and (min-height: 1080px) {
+iframe#fluidvids-item-desk {
+    height: 115vh!important;
+}
+}
+@media only screen and (min-width: 1725px) and (min-height: 1080px) {
+iframe#fluidvids-item-desk {
+    height: 130vh!important;
+  top: -20vh!important;
+}
+  .VideoSection, .VideoSection iframe {
+    height: 80vh!important;
+}
+}
+@media only screen and (min-width: 768px) and (max-width: 1099px) and (min-height: 700px) {
+  .video-main-section .video-section-content {
+    top: 45% !important;
+}
+}
+@media only screen and (min-width: 1100px) and (max-width: 1299px) and (min-height: 700px) { 
+  .video-main-section .video-section-content {
+    top: 35% !important;
+}
+}
+@media only screen and (min-width: 1300px) and (max-width: 1650px) and (min-height: 700px) { 
+  .video-main-section .video-section-content {
+    top: 30% !important;
+}
+}
+@media only screen and (min-width: 1651px) and (max-width: 2000px) and (min-height: 700px) { 
+  .video-main-section .video-section-content {
+    top: 25% !important;
+}
+}
+@media only screen and (min-width: 2001px) and (min-height: 700px) { 
+  .video-main-section .video-section-content {
+    top: 20% !important;
+}
+}
+@media only screen and (min-width: 1100px) and (max-width: 1380px) and (min-height: 500px) and (max-height: 660px) { 
+  .video-main-section .video-section-content {
+    top: 30% !important;
+}
+}
+@media only screen and (min-width: 760px) and (max-width: 770px) and (min-height: 1020px) and (max-height: 1030px) { 
+div#video-section-desk {
+    padding-bottom: 64.25%!important;
+}
+}
+@media only screen and (min-width: 2500px) and (max-width: 2600px) and (min-height: 1075px) and (max-height: 1085px) { 
+iframe#fluidvids-item-desk {
+    height: 164vh!important;
+    top: -40vh!important;
+}
+}
+
+
+/*   video section  */
+@media print, screen and (max-width: 767px){
+    .video-main-section .VideoSection {
+    display: none;
+}
+}
+@media print, screen and (min-width: 768px){
+    .video-main-section .VideoSection_mob {
+    display: none;
+}
+}
 .icon-flame{
     display: none;
+}
+.HPHero-title:hover, .HPHero-cta:hover {
+  color: white;
 }

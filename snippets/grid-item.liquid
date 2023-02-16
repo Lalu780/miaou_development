@@ -22,12 +22,11 @@
 {% assign double_wide = grid_item.metafields.pdp_extras.is_double_wide %}
 {% assign double_wide_image = grid_item.metafields.pdp_extras.double_wide_image %}
 
-{% if grid_item.metafields.pdp_extras.double_wide_image or grid_item.metafields.pdp_extras.pdp_additional_hero_image  %}
+{% if double_wide_image or grid_item.metafields.pdp_extras.pdp_additional_hero_image  %}
     {% assign show_featured_as_second_image = 1 %}
 {% else %}
   {% assign show_featured_as_second_image = 0 %}
 {% endif %}
-
 {% assign has_second_image = 0 %}
 {% if grid_item.images.size > 1 or grid_item.metafields.pdp_extras.pdp_additional_flat_image %}
     {% assign has_second_image = 1 %}
@@ -40,10 +39,18 @@
 {% capture grid_item_image_sizes %}
   {% liquid 
       if double_wide
-        if grid_item.metafields.pdp_extras.double_wide_image
-          render 'print-image-sizes', image: double_wide_image
+        if random_item == 0
+          if grid_item.metafields.pdp_extras.double_wide_image
+            render 'print-image-sizes', image: double_wide_image
+          else
+            render 'print-image-sizes', image: grid_item.metafields.pdp_extras.pdp_additional_hero_image
+          endif
         else
-          render 'print-image-sizes', image: grid_item.metafields.pdp_extras.pdp_additional_hero_image
+          if grid_item.metafields.pdp_extras.pdp_additional_hero_image
+            render 'print-image-sizes', image: grid_item.metafields.pdp_extras.pdp_additional_hero_image
+          else
+            render 'print-image-sizes', image: grid_item.featured_image
+          endif
         endif
       else
         if grid_item_type == 'product' and grid_item.featured_image
@@ -66,95 +73,15 @@
 {% endcapture %}
 {% assign grid_item_image_sizes = grid_item_image_sizes | strip_newlines | strip %}
 
-{% if fill_grid == 1 and grid_item_type == 'product' %}
-  {% capture random_item_image_sizes %}
-  {% render 'print-image-sizes', image: random_item.featured_image %}
-{% endcapture %}
-  {% assign random_item_image_sizes = random_item_image_sizes | strip_newlines | strip %}
-  <article class="GridItem desktop-hide" data-item-type="{{ grid_item_type }}" position="{{ position }}">
-    <div class="GridItem-imageContainer">
-      <a class="GridItem-link" href="{{ last_item.url }}" aria-hidden="true">
-        <div
-          class="GridItem-imagePlaceholder o-placeholder lazyload has-icon"
-          data-sizes="auto"
-          data-bgset="{{ random_item_image_sizes }}"
-        >
-          {% if random_item_image_sizes == blank %}
-            {%- capture placeholder_svg_name -%}
-            {%- case block.type -%}
-             {%- when 'product' -%}
-                {%- cycle 'product_svgs': 'product-1', 'product-2', 'product-3', 'product-4', 'product-5', 'product-6' -%}
-              {%- else -%}
-                image
-            {%- endcase -%}
-          {%- endcapture -%}
-            {{ placeholder_svg_name | strip_newlines | strip | placeholder_svg_tag: 'GridItem-placeholderSvg' }}
-          {% endif %}
-        </div>
-      </a>
-    </div>
-
-    <div class="GridItem-details">
-      <h3 class="GridItem-title">
-        <a class="GridItem-titleLink" href="{{ random_item.url }}">
-          {% if title_override != blank %}
-            {{ title_override }}
-          {% else %}
-            {% assign default_title = 'general.miscellaneous.item' | t %}
-            {{ random_item.title | default: default_title }}
-          {% endif %}
-        </a>
-      </h3>
-
-      <div class="GridItem-extraDetails">
-        {% if grid_item_type == 'product' %}
-          {% assign on_sale = false %}
-          {% if random_item.compare_at_price > random_item.price %}
-            {% assign on_sale = true %}
-          {% endif %}
-
-          {% assign sold_out = true %}
-          {% if random_item.available %}
-            {% assign sold_out = false %}
-          {% endif %}
-
-          <div class="GridItem-price">
-            {% if sold_out %}
-              <del>
-                <a class="GridItem-titleLink" style="z-index: 1;" href="{{ random_item.url }}"
-                  >SOLD OUT - JOIN THE WAITLIST
-                </a>
-              </del>
-            {% else %}
-              {% if on_sale %}
-                <span class="u-vhide --regular">
-                  {{ 'products.general.regular_price' | t }}
-                </span>
-                <del>{{ random_item.compare_at_price | money_without_trailing_zeros }} </del>
-              {% endif %}
-
-              {% if on_sale %}
-                {% assign sale_price = random_item.price | money_without_trailing_zeros %}
-                {{ sale_price }}
-              {% else %}
-                {% if random_item.price_varies %}
-                  {% assign price = random_item.price | money_without_trailing_zeros %}
-                  {{ 'products.general.from_text_html' | t: price: price }}
-                {% else %}
-                  {{ random_item.price | money_without_trailing_zeros }}
-                {% endif %}
-              {% endif %}
-            {% endif %}
-          </div>
-        {% endif %}
-      </div>
-    </div>
-  </article>
+{% assign double_wide_class = "" %}
+{% if double_wide %}
+  {% if random_item == 0 %}
+    {% assign double_wide_class = "--double-wide" %}
+    {% endif %}
 {% endif %}
 <article
-  class="GridItem {% if double_wide %} --double-wide {% endif %}"
-  data-item-type="{{ grid_item_type }}"
-  position="{{ position }}"
+  class="GridItem {{ extra_grid_class }} {{ double_wide_class }}"
+  data-item-type="{{ grid_item_type }}" random_item="{{ random_item }}"
 >
   <div class="GridItem-imageContainer">
     <a class="GridItem-link" href="{{ grid_item_url }}" aria-hidden="true">
@@ -177,7 +104,9 @@
                 image
             {%- endcase -%}
           {%- endcapture -%}
-          {{ placeholder_svg_name | strip_newlines | strip | placeholder_svg_tag: 'GridItem-placeholderSvg' }}
+          {% unless grid_item.metafields.pdp_extras.is_hero_video %}
+            {{ placeholder_svg_name | strip_newlines | strip | placeholder_svg_tag: 'GridItem-placeholderSvg' }}
+          {% endunless %}
         {% endif %}
       </div>
 
@@ -229,7 +158,7 @@
         -->
         <div class="GridItem-thumb">
           <a class="GridItem-link" href="{{ grid_item_url | append: variant_query }}">
-            <div
+             <div
               class="GridItem-thumbImagePlaceholder o-placeholder lazyload"
               data-bgset="{{ image.src | img_url: 'large' }}"
             ></div>

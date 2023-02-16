@@ -42,14 +42,26 @@
   {%- if smp_collection.title != blank -%}
     <div class="Product-Swatches-SMP">
       {%- for prod in smp_collection.products -%}
-        {%- assign pdp_swatch_image = prod.metafields.pdp_extras.pdp_swatch_image_upload -%}
-
-        <div
+       {%- comment %}<locksmith:b382>{% endcomment -%}
+         {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: prod, subject_parent: smp_collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+       {%- comment %}</locksmith:b382>{% endcomment -%}
+       {%- assign pdp_swatch_image = prod.metafields.pdp_extras.pdp_swatch_image -%}
+        {%- assign pdp_swatch_image_upload = prod.metafields.pdp_extras.pdp_swatch_image_upload -%}
+        {%- if pdp_swatch_image_upload  != blank -%}
+         <div
+          class="Product-SwatchesItem js-smp-swatch"
+          style="background-image: url(' {{ pdp_swatch_image_upload | file_url }} ');"
+          smp-product-handle="{{ prod.handle }}"
+          product-title="{{ prod.title }}"
+        ></div>
+       {% elsif pdp_swatch_image  != blank %}
+           <div
           class="Product-SwatchesItem js-smp-swatch"
           style="background-image: url(' {{ pdp_swatch_image }} ');"
           smp-product-handle="{{ prod.handle }}"
           product-title="{{ prod.title }}"
         ></div>
+          {%- endif -%}
       {%- endfor -%}
     </div>
   {%- endif -%}

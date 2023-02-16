@@ -10,12 +10,16 @@
     <div class="HPHero-container">
       <div class="HPHero-imagePlaceholder o-placeholder lazyload" data-bgset="{{image_sizes}}"></div>
 
-      <h1 class="HPHero-title">{{ collection.title }}</h1>
+      {% if collection.id == 91341783145 %}
+        <h1 class="HPHero-title HPHero-title-custom">{{ collection.title }}</h1>
+      {% else %}
+        <h1 class="HPHero-title">{{ collection.title }}</h1>
+      {% endif %}
     </div>
   </section>
 {% endunless %}
 
-{% assign collection_id_list = '91341783145,295502282931,293196890291,294812713139,289954234547,295613006003,153630244969' %}
+{% assign collection_id_list = '91341783145,295502282931,293196890291,294812713139,289954234547,295613006003,153630244969,296390328499' %}
 {% unless collection_id_list contains collection.id %}
   <div class="nosto_element" id="categorypage-nosto-1"></div>
 {% endunless %}
@@ -24,13 +28,14 @@
 {% paginate collection.products by 1000 %}
   <main class="Collection" role="main" aria-label="{{ collection.title | escape }}">
     <div class="Collection-products">
-      {% if collection.products.size > 0 %}
+       {% if collection.products.size > 0 %}
         {% render 'grid', items: collection.products %}
       {% else %}
         <div class="o-pageSubtext o-rte">
           {{ 'collections.general.empty_html' | t: url: '/collections/all' }}
         </div>
       {% endif %}
+  
     </div>
 
     {% if collectionSeo and collectionSeo != blank %}

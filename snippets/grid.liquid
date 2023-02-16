@@ -19,25 +19,110 @@
 {% endcomment %}
 
 <div class="Grid">
-  {% assign loop_counter = 0 %}
+  {% assign mobile_loop_counter = 0 %}
+  {% assign desktop_loop_counter = 0 %}
+  {% assign skip_loop_index = -1 %}
+  {% assign skip_products = '0' %}
+  {% assign fill_by_index = 0 %}
+  {% assign new_index = 0 %}
   {% for item in items limit: grid_limit %}
-    {% assign loop_counter = loop_counter | plus: 1 %}
-    {% if item.metafields.pdp_extras.is_double_wide %}
-      {% assign position = loop_counter | modulo: 2 %}
-      {% if position == 0 %}
-        {% assign fill_grid = 1 %}
-      {% else %}
-        {% assign fill_grid = 0 %}
-        {% assign loop_counter = loop_counter | plus: 1 %}
-      {% endif %}
-    {% else %}
-      {% assign fill_grid = 0 %}
+    {% assign new_index = 0 %}
+    {% assign fill_by_index = 0 %}
+    {% if skip_products contains item.id %}
+      {% continue %}
     {% endif %}
-    {% render 'grid-item',
-      grid_item: item,
-      fill_grid: fill_grid,
-      position: forloop.index,
-      random_item: items[forloop.rindex]
-    %}
+    {% comment %}
+      {% if forloop.index0 == skip_loop_index %}
+        {% continue %}
+      {% endif %}
+    {% endcomment %}
+    {% assign mobile_loop_counter = mobile_loop_counter | plus: 1 %}
+    {% assign desktop_loop_counter = desktop_loop_counter | plus: 1 %}
+    {% if item.metafields.pdp_extras.is_double_wide %}
+      {% assign mobile_position = mobile_loop_counter | modulo: 2 %}
+      {% assign desktop_position = desktop_loop_counter | modulo: 4 %}
+
+      {% if mobile_position == 0 %}
+        {% assign mobile_fill_grid = 1 %}
+      {% else %}
+        {% assign mobile_fill_grid = 0 %}
+        {% assign mobile_loop_counter = mobile_loop_counter | plus: 1 %}
+      {% endif %}
+
+      {% if desktop_position == 0 %}
+        {% assign desktop_fill_grid = 1 %}
+        {% assign desktop_loop_counter = desktop_loop_counter | plus: 2 %}
+      {% else %}
+        {% assign desktop_fill_grid = 0 %}
+        {% assign desktop_loop_counter = desktop_loop_counter | plus: 1 %}
+      {% endif %}
+
+    {% else %}
+      {% assign mobile_fill_grid = 0 %}
+      {% assign desktop_fill_grid = 0 %}
+    {% endif %}
+
+    {% assign extra_grid_class = '' %}
+
+    {% if mobile_fill_grid == 1 and desktop_fill_grid == 0 %}
+      {% assign extra_grid_class = 'desktop-hide' %}
+    {% endif %}
+
+    {% if mobile_fill_grid == 0 and desktop_fill_grid == 1 %}
+      {% assign extra_grid_class = 'mobile-hide' %}
+    {% endif %}
+
+    {% if mobile_fill_grid == 1 or desktop_fill_grid == 1 %}
+      {% assign skip_loop_index = forloop.index %}
+
+      {% assign new_index = forloop.index %}
+      {% if forloop.length >= new_index %}
+        {% unless items[new_index].metafields.pdp_extras.is_double_wide %}
+          {% assign fill_by_index = new_index %}
+          {% assign skip_products = skip_products | append: ',' | append: items[new_index].id %}
+        {% endunless %}
+      {% endif %}
+
+      {% if fill_by_index == 0 %}
+        {% assign new_index = forloop.index | plus: 1 %}
+
+        {% if forloop.length >= new_index %}
+          {% unless items[new_index].metafields.pdp_extras.is_double_wide %}
+            {% assign fill_by_index = new_index %}
+            {% assign skip_products = skip_products | append: ',' | append: items[new_index].id %}
+          {% endunless %}
+        {% endif %}
+      {% endif %}
+
+      {% if fill_by_index == 0 %}
+        {% assign new_index = forloop.index | plus: 2 %}
+
+        {% if forloop.length >= new_index %}
+          {% unless items[new_index].metafields.pdp_extras.is_double_wide %}
+            {% assign fill_by_index = new_index %}
+            {% assign skip_products = skip_products | append: ',' | append: items[new_index].id %}
+          {% endunless %}
+        {% endif %}
+      {% endif %}
+
+      {% render 'grid-item', grid_item: items[new_index], extra_grid_class: extra_grid_class, random_item: 1 %}
+      {% comment %}{% render 'grid-item', grid_item: items[forloop.index], extra_grid_class: extra_grid_class, random_item: 1 %}{% endcomment %}
+    {% endif %}
+
+    {% render 'grid-item', grid_item: item, extra_grid_class: '', random_item: 0 %}
+
+    {% if mobile_fill_grid == 1 and desktop_fill_grid == 0 %}
+      {% assign extra_grid_class = 'mobile-hide' %}
+      {% assign desktop_loop_counter = desktop_loop_counter | plus: 1 %}
+      {% render 'grid-item', grid_item: items[new_index], extra_grid_class: extra_grid_class, random_item: 0 %}
+      {% comment %}{% render 'grid-item', grid_item: items[forloop.index], extra_grid_class: extra_grid_class, random_item: 0 %}{% endcomment %}
+    {% endif %}
+
+    {% if mobile_fill_grid == 0 and desktop_fill_grid == 1 %}
+      {% assign extra_grid_class = 'desktop-hide' %}
+      {% assign mobile_loop_counter = mobile_loop_counter | plus: 1 %}
+      {% render 'grid-item', grid_item: items[new_index], extra_grid_class: extra_grid_class, random_item: 0 %}
+      {% comment %}{% render 'grid-item', grid_item: items[forloop.index], extra_grid_class: extra_grid_class, random_item: 0 %}{% endcomment %}
+    {% endif %}
   {% endfor %}
 </div>

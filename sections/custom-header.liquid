@@ -146,18 +146,18 @@
                                     </div>
                                     </li>
                                     <li class="universe-banner-section">
-                                        <a href="/pages/rewards">
+                                      <a href="/pages/rewards">               
                                         <div class="universe-banner">
-                                            <div class="universe-image-container">
+                                            <div class="universe-image-container">                                             
                                                 <img src="https://cdn.shopify.com/s/files/1/1231/1148/files/universe-banner.jpg?v=1674542652"
-                                                    alt="universe-banner" />                                            
+                                                    alt="universe-banner" />                                             
                                             </div>
                                             <div class="universe-text-container">
                                                 <h5>Join Miaou Rewards</h5>
                                                 <p>Start earning points and exclusive rewards every time you shop</p>
                                             </div>
                                         </div>
-                                        </a>
+                                      </a>  
                                     </li>
                                     {% for childlink in linklists[child_list_handle].links %}
                                         {% if childlink.links != blank %}
@@ -234,19 +234,18 @@
                         <a href="javascript:void(0);" class="menu-link mobile-menu-back-link">Back</a>
                     </li>
                     <li class="universe-banner-section">
-                        <a href="/pages/rewards">
+                      <a href="/pages/rewards">
                         <div class="universe-banner">
-                            <div class="universe-image-container">
+                            <div class="universe-image-container">                            
                                 <img src="https://cdn.shopify.com/s/files/1/1231/1148/files/universe-banner.jpg?v=1674542652"
-                                    alt="universe-banner" />                             
+                                    alt="universe-banner" />                               
                             </div>
                             <div class="universe-text-container">
                                 <h5>Join Miaou Rewards</h5>
                                 <p>Start earning points and exclusive rewards every time you shop</p>
-                            </div>
-                    
+                            </div>           
                         </div>
-                        </a>
+                      </a>
                     </li>
                 </ul>
                 </li>
@@ -289,7 +288,7 @@
             {%- for link in linklists[section.settings.mobile-fixed-menu].links -%}
             <li>
                 <a href="{{ link.url }}" {% if link.active %}aria-current="page" {% endif %}>
-                    {%- comment -%} {% render 'icon-flame' %} {%- endcomment -%}
+<!--                  {% render 'icon-flame' %} -->
                     {{ link.title }}
                 </a>
     

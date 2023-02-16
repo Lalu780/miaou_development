@@ -1,9 +1,15 @@
-{%- if collection.featured_image contains 'collections/'  %}
- <div class="menu-overlay" style="padding-top: 0px;">         
-      {% else %}
-  <div class="menu-overlay" style="padding-top: 24px;">
-      {% endif %}
-<!-- <div class="menu-overlay"> -->
+{% assign collection_id_list = '91341783145,295502282931,293196890291,294812713139,289954234547,295613006003,153630244969,296390328499' %}
+{%- if collection.featured_image contains 'collections/' %}
+  {%- assign padding_top_value = 0 %}
+{% else %}
+  {%- assign padding_top_value = 0 %}
+{% endif %}
+{% if collection_id_list contains collection.id %}
+  {%- assign margin_top_value = 0 %}
+{% else %}
+  {%- assign margin_top_value = 86 %}
+{% endif %}
+<div class="menu-overlay" style="padding-top: {{padding_top_value}}px; margin-top: {{ margin_top_value }}px; ">
   <ul class="header-main">
     <li class="header-sub header-bar dropdown-1">
       <span>SIZE</span>
@@ -69,9 +75,7 @@
       {% endfor %}
     </ul>
     <ul id="js-collection-sorting" class="dropdown-content-list dropdown-options-2 options-3" name="SORT-BY">
-      {% assign sort_values = 'manual,best-selling,price-descending,price-ascending,created-descending'
-        | split: ','
-      %}
+      {% assign sort_values = 'manual,best-selling,price-descending,price-ascending,created-descending' | split: ',' %}
       {% for sort_value in sort_values %}
         <li sort_value="{{ sort_value | handle }}">
           {% assign translation = sort_value | replace: '-', '_' | prepend: 'collections.sorting.' %}

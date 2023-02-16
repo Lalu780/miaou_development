@@ -18,7 +18,7 @@
             "cta_color": "",
             "cta_bg_color": "",
             "cta_style": "solid",
-            "banner_height": "window",
+            "banner_height": "image",
             "vertical_alignment": "middle",
             "horizontal_alignment": "middle"
           }
@@ -37,9 +37,9 @@
           "type": "text",
           "settings": {
             "heading": "WORKWEAR CAPSULE",
-            "content": "<p>PHOTOGRAPHER -  BI LAL EL KADHI <\/p><p>CREATIVE DIRECTOR -  ALEXIA ELKAIM <\/p><p>CREATIVE PRODUCER - SARA LEMIEUX <\/p><p>STYLIST - PERI ROSENZWEIG<\/p><p>ART DIRECTOR - CLYDE CORLEY<\/p><p>PRODUCTION ASSISTANT - DENNIS KIM <\/p><p>SOCIAL MEDIA - TALIA CASSEL<\/p><p>HAIR - TIAGO GOYA <\/p><p>MAKEUP - EDEN LATTANZIO<\/p><p>TALENT - JANE MOSELEY <\/p>",
+            "content": "<p>PHOTOGRAPHER -  BI LAL EL KADHI <\/p><p><\/p><p>CREATIVE DIRECTOR -  ALEXIA ELKAIM <\/p><p><\/p><p>CREATIVE PRODUCER - SARA LEMIEUX <\/p><p><\/p><p>STYLIST - PERI ROSENZWEIG<\/p><p><\/p><p>ART DIRECTOR - CLYDE CORLEY<\/p><p><\/p><p>PRODUCTION ASSISTANT - DENNIS KIM <\/p><p><\/p><p>SOCIAL MEDIA - TALIA CASSEL<\/p><p><\/p><p>HAIR - TIAGO GOYA <\/p><p><\/p><p>MAKEUP - EDEN LATTANZIO<\/p><p><\/p><p>TALENT - JANE MOSELEY <\/p>",
             "text_size": "default",
-            "vertical_alignment": "bottom",
+            "vertical_alignment": "top",
             "horizontal_alignment": "left"
           }
         }
@@ -88,7 +88,7 @@
             "cta_color": "",
             "cta_bg_color": "",
             "cta_style": "solid",
-            "banner_height": "window",
+            "banner_height": "image",
             "vertical_alignment": "middle",
             "horizontal_alignment": "middle"
           }
@@ -100,11 +100,11 @@
             "bg_color": "#dddedc",
             "tint_color": "#000000",
             "tint_strength": "0.2",
-            "heading": "<p>Banner <br\/> block<\/p>",
-            "subhead": "Tell your brand's story through images",
+            "heading": "",
+            "subhead": "",
             "text_color": "",
             "link": "",
-            "cta": "Shop now",
+            "cta": "",
             "cta_color": "",
             "cta_bg_color": "",
             "cta_style": "solid",

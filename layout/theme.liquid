@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:b07c>{% endcomment -%}
+  {%- include 'locksmith' -%}
+{%- comment %}</locksmith:b07c>{% endcomment -%}
+
 <!doctype html>
 {% assign site_lang = shop.locale | default: 'en' %}
 <!--[if lt IE 9]><html class="lt-ie9" lang="{{ site_lang }}"><![endif]-->
@@ -5,6 +9,7 @@
 <!--[if gt IE 9]><!--><html lang="{{ site_lang }}"><!--<![endif]-->
 
 <head>
+  {{ locksmith_initializations }}
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,6 +18,20 @@
   <link rel="preconnect" href="https://cdn.shopify.com">
   <link rel="preconnect" href="https://cdn.polyfill.io">
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<!-- <script src="https://connect.nosto.com/script/shopify/nosto.js?merchant=shopify-12311148\u0026shop=miaouxx.myshopify.com"></script> -->
+  <script src="{{ 'jquery.min.js' | asset_url }}"></script> 
+  <script async src="{{ 'slick.min.js' | asset_url }}"></script>
+   {{ 'slick.min.css' | asset_url | stylesheet_tag }}
+  
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-64JE1WKVL7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-64JE1WKVL7');
+  </script>
+  
 
   <!-- Meta -->
   {% liquid
@@ -27,16 +46,13 @@
   {{ 'theme.css' | asset_url | stylesheet_tag }}
   {{ 'custom-css.css' | asset_url | stylesheet_tag }}
   {{ 'custom-component.css' | asset_url | stylesheet_tag }}
-  {%- comment -%} {{ 'slick-theme.css' | asset_url | stylesheet_tag }} {%- endcomment -%}
   {% render 'inline-css' %}
-
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
   <!-- Global-E styles -->
   <link id="GEPIStyles" rel="stylesheet" href="//gepi.global-e.com/includes/css/10000772" />
 
   <!-- Custom header content -->
-  {{ content_for_header }}
+    {{ content_for_header }}
   <!-- End of custom header content -->
 
   <script type="text/javascript">
@@ -62,16 +78,17 @@
 
   {% render 'gsf-conversion-pixels' %}
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
  {% include 'talkable-partial' %}
+
+ <script type="text/javascript" src="https://cdn.sales.partner.stylight.net/v1/st.min.js"></script>
 </head>
 
-<body id="{{ page_title | handle }}"
+<body 
+id="{{ page_title | handle }}"
 class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if template == blank %}no-template{% endif %}" data-shopify-template="{{ template | handleize }}">
 <script>window.KlarnaThemeGlobals={};{%case template.name%} {%when"product"%} {% if product.first_available_variant.price %}window.KlarnaThemeGlobals.data_purchase_amount = {{ product.first_available_variant.price }};{% endif %}window.KlarnaThemeGlobals.productVariants={{product.variants|json}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%when"cart"%} window.KlarnaThemeGlobals.data_purchase_amount={{cart.total_price}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%endcase%}</script>
-
   {% section 'announcement-bar' %}
-
   {%- unless template.suffix == 'international-checkout' -%}
     {% section 'custom-header' %}
   {%- endunless -%}
@@ -81,9 +98,7 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
     <div class="column row">
   {% endif %}
 
-<div class="body-main">
   {{ content_for_layout }}
-</div>
 
   {% if template == blank %}
     </div>
@@ -98,7 +113,7 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
 
   {% render 'scripts' %}
 
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+ 
 
   <script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=14102"></script>
   <script id="gorgias-chat-shopify-install">!function(_){_.SHOPIFY_PERMANENT_DOMAIN="miaouxx.myshopify.com",_.SHOPIFY_CUSTOMER_ID="",_.SHOPIFY_CUSTOMER_EMAIL=""}(window||{});</script>
@@ -150,8 +165,17 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
   </script>
 
   <script>
-                                                            $(document).ready(function (e) {
-                                                              $('#navigation-menu-toggle').click(function (event) {
+  $(document).ready(function() {
+    $("#first_name").attr("placeholder", "First Name");
+    $("#last_name").attr("placeholder", "Last Name");
+    $("#email").attr("placeholder", "Email");
+    $("#password").attr("placeholder", "Password");
+  });
+</script>
+
+    <script>
+       $(document).ready(function (e) {
+        $('#navigation-menu-toggle').click(function (event) {
         $('#accessibleNav').addClass('is-open');
         $('#accessibleNav').removeClass('is-close');
         $('.navigation-menu').addClass('menu-open');
@@ -177,32 +201,29 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
       $('.main-sub-nav.site-nav--has-dropdown .menu-link.menu-bar-link').on('click', function () {
         $(this).next('.mega-menu.mega-menu--multiLevel').css('left', '0');
       }); 
+      $('.site-sub-nav--has-submenu-dropdown >a').each(function () {
+       $(this).on('touchend click', function () {
+        event.stopPropagation();
+        event.preventDefault();
+        if ($(this).next('ul').hasClass('is_submenu_open')) {
+        $('.submenu-sub-dropdown-list').removeClass('is_submenu_open');
+        $('a.site-sub-nav--has-dropdown').removeClass('is_submenu_link_open');
+        }
+        else {
+        $('.submenu-sub-dropdown-list').removeClass('is_submenu_open');
+         $(this).next('ul').toggleClass('is_submenu_open');
+         $('a.site-sub-nav--has-dropdown').removeClass('is_submenu_link_open');
+         $(this).toggleClass('is_submenu_link_open');
+          }
 
+       })
+      });
 
-
-                                                            $('.site-sub-nav--has-submenu-dropdown >a').each(function () {
-                                                              $(this).on('touchend click', function () {
-                                                                event.stopPropagation();
-                                                                event.preventDefault();
-                                                                if ($(this).next('ul').hasClass('is_submenu_open')) {
-                                                                  $('.submenu-sub-dropdown-list').removeClass('is_submenu_open');
-                                                                  $('a.site-sub-nav--has-dropdown').removeClass('is_submenu_link_open');
-                                                                }
-                                                                else {
-                                                                  $('.submenu-sub-dropdown-list').removeClass('is_submenu_open');
-                                                                  $(this).next('ul').toggleClass('is_submenu_open');
-                                                                  $('a.site-sub-nav--has-dropdown').removeClass('is_submenu_link_open');
-                                                                  $(this).toggleClass('is_submenu_link_open');
-                                                                }
-
-                                                            })
-                                                          });
-
-                                                            var universeFirstOpen = $('.main-sub-nav.site-nav--has-dropdown[aria-label="Universe"] .mega-menu.mega-menu--multiLevel')
-                                                            $(universeFirstOpen).each(function () {
-                                                              $('.main-sub-nav.site-nav--has-dropdown[aria-label="Universe"] .mega-menu.mega-menu--multiLevel > li:nth-child(4) >ul').addClass('is_submenu_open');
-                                                              $('.main-sub-nav.site-nav--has-dropdown[aria-label="Universe"] .mega-menu.mega-menu--multiLevel > li:nth-child(4) >a').addClass('is_submenu_link_open');
-                                                            })
+   var universeFirstOpen = $('.main-sub-nav.site-nav--has-dropdown[aria-label="Universe"] .mega-menu.mega-menu--multiLevel')
+    $(universeFirstOpen).each(function () {
+     $('.main-sub-nav.site-nav--has-dropdown[aria-label="Universe"] .mega-menu.mega-menu--multiLevel > li:nth-child(4) >ul').addClass('is_submenu_open');
+      $('.main-sub-nav.site-nav--has-dropdown[aria-label="Universe"] .mega-menu.mega-menu--multiLevel > li:nth-child(4) >a').addClass('is_submenu_link_open');
+        })
                                                           
 
       var headerFixedScroll = document.querySelector('.header.custom-header .nav');
@@ -219,9 +240,6 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
       }
     })
 </script>
-
-
-
 <script>
   $(document).on('keyup', '#custom-search-bar', function () {
     var searchValue = $(this).val().toLowerCase();
@@ -237,7 +255,6 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
     }
   });
 </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script>
   $(document).ready(function () {
     var found = setInterval(function () {
@@ -262,7 +279,13 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
     }, 200);
   });
 </script>
+  
   <script>
+    $("#navigation-menu-toggle").click(function (event) {
+      event.preventDefault(); // Should stop the page reloading.
+    });
+  </script>
+    <script>
     function addItemToCart(variant_id, qty) {
       data = {
         "id": variant_id,
@@ -279,13 +302,19 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
       });
     }
   </script>
-  
-  <script>
-    $("#navigation-menu-toggle").click(function (event) {
-      event.preventDefault(); // Should stop the page reloading.
-    });
+    <script>
+      $(function(){
+          ge_interval = setInterval(function () {
+          const ge_click_link = document.getElementById('ge_ss0_2');
+          if(ge_click_link)
+          {
+            $("#ge_ss0_2 span:nth-child(2)").html($("#ge_ss0_2 span:nth-child(2)").html().replace("Click here", "<span id='ge_click_link'>Click here</span>"));
+            clearInterval(ge_interval); 
+          }
+        }, 500);
+      });
   </script>
 
+  
 </body>
 </html>
-

@@ -44,7 +44,7 @@
           "166059286295ef2d0d-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/MIAOU_HOLIDAY_9148_R.jpg",
+              "image": "shopify:\/\/shop_images\/26500007_794bea0a-3069-49b6-ac4a-e3fb613a028a.jpg",
               "bg_color": "#ffffff",
               "tint_color": "#8b8484",
               "tint_strength": "0",
@@ -117,21 +117,21 @@
           "1660593266445103ce-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/MIAOU_HOLIDAY_9287_R.jpg",
+              "image": "shopify:\/\/shop_images\/26470011_3f01240e-0b1b-4c16-a845-a3155777ae03.jpg",
               "bg_color": "#ffffff",
               "tint_color": "#ffffff",
               "tint_strength": "0",
-              "heading": "<p>BEST<\/p><p>SELLERS<\/p>",
+              "heading": "<p>NEW <\/p><p>MATCHING <\/p><p>SETS<\/p>",
               "subhead": "",
               "text_color": "#000000",
-              "link": "shopify:\/\/collections\/best-sellers",
+              "link": "shopify:\/\/collections\/sets",
               "cta": "Shop now",
               "cta_color": "#ffffff",
               "cta_bg_color": "",
               "cta_style": "solid",
               "banner_height": "window",
               "vertical_alignment": "top",
-              "horizontal_alignment": "right"
+              "horizontal_alignment": "left"
             }
           }
         },
@@ -285,13 +285,14 @@
       },
       "hp-hero": {
         "type": "hp-hero",
+        "disabled": true,
         "settings": {
-          "title": "ALL ABOUT YOU",
+          "title": "WORKWEAR <span id=\"word_break\">CAPSULE  <\/span>",
           "subtitle": "",
-          "bg_image": "shopify:\/\/shop_images\/hero-banner.jpg",
-          "bg_image_mobile": "shopify:\/\/shop_images\/68F8BA7C-A58E-4864-B570-38BC9BD55BB6.jpg",
+          "bg_image": "shopify:\/\/shop_images\/26540014n-2_copy.jpg",
+          "bg_image_mobile": "shopify:\/\/shop_images\/26540014n-2_281bff0b-fdcb-4617-8a2b-4bae7e1c8684.jpg",
           "link": "shopify:\/\/collections\/new-womens-clothing",
-          "cta": "SHOP NEW ARRIVALS",
+          "cta": "SHOP NOW",
           "vertical_alignment": "middle",
           "horizontal_alignment": "middle",
           "text_color": "#ffffff"
@@ -365,21 +366,6 @@
         "settings": {
         }
       },
-      "15e9ffd6-8c36-47db-8a8d-3758db086193": {
-        "type": "hp-hero",
-        "disabled": true,
-        "settings": {
-          "title": "HOLIDAY LOOKS",
-          "subtitle": "",
-          "bg_image": "shopify:\/\/shop_images\/HolidayBanner-DesktopFINAL_ffcdb26b-90ca-4f57-aab7-96d58fe4a991.jpg",
-          "bg_image_mobile": "shopify:\/\/shop_images\/MobileBanner.jpg",
-          "link": "shopify:\/\/collections\/nye-looks",
-          "cta": "Shop Now",
-          "vertical_alignment": "middle",
-          "horizontal_alignment": "middle",
-          "text_color": "#000000"
-        }
-      },
       "announcement-bar": {
         "type": "announcement-bar",
         "blocks": {
@@ -409,45 +395,45 @@
           "universe_menu": "main-menu"
         }
       },
-      "76a2e490-ac39-46b6-9408-e0930e177993": {
+      "6058c206-691a-4d2f-9d99-d398fd5a0d74": {
         "type": "video",
         "settings": {
           "video_heading": "New Collection",
           "video_cta": "Shop Drop One",
           "video_cta_id": "shopify:\/\/collections\/new-womens-clothing",
-          "video": "https:\/\/player.vimeo.com\/video\/796802440"
+          "video": "https:\/\/player.vimeo.com\/video\/796802440",
+          "video_mob": "https:\/\/player.vimeo.com\/video\/797458500"
         }
       }
     },
     "content_for_index": [
-      "76a2e490-ac39-46b6-9408-e0930e177993",
+      "6058c206-691a-4d2f-9d99-d398fd5a0d74",
       "hp-hero",
       "166059286295ef2d0d",
       "1660593266445103ce",
       "16605933460ec541aa",
-      "15e9ffd6-8c36-47db-8a8d-3758db086193",
       "1c2da56b-6adf-484d-9c2d-c3025b56df4a",
       "16642594701b762353"
     ],
     "blocks": {
+      "855628211100114053": {
+        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "7570552984445421165": {
+        "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/settings\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "disabled": false,
+        "settings": {
+        }
+      },
       "8962992520437913685": {
         "type": "shopify:\/\/apps\/yotpo-loyalty-rewards\/blocks\/loader-app-embed-block\/2f9660df-5018-4e02-9868-ee1fb88d6ccd",
         "disabled": false,
         "settings": {
           "inject_modules_loader": true,
-          "inject_sdk_loader": true
-        }
-      },
-      "7570552984445421165": {
-        "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/settings\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-        "disabled": true,
-        "settings": {
-        }
-      },
-      "855628211100114053": {
-        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
-        "disabled": false,
-        "settings": {
+          "inject_sdk_loader": false
         }
       }
     }

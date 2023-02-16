@@ -78,7 +78,7 @@
 }
 .locksmith-email-container #locksmith-email-form{
   width: 100%;
-  color: #fff;
+  color: red;
   text-align: center;
   margin-top: 30px;
 }
@@ -89,6 +89,11 @@
   padding: 0.5rem;
   width: 100%;
   height: 2.4375rem;
+  cursor: pointer;
+}
+.locksmith-email-container #locksmith-email-form h4, .locksmith-email-container #locksmith-email-form p{
+  margin-bottom: 2rem;
+  color: white;
 }
 @media print, screen and (min-width: 64em){
   .locksmith-email-container{
@@ -105,18 +110,27 @@ body#private-sale .Header-container {
     right: 0;
 }
 
-
-/*======= My Css =======*/
-
 /* size gudes styles */
 
 .size_guide_image_section > div{
   margin-bottom: 20px;
-
 }
 @media (min-width:1024px){
   .size_guide_image_section{
     display: flex;
     column-gap: 20px;
   } 
+}
+/* create_customer in join now */
+input#first_name {
+    background: #191919;
+}
+input#last_name {
+    background: #191919;
+}
+input#email {
+    background: #191919;
+}
+input#password {
+    background: #191919;
 }
