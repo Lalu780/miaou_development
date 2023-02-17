@@ -112,7 +112,9 @@
 
       {% if has_second_image == 1 %}
         {% capture grid_item_second_image_sizes %}
-          {% if show_featured_as_second_image == 1 %}
+          {% if collection.title == 'Matching Sets' and grid_item.metafields.custom.plp_matching_hero_dev %}
+          {%- render 'print-image-sizes', image: grid_item.metafields.custom.plp_matching_hero_dev -%}
+          {% elsif show_featured_as_second_image == 1 %}
             {%- render 'print-image-sizes', image: grid_item.images[0] -%}
           {% else %}
             {% if grid_item.metafields.pdp_extras.pdp_additional_flat_image  %}
