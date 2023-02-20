@@ -3510,6 +3510,20 @@ a.pswp__share--download:hover {
   background-size: contain;
   background-image: url('{{ "white-globe.png" | asset_url }}');
 }
+@media(min-width:1024px){
+  .announcement-shipping-switcher .ge-switcher-flag:before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 0;
+  margin-top: 0;
+  background-size: contain;
+  background-image: url('{{ "white-globe.png" | asset_url }}');
+  background-repeat: no-repeat;
+}
+}
 
 .ge-switcher-flag span {
   display: none;
@@ -5752,11 +5766,11 @@ a.pswp__share--download:hover {
   border-radius: 0;
   background-color: white;
   color: black;
-  font-weight: normal;
+  font-weight: 900;
   font-size: 1em;
   cursor: pointer;
   width: 100%;
-  padding: 0.5em 0;
+  padding: 1.5em 0;
   text-transform: uppercase;
   text-align: center;
 }
@@ -8282,7 +8296,17 @@ h3 {
 }
 #FreeShippingBanner {
   background-color: black;
-   display:none !important
+  padding:10px !important;
+  position:fixed;
+  width:100%;
+  z-index:1;
+  display: block !important;
+  float:left;
+}
+.announcement-shipping-switcher{
+  float:right;
+  display:flex;
+  align-items:center;
 }
 @media (max-width: 767px){
   #FreeShippingBanner{
@@ -8727,4 +8751,23 @@ img#Globe_e {
 .Footer {
     padding-top: 120px;
 }
-
+  @media only screen and (min-width: 1010px) and (max-width: 1360px) {
+    .nosto_cart_element {
+      height: 154px;
+      border: 1px solid white;
+      margin-bottom: 10px;
+  }
+  }
+  div#ge_ss0_2{
+    width: auto;
+  }
+    @media only screen and (min-width: 1010px) {
+.announcement-bar .announcement-bar__message {
+    margin-left: 5em;
+}
+    }
+    @media (min-width: 1024px) {
+.login-block {
+    padding-top: 0.2em;
+}
+}

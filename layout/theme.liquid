@@ -88,7 +88,7 @@
 id="{{ page_title | handle }}"
 class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if template == blank %}no-template{% endif %}" data-shopify-template="{{ template | handleize }}">
 <script>window.KlarnaThemeGlobals={};{%case template.name%} {%when"product"%} {% if product.first_available_variant.price %}window.KlarnaThemeGlobals.data_purchase_amount = {{ product.first_available_variant.price }};{% endif %}window.KlarnaThemeGlobals.productVariants={{product.variants|json}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%when"cart"%} window.KlarnaThemeGlobals.data_purchase_amount={{cart.total_price}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%endcase%}</script>
-  {% section 'announcement-bar' %}
+<!--   {% section 'announcement-bar' %} -->
   {%- unless template.suffix == 'international-checkout' -%}
     {% section 'custom-header' %}
   {%- endunless -%}
@@ -314,6 +314,53 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
         }, 500);
       });
   </script>
+    <script>
+      $(function(){
+        setTimeout(function(){
+          const freeShippingBanner = document.getElementById('FreeShippingBanner');
+          if (freeShippingBanner === null) {
+            $('body').prepend('<div id="FreeShippingBanner" style="direction: ltr;display: flex;justify-content: center;align-content: center;padding: .2rem;text-align: center;color: white;">Free shipping and returns on all orders in the US</div>');
+          }
+        }, 10000);
+          ge_interval = setInterval(function () {
+          const ge_click_link = document.getElementById('ge_ss0_2');
+          if(ge_click_link)
+          {
+            $("#ge_ss0_2 span:nth-child(2)").html($("#ge_ss0_2 span:nth-child(2)").html().replace("Click here", "<span id='ge_click_link'>Click here</span>"));
+            clearInterval(ge_interval); 
+          }
+        }, 500);
+      });
+  </script>
+
+   <script>
+  $(document).ready(function () {
+     const freeShippingBanners = document.getElementById('FreeShippingBanner');
+    var founds = setInterval(function () {
+     if ($("#FreeShippingBanner").length) {
+        clearInterval(founds);
+      }
+       $('#FreeShippingBanner').append(`<div class="announcement-shipping-switcher">    
+            <span data-ge-shippingswitcher-flag /></span>
+             <div class="login-block">
+              <a href="/account" class="HeaderMenu-itemLink" title="Account">
+                <div class="HeaderMenu-AccountIcon">
+                  {% render 'svg-account' %}
+                </div>
+                <div>
+                  {% if customer %}
+                  <span class="HeaderMenu-SearchTitle">Account</span>
+                  {% else %}
+                  <span class="HeaderMenu-SearchTitle">Login</span>
+                  {% endif %}
+                </div>
+              </a>
+            </div>
+            </div>`);      
+    }, 200);
+  });
+</script>
+  
 
   
 </body>
