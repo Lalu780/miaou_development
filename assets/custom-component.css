@@ -321,7 +321,7 @@ nav a:hover, nav a:visited {
     display: none;
  }
  
-@media all and (min-width: 951px) {
+@media all and (min-width: 1024px) {
     .menu-link[aria-haspopup="true"]:after{
         right: 10px;
         margin-left: 0;
@@ -338,7 +338,7 @@ nav a:hover, nav a:visited {
         margin: 0 auto; */
         width: 100%;
         padding-left: 20px;
-        padding-right: 40px;
+        padding-right: 10px;
    }
     .menu [aria-haspopup="true"] ~ ul {
         display: none;
@@ -440,6 +440,13 @@ nav a:hover, nav a:visited {
     font-size: 11px;
    }
 }
+
+@media(min-width:1261px){
+    .nav > nav{
+        padding-right: 40px;
+    }
+}
+
 @media(min-width:1024px){
     .header_icons .HeaderMenu-itemLink[title="Account"]{
         display: none;
@@ -559,7 +566,7 @@ nav a:hover, nav a:visited {
 
 /* mobilemenu styles */
 
-@media all and (max-width: 950px) {
+@media all and (max-width: 1023px) {
     .menu-link{
         background-color: #000000;
         color: #ffffff;
@@ -769,7 +776,7 @@ nav a:hover, nav a:visited {
     animation: dropdown .3s forwards;
    }
 }
-@media all and (max-width: 950px) and (hover: none) {
+@media all and (max-width: 1023px) and (hover: none) {
     /* .mobile-menu-trigger:hover ~ ul {
         left: 0;
    } */
@@ -804,7 +811,7 @@ nav a:hover, nav a:visited {
         visibility: hidden;
    }  
 }
-@media(max-width:767px){
+@media(max-width:1023px){
     .navigation-nosto-section.navigation-nosto-section-mobile{
         display: block;
         /* min-height: 300px !important; */
@@ -829,6 +836,9 @@ nav a:hover, nav a:visited {
     }
     .navigation-nosto-section.navigation-nosto-section-mobile .navigation-image-grid{
         display: flex;
+    }
+    .navigation-nosto-section.navigation-nosto-section-mobile .navigation-image-grid .navigation-image-item{
+        width: 25%;
     }
    .mobile-fixed-menu ul li{
         width: 33.33%;
@@ -951,7 +961,7 @@ nav a:hover, nav a:visited {
     }
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1023px) {
     .main-sub-nav.site-nav--has-dropdown[aria-label="Shop"] .navigation-nosto-section .navigation-image-grid{
        margin-left: 15px;
        margin-right: 15px;
@@ -969,7 +979,7 @@ nav a:hover, nav a:visited {
     }
     }
 
-    @media(max-width:767px){
+    @media(max-width:1023px){
         /* .menu-bar .main-sub-nav:first-of-type, 
         .menu-bar .main-sub-nav:nth-of-type(2), 
         .menu-bar .main-sub-nav:nth-of-type(3),
