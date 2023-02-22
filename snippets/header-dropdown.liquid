@@ -13,9 +13,6 @@
   <ul class="HeaderDropdown-items">
     <!-- inline-block fix
     {% for midlink in midlist.links %}
-      {%- comment %}<locksmith:243d>{% endcomment -%}
-        {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: midlink, subject_parent: midlist, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-      {%- comment %}</locksmith:243d>{% endcomment -%}
       {% assign midlink_utf_handle = midlink.title | strip | replace: ' ', '-' | url_encode | handle %}
       {% assign bottomlist = false %}
       {% for linklist in linklists %}
@@ -37,9 +34,6 @@
         {% if item_has_subitems %}
           <ul class="HeaderDropdown-subItems">
             {% for bottomlink in bottomlist.links %}
-              {%- comment %}<locksmith:deb7>{% endcomment -%}
-                {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: bottomlink, subject_parent: bottomlist, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-              {%- comment %}</locksmith:deb7>{% endcomment -%}
               <li class="HeaderDropdown-subItem">
                 <a class="HeaderDropdown-subItemLink {% if bottomlink.active %}is-active{% endif %}" href="{{ bottomlink.url }}" title="{{ bottomlink.title }}">
                   {{ bottomlink.title }}

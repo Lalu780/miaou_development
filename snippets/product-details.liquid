@@ -42,9 +42,6 @@
   {%- if smp_collection.title != blank -%}
     <div class="Product-Swatches-SMP">
       {%- for prod in smp_collection.products -%}
-       {%- comment %}<locksmith:b382>{% endcomment -%}
-         {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: prod, subject_parent: smp_collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-       {%- comment %}</locksmith:b382>{% endcomment -%}
        {%- assign pdp_swatch_image = prod.metafields.pdp_extras.pdp_swatch_image -%}
         {%- assign pdp_swatch_image_upload = prod.metafields.pdp_extras.pdp_swatch_image_upload -%}
         {%- if pdp_swatch_image_upload  != blank -%}

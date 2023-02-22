@@ -3,9 +3,6 @@
     window.objectData = window.objectData || {};
     var collection_featured_image_array = {};
     {% for collection in collections %}
-      {%- comment %}<locksmith:002c>{% endcomment -%}
-        {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-      {%- comment %}</locksmith:002c>{% endcomment -%}
       {% if collection.products_count > 0 %}
         collection_featured_image_array["{{collection.handle}}"] = {{collection.featured_image | json }};
       {% endif %}

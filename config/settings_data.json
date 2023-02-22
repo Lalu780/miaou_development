@@ -44,7 +44,7 @@
           "166059286295ef2d0d-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/26500007_794bea0a-3069-49b6-ac4a-e3fb613a028a.jpg",
+              "image": "shopify:\/\/shop_images\/IMG_2932_copy.jpg",
               "bg_color": "#ffffff",
               "tint_color": "#8b8484",
               "tint_strength": "0",
@@ -52,7 +52,7 @@
               "subhead": "",
               "text_color": "#000000",
               "link": "https:\/\/miaou.com\/collections\/corsets",
-              "cta": "Shop now",
+              "cta": "<br><br>Shop now",
               "cta_color": "#ffffff",
               "cta_bg_color": "",
               "cta_style": "solid",
@@ -117,7 +117,7 @@
           "1660593266445103ce-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/26470011_3f01240e-0b1b-4c16-a845-a3155777ae03.jpg",
+              "image": "shopify:\/\/shop_images\/7026PM2_DIONPLAID_5162.jpg",
               "bg_color": "#ffffff",
               "tint_color": "#ffffff",
               "tint_strength": "0",
@@ -125,71 +125,19 @@
               "subhead": "",
               "text_color": "#000000",
               "link": "shopify:\/\/collections\/sets",
-              "cta": "Shop now",
+              "cta": "<br><br>Shop now",
               "cta_color": "#ffffff",
               "cta_bg_color": "",
               "cta_style": "solid",
               "banner_height": "window",
               "vertical_alignment": "top",
-              "horizontal_alignment": "left"
+              "horizontal_alignment": "right"
             }
           }
         },
         "block_order": [
           "1660593266445103ce-0",
           "1660593266445103ce-1"
-        ],
-        "settings": {
-        }
-      },
-      "16605933460ec541aa": {
-        "type": "banner-grid",
-        "disabled": true,
-        "blocks": {
-          "16605933460ec541aa-0": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/1fcdb6b0-4b33-46d7-b1aa-5624c1d2.jpg",
-              "bg_color": "#ffffff",
-              "tint_color": "#ffffff",
-              "tint_strength": "0.2",
-              "heading": "<p>LAST CHANCE SALE<\/p>",
-              "subhead": "",
-              "text_color": "#ffffff",
-              "link": "",
-              "cta": "Shop now",
-              "cta_color": "#ffffff",
-              "cta_bg_color": "rgba(0,0,0,0)",
-              "cta_style": "solid",
-              "banner_height": "window",
-              "vertical_alignment": "middle",
-              "horizontal_alignment": "middle"
-            }
-          },
-          "16605933460ec541aa-1": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/689425ec-60c0-4f39-860e-4900ba566163_noUvLQAYMPzOY89jNoxY-UG9xVIr4UR1zA_1.jpg",
-              "bg_color": "#ffffff",
-              "tint_color": "#ffffff",
-              "tint_strength": "0.2",
-              "heading": "<p>SHE'S BACK<\/p>",
-              "subhead": "",
-              "text_color": "#ffffff",
-              "link": "",
-              "cta": "Shop now",
-              "cta_color": "",
-              "cta_bg_color": "",
-              "cta_style": "solid",
-              "banner_height": "window",
-              "vertical_alignment": "middle",
-              "horizontal_alignment": "middle"
-            }
-          }
-        },
-        "block_order": [
-          "16605933460ec541aa-0",
-          "16605933460ec541aa-1"
         ],
         "settings": {
         }
@@ -287,12 +235,12 @@
         "type": "hp-hero",
         "disabled": true,
         "settings": {
-          "title": "WORKWEAR <span id=\"word_break\">CAPSULE  <\/span>",
+          "title": "NEW COLLECTION",
           "subtitle": "",
-          "bg_image": "shopify:\/\/shop_images\/26540014n-2_copy.jpg",
-          "bg_image_mobile": "shopify:\/\/shop_images\/26540014n-2_281bff0b-fdcb-4617-8a2b-4bae7e1c8684.jpg",
+          "bg_image": "shopify:\/\/shop_images\/MIAOU_WITH_KIKO_HR_002-6_copy.jpg",
+          "bg_image_mobile": "shopify:\/\/shop_images\/MIAOU_WITH_KIKO_HR_0-4_V1.jpg",
           "link": "shopify:\/\/collections\/new-womens-clothing",
-          "cta": "SHOP NOW",
+          "cta": "SHOP DROP ONE",
           "vertical_alignment": "middle",
           "horizontal_alignment": "middle",
           "text_color": "#ffffff"
@@ -366,24 +314,14 @@
         "settings": {
         }
       },
-      "announcement-bar": {
-        "type": "announcement-bar",
-        "blocks": {
-          "announcement-bar-0": {
-            "type": "announcement",
-            "settings": {
-              "text": "Free shipping to India on all orders above ₹12173",
-              "color_scheme": "#000000",
-              "text_color": "#ffffff",
-              "text_alignment": "center",
-              "link": ""
-            }
-          }
-        },
-        "block_order": [
-          "announcement-bar-0"
-        ],
+      "56816988-2ae0-4c2f-8dc1-3a6212b43384": {
+        "type": "video",
         "settings": {
+          "video_heading": "NEW COLLECTION",
+          "video_cta": "SHOP NOW",
+          "video_cta_id": "shopify:\/\/collections\/new-womens-clothing",
+          "video": "https:\/\/player.vimeo.com\/video\/796802440",
+          "video_mob": "https:\/\/player.vimeo.com\/video\/798890387"
         }
       },
       "custom-header": {
@@ -394,24 +332,13 @@
           "mobile-fixed-menu": "mobile-fixed-menu",
           "universe_menu": "main-menu"
         }
-      },
-      "6058c206-691a-4d2f-9d99-d398fd5a0d74": {
-        "type": "video",
-        "settings": {
-          "video_heading": "New Collection",
-          "video_cta": "Shop Drop One",
-          "video_cta_id": "shopify:\/\/collections\/new-womens-clothing",
-          "video": "https:\/\/player.vimeo.com\/video\/796802440",
-          "video_mob": "https:\/\/player.vimeo.com\/video\/797458500"
-        }
       }
     },
     "content_for_index": [
-      "6058c206-691a-4d2f-9d99-d398fd5a0d74",
+      "56816988-2ae0-4c2f-8dc1-3a6212b43384",
       "hp-hero",
       "166059286295ef2d0d",
       "1660593266445103ce",
-      "16605933460ec541aa",
       "1c2da56b-6adf-484d-9c2d-c3025b56df4a",
       "16642594701b762353"
     ],

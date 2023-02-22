@@ -3491,12 +3491,12 @@ a.pswp__share--download:hover {
   height: 1.125rem;
 }
 .ge-switcher-flag.ge-flag-hide {
-  display: block !important;
+    display: flex !important;
     color: white !important;
     min-width: 100px;
     text-align: center;
     padding-left: 0px;
-    padding-bottom: 20px;
+/*     padding-bottom: 20px; */
 }
 .ge-switcher-flag:before {
   content: "";
@@ -3510,21 +3510,6 @@ a.pswp__share--download:hover {
   background-size: contain;
   background-image: url('{{ "white-globe.png" | asset_url }}');
 }
-@media(min-width:1024px){
-  .announcement-shipping-switcher .ge-switcher-flag:before {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  top: 50%;
-  left: 0;
-  margin-top: 0;
-  background-size: contain;
-  background-image: url('{{ "white-globe.png" | asset_url }}');
-  background-repeat: no-repeat;
-}
-}
-
 .ge-switcher-flag span {
   display: none;
 }
@@ -5770,7 +5755,7 @@ a.pswp__share--download:hover {
   font-size: 1em;
   cursor: pointer;
   width: 100%;
-  padding: 1.5em 0;
+  padding: 1.2em 0;
   text-transform: uppercase;
   text-align: center;
 }
@@ -6024,9 +6009,12 @@ a.pswp__share--download:hover {
 .Offcanvas {
   position: fixed;
   right: 0;
-  top: 0;
+/*   top: 0; */
   height: 100%;
-  width: 90%;
+/*   width: 90%; */
+     /* top: 6.5em; */
+     top:83px;
+    width: 100%; 
   background-color: black;
   transform: scale(1);
   transform-origin: top right;
@@ -8129,8 +8117,9 @@ h3 {
     margin: 5rem 5rem 4rem;
   }
   .Offcanvas {
-    width: 50%;
+    width: 100%;
     padding: 5rem 5rem 0;
+        height: 35em !important;
   }
   .Offcanvas-Drawer-Row.is-expanded {
     display: grid !important;
@@ -8659,7 +8648,6 @@ input.Input {
 
 form#create_customer input {
     overflow: visible;
-/*     background: #191919 !important; */
 }
 
 @media screen and (min-width: 1360px) {
@@ -8671,103 +8659,60 @@ form#create_customer input {
     margin: 10rem auto auto;
 }
 }
+
+@media only screen and (max-width: 1010px) and (min-width: 1001px) { 
+  .nosto_cart_element {
+    display: none;
+}
+}
 .yotpo.yotpo-main-widget .list-category .yotpo-filter-stars .yotpo-icon {
   display:inline-block;
   font-size: 24.5px !important;
 }
 
-/* nosto add to cart */
-@media only screen and (max-width: 550px){
-    .nosto_cart_element {
-      height: 143px;
-      border: 1px solid white;
-      margin-bottom: 12px;
-  }
-  }
-  @media only screen and (min-width: 551px)and (max-width: 768px){
-     .nosto_cart_element {
-      height: 140px;
-      border: 1px solid white;
-      margin-bottom: 15px;
-  }
-  }
-  @media only screen and (min-width: 769px)and (max-width: 1000px){
-     .nosto_cart_element {
-      height: 130px;
-      border: 1px solid white;
-      margin-bottom: 15px;
-  }
-  }
-  @media only screen and (min-width: 1010px) and (max-width: 1360px) {
-    .nosto_cart_element {
-      height: 154px;
-      border: 1px solid white;
-      margin-bottom: 10px;
-  }
-  }
-  @media only screen and (min-width: 1361px) and (max-width: 1439px) {
-  .nosto_cart_element {
-      height: 153px;
-      border: 2px solid white;
-      margin-bottom: 10px;
-  }
-  }
-  @media only screen and (min-width: 1440px) {
-  .nosto_cart_element {
-      height: 160px;
-      border: 2px solid white;
-      margin-bottom: 10px;
-  }
-  }
-    @media only screen and (max-width: 290px) {
-  .nosto_cart_element {
-    display: none;
-  }
-  }
-    @media only screen and (max-width: 999px) {
-  .ge-flag-show {
-    display: block;
-    margin-right: 5px;
+input#first_name {
+background: #191919!important;
 }
-.announcement-text-block {
-    width: 100%;
+input#last_name {
+background: #191919!important;
+}
+input#email {
+background: #191919!important;
+}
+input#password {
+background: #191919!important;
 }
 
-.page-width {
-    display: flex;
-    align-items: center;
+@media(min-width:1024px){
+  .announcement-shipping-switcher .ge-switcher-flag:before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 0;
+  margin-top: 0;
+  background-size: contain;
+  background-image: url('{{ "white-globe.png" | asset_url }}');
+  background-repeat: no-repeat;
 }
-      img#Globe_e {
-    display: none;
-}
-      
-}
-.ge-flag-show {
-  display: block;
-}
-img#Globe_e {
-    margin-right: -4px;
 }
 .Footer {
-    padding-top: 120px;
+    padding-top: 11em;
 }
-  @media only screen and (min-width: 1010px) and (max-width: 1360px) {
-    .nosto_cart_element {
-      height: 154px;
-      border: 1px solid white;
-      margin-bottom: 10px;
-  }
-  }
-  div#ge_ss0_2{
+.ge-switcher-flag.ge-flag-hide {
     width: auto;
+}
+@media only screen and (max-width: 300px)
+.nosto_cart_element {
+    display: none;
+}
+@media only screen and (max-width: 767px) {
+  .VideoSection,
+.VideoSection iframe {
+    height: 82vh !important;
   }
-    @media only screen and (min-width: 1010px) {
-.announcement-bar .announcement-bar__message {
-    margin-left: 5em;
 }
-    }
-    @media (min-width: 1024px) {
-.login-block {
-    padding-top: 0.2em;
-}
-}
+/* .black-menu {
+    background: black !important;
+} */

@@ -121,16 +121,44 @@ body#private-sale .Header-container {
     column-gap: 20px;
   } 
 }
-/* create_customer in join now */
-input#first_name {
-    background: #191919;
+
+/* video section styles */
+.video-main-section{
+    position: relative;
 }
-input#last_name {
-    background: #191919;
+.video-main-section .video-section-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);   
+    text-align: center;
+    width: 90%;
 }
-input#email {
-    background: #191919;
+.video-section-content .HPHero-title{
+  margin-top:0;
 }
-input#password {
-    background: #191919;
+.video-section-content .HPHero-title:hover, .video-section-content .HPHero-cta:hover{
+  color:#ffffff;
+}
+@media(max-width:767px){
+    .VideoSection, .VideoSection iframe{
+        height: 86vh;
+    }
+}
+@media print, screen and (min-width: 64em){
+    .video-main-section .video-section-content{
+        max-width: 70%;
+    }
+}
+
+/*   video section  */
+@media print, screen and (max-width: 768px){
+    .video-main-section .VideoSection {
+    display: none;
+}
+}
+@media print, screen and (min-width: 769px){
+    .video-main-section .VideoSection_mob {
+    display: none;
+}
 }

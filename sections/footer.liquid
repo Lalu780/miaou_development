@@ -18,9 +18,6 @@
             <p style="text-transform:uppercase;font-weight:bold;margin-bottom:20px;">{{ menu_header }}</p>
             <ul class="FooterMenu-items">
               {% for link in menu.links %}
-                {%- comment %}<locksmith:053d>{% endcomment -%}
-                  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: menu, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-                {%- comment %}</locksmith:053d>{% endcomment -%}
                 <li class="FooterMenu-item">
                   <a class="FooterMenu-itemLink" href="{{ link.url }}">
                     {{ link.title }}

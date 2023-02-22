@@ -1,7 +1,3 @@
-{%- comment %}<locksmith:b07c>{% endcomment -%}
-  {%- include 'locksmith' -%}
-{%- comment %}</locksmith:b07c>{% endcomment -%}
-
 <!doctype html>
 {% assign site_lang = shop.locale | default: 'en' %}
 <!--[if lt IE 9]><html class="lt-ie9" lang="{{ site_lang }}"><![endif]-->
@@ -9,7 +5,6 @@
 <!--[if gt IE 9]><!--><html lang="{{ site_lang }}"><!--<![endif]-->
 
 <head>
-  {{ locksmith_initializations }}
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,7 +13,6 @@
   <link rel="preconnect" href="https://cdn.shopify.com">
   <link rel="preconnect" href="https://cdn.polyfill.io">
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<!-- <script src="https://connect.nosto.com/script/shopify/nosto.js?merchant=shopify-12311148\u0026shop=miaouxx.myshopify.com"></script> -->
   <script src="{{ 'jquery.min.js' | asset_url }}"></script> 
   <script async src="{{ 'slick.min.js' | asset_url }}"></script>
    {{ 'slick.min.css' | asset_url | stylesheet_tag }}
@@ -31,8 +25,9 @@
     gtag('js', new Date());
     gtag('config', 'G-64JE1WKVL7');
   </script>
-  
 
+  <script type="text/javascript" src="https://cdn.sales.partner.stylight.net/v1/st.min.js"></script>
+  
   <!-- Meta -->
   {% liquid
     render 'meta'
@@ -52,7 +47,7 @@
   <link id="GEPIStyles" rel="stylesheet" href="//gepi.global-e.com/includes/css/10000772" />
 
   <!-- Custom header content -->
-    {{ content_for_header }}
+  {{ content_for_header }}
   <!-- End of custom header content -->
 
   <script type="text/javascript">
@@ -75,20 +70,16 @@
   </script>
 
   {% render 'collections-object-data' %}
-
   {% render 'gsf-conversion-pixels' %}
-
-  
- {% include 'talkable-partial' %}
-
- <script type="text/javascript" src="https://cdn.sales.partner.stylight.net/v1/st.min.js"></script>
+{% include 'talkable-partial' %}
 </head>
 
 <body 
 id="{{ page_title | handle }}"
 class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if template == blank %}no-template{% endif %}" data-shopify-template="{{ template | handleize }}">
 <script>window.KlarnaThemeGlobals={};{%case template.name%} {%when"product"%} {% if product.first_available_variant.price %}window.KlarnaThemeGlobals.data_purchase_amount = {{ product.first_available_variant.price }};{% endif %}window.KlarnaThemeGlobals.productVariants={{product.variants|json}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%when"cart"%} window.KlarnaThemeGlobals.data_purchase_amount={{cart.total_price}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%endcase%}</script>
-<!--   {% section 'announcement-bar' %} -->
+
+
   {%- unless template.suffix == 'international-checkout' -%}
     {% section 'custom-header' %}
   {%- endunless -%}
@@ -163,7 +154,23 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
       attach: ".CartDrawer-checkoutButton"
   	});
   </script>
-
+  <script>
+    $(function () {
+      setTimeout(function () {
+        const freeShippingBanner = document.getElementById('FreeShippingBanner');
+        if (freeShippingBanner === null) {
+          $('body').prepend('<div id="FreeShippingBanner" style="direction: ltr;display: flex;justify-content: center;align-content: center;padding: .2rem;text-align: center;color: white;">Free shipping and returns on all orders in the US</div>');
+        }
+      }, 15000);
+      ge_interval = setInterval(function () {
+        const ge_click_link = document.getElementById('ge_ss0_2');
+        if (ge_click_link) {
+          $("#ge_ss0_2 span:nth-child(2)").html($("#ge_ss0_2 span:nth-child(2)").html().replace("Click here", "<span id='ge_click_link'>Click here</span>"));
+          clearInterval(ge_interval);
+        }
+      }, 500);
+    });
+  </script>
   <script>
   $(document).ready(function() {
     $("#first_name").attr("placeholder", "First Name");
@@ -173,7 +180,7 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
   });
 </script>
 
-    <script>
+      <script>
        $(document).ready(function (e) {
         $('#navigation-menu-toggle').click(function (event) {
         $('#accessibleNav').addClass('is-open');
@@ -189,11 +196,24 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
         $('body').removeClass('overflow-hidden');
       });
 
+
       $('.menu.menu-bar .menu-link, .mega-menu.mega-menu--multiLevel, .navigation-nosto-section, .universe-banner').mouseenter(function () {
         $('.header.custom-header .nav').addClass('black-bg');
       }).mouseleave(function () {
         $('.header.custom-header .nav').removeClass('black-bg');
       });
+
+         $('a[data-drawer-name="search"]').on('click', function (event) {
+           $('.header.custom-header .nav').addClass('search-black-bg');
+           event.stopPropagation();
+         });
+
+         $('body').on('click', function (event) {
+           if ($('.header.custom-header .nav').hasClass('search-black-bg')) {
+             $('.header.custom-header .nav').removeClass('search-black-bg');
+           }
+         });
+        
 
       $('.main-sub-nav.site-nav--has-dropdown .mobile-menu-back-item').on('click', function () {
         $(this).parent('.mega-menu.mega-menu--multiLevel').css('left', '100%');
@@ -279,7 +299,6 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
     }, 200);
   });
 </script>
-  
   <script>
     $("#navigation-menu-toggle").click(function (event) {
       event.preventDefault(); // Should stop the page reloading.
@@ -303,33 +322,21 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
     }
   </script>
     <script>
-      $(function(){
-          ge_interval = setInterval(function () {
-          const ge_click_link = document.getElementById('ge_ss0_2');
-          if(ge_click_link)
-          {
-            $("#ge_ss0_2 span:nth-child(2)").html($("#ge_ss0_2 span:nth-child(2)").html().replace("Click here", "<span id='ge_click_link'>Click here</span>"));
-            clearInterval(ge_interval); 
-          }
-        }, 500);
-      });
-  </script>
-    <script>
-      $(function(){
+                                                                                  $(function () {
         setTimeout(function(){
           const freeShippingBanner = document.getElementById('FreeShippingBanner');
           if (freeShippingBanner === null) {
             $('body').prepend('<div id="FreeShippingBanner" style="direction: ltr;display: flex;justify-content: center;align-content: center;padding: .2rem;text-align: center;color: white;">Free shipping and returns on all orders in the US</div>');
           }
-        }, 10000);
-          ge_interval = setInterval(function () {
-          const ge_click_link = document.getElementById('ge_ss0_2');
-          if(ge_click_link)
-          {
-            $("#ge_ss0_2 span:nth-child(2)").html($("#ge_ss0_2 span:nth-child(2)").html().replace("Click here", "<span id='ge_click_link'>Click here</span>"));
-            clearInterval(ge_interval); 
-          }
-        }, 500);
+        }, 20000);
+        //   ge_interval = setInterval(function () {
+        //   const ge_click_link = document.getElementById('ge_ss0_2');
+        //   if(ge_click_link)
+        //   {
+        //     $("#ge_ss0_2 span:nth-child(2)").html($("#ge_ss0_2 span:nth-child(2)").html().replace("Click here", "<span id='ge_click_link'>Click here</span>"));
+        //     clearInterval(ge_interval);
+        //   }
+        // }, 500);
       });
   </script>
 
@@ -360,8 +367,6 @@ class="{{ template | handle | split: '-' | first | prepend: 'template-' }} {% if
     }, 200);
   });
 </script>
-  
 
-  
 </body>
 </html>

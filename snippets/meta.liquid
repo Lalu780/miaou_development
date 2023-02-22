@@ -15,10 +15,7 @@
 
 {% if page_description %}
   {% unless template contains 'blank' %}
-    {%- comment %}<locksmith:6c3a>{% endcomment -%}
-      {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="description" content="{{ page_description | escape }}"/>{% endif -%}
-      {%- comment %}original: <meta name="description" content="{{ page_description | escape }}"/>{%- endcomment %}
-    {%- comment %}</locksmith:6c3a>{% endcomment -%}
+    <meta name="description" content="{{ page_description | escape }}"/>
   {% endunless %}
 {% endif %}
 

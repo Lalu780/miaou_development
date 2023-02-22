@@ -207,9 +207,6 @@
     <h1 class="ProductRecommendation-Title">You May Also Like</h1>
     <div class="Grid">
       {% for single_product in productArr limit: 4 %}
-        {%- comment %}<locksmith:e080>{% endcomment -%}
-          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: single_product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-        {%- comment %}</locksmith:e080>{% endcomment -%}
         {% assign item_data = all_products[single_product] %}
         {% if item_data != blank %}
           {% assign is_empty = false %}
@@ -221,9 +218,6 @@
       {% if is_empty == true %}
         {% assign collProds = product.collections.last.products %}
         {% for single_product in collProds limit: 4 %}
-          {%- comment %}<locksmith:9756>{% endcomment -%}
-            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: single_product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-          {%- comment %}</locksmith:9756>{% endcomment -%}
           <div class="Grid-item">
             {% render 'grid-item', grid_item: single_product %}
           </div>
