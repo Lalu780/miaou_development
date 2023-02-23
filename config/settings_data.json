@@ -326,11 +326,54 @@
       },
       "custom-header": {
         "type": "custom-header",
+        "blocks": {
+          "b42eb6fa-ed52-40e5-96fc-b0f8df5da2ad": {
+            "type": "column",
+            "settings": {
+              "home_slider_image": "shopify:\/\/shop_images\/menu-bestsellers_bb518235-5662-4a54-9ea1-0bb2fd30fbd7.jpg",
+              "home_slider_title": "NEW DROP",
+              "home_slider_url": "shopify:\/\/collections\/new-womens-clothing"
+            }
+          },
+          "2c320188-c871-4df4-888d-0bf79b48b816": {
+            "type": "column",
+            "settings": {
+              "home_slider_image": "shopify:\/\/shop_images\/menu-newdrop_2560c2bb-bf96-41c1-9d70-115d0fed4147.jpg",
+              "home_slider_title": "BEST SELLERS",
+              "home_slider_url": "shopify:\/\/collections\/best-sellers"
+            }
+          },
+          "dbf69ba5-5dca-48ba-8051-848ce7c2e873": {
+            "type": "column",
+            "settings": {
+              "home_slider_image": "shopify:\/\/shop_images\/menu-latex_6ee60a1d-1400-41a1-ab82-f3ae432c21d7.jpg",
+              "home_slider_title": "LATEX",
+              "home_slider_url": "shopify:\/\/collections\/the-latex-shop"
+            }
+          },
+          "e1c2cdc2-eca0-485e-80a2-7c2e1ae45183": {
+            "type": "column",
+            "settings": {
+              "home_slider_image": "shopify:\/\/shop_images\/menu-corset_37ccde82-a8e3-4088-88df-e163b037bc67.jpg",
+              "home_slider_title": "THE CORSET",
+              "home_slider_url": "shopify:\/\/collections\/corsets"
+            }
+          }
+        },
+        "block_order": [
+          "b42eb6fa-ed52-40e5-96fc-b0f8df5da2ad",
+          "2c320188-c871-4df4-888d-0bf79b48b816",
+          "dbf69ba5-5dca-48ba-8051-848ce7c2e873",
+          "e1c2cdc2-eca0-485e-80a2-7c2e1ae45183"
+        ],
         "settings": {
           "main_menu_color": "white-menu",
           "menu": "megamenu",
           "mobile-fixed-menu": "mobile-fixed-menu",
-          "universe_menu": "main-menu"
+          "universe_slider_image": "shopify:\/\/shop_images\/universe-banner.jpg",
+          "universe_slider_title": "Join Miaou Rewards",
+          "universe_slider_subheading": "Start earning points and exclusive rewards every time you shop",
+          "universe_collection_url": "shopify:\/\/pages\/rewards"
         }
       }
     },

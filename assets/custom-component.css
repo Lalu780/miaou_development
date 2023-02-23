@@ -253,7 +253,8 @@ nav a:hover, nav a:visited {
 
 #popular-collections{
     text-align: center;
-    padding-top: 20px;
+/*     padding-top: 20px; */
+  padding-top: 0px;
 }
 #popular-collections > h5{
     color: #ffffff;
@@ -1256,5 +1257,12 @@ iframe#fluidvids-item-desk {
 @media (max-width: 1023px) {
 .header.custom-header .nav {
     background: black !important;
+}
+}
+@media (max-width: 550px) {
+.Offcanvas {
+    height: 30em !important;
+    height: 55% !important;
+  padding: 2rem 1rem 0 !important;
 }
 }

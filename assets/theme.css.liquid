@@ -6012,8 +6012,7 @@ a.pswp__share--download:hover {
 /*   top: 0; */
   height: 100%;
 /*   width: 90%; */
-     /* top: 6.5em; */
-     top:83px;
+     top: 6.5em;
     width: 100%; 
   background-color: black;
   transform: scale(1);
@@ -6175,7 +6174,7 @@ a.pswp__share--download:hover {
 #js-offcanvas-bg {
   position: fixed;
   top: 0;
-  left: -50vw;
+/*   left: -50vw; */
   width: 100vw;
   height: 100vh;
   z-index: -1;
@@ -6236,7 +6235,7 @@ a.pswp__share--download:hover {
 }
 .Search-FeedContent {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 4em;
   padding-bottom: 4em;
 }
@@ -6250,7 +6249,8 @@ a.pswp__share--download:hover {
   color: white;
 }
 .Search-FeedItem-ImagePlaceHolder {
-  padding-bottom: 150%;
+/*   padding-bottom: 150%; */
+  padding-bottom: 120%;
   background-size: cover !important;
   background-position: center top;
 }
@@ -8118,9 +8118,11 @@ h3 {
   }
   .Offcanvas {
     width: 100%;
-    padding: 5rem 5rem 0;
-        height: 35em !important;
-  }
+/*     padding: 5rem 5rem 0; */
+/*         height: 40em !important; */
+      padding: 1rem 5rem 0;
+    height: 39em !important;
+} 
   .Offcanvas-Drawer-Row.is-expanded {
     display: grid !important;
   }
@@ -8713,6 +8715,8 @@ background: #191919!important;
     height: 82vh !important;
   }
 }
-/* .black-menu {
-    background: black !important;
-} */
+@media only screen and (max-width: 600px) {
+.Search-FeedContent {
+    grid-template-columns: 1fr 1fr !important;
+}
+}

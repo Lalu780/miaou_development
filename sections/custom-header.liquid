@@ -39,49 +39,23 @@
             <li class="navigation-nosto-section navigation-nosto-section-mobile">
                 <div class="nosto-image-grid-main">
                 <div class="navigation-image-grid">
+                    {% for block in section.blocks %}
                     <div class="navigation-image-item">
-                        <a href="/collections/new-womens-clothing" class="navigation-image-item-link">
+                        <a href="{%- if block.settings.home_slider_url != blank -%} {{ block.settings.home_slider_url }}{%- endif -%}" class="navigation-image-item-link">
+                        {%- if block.settings.home_slider_image != blank -%}
                             <div class="image-block">
                                 <img
-                                    src="https://cdn.shopify.com/s/files/1/1231/1148/files/menu-bestsellers.jpg?v=1675686298">
+                                    src="{{block.settings.home_slider_image | img_url: 'master'}}">
                             </div>
+                        {%- endif -%}
+                        {%- if block.settings.home_slider_title != blank -%}
                             <div class="text-block">
-                                <p>NEW DROP</p>
+                                <p>{{block.settings.home_slider_title}}</p>
                             </div>
+                        {%- endif -%}
                         </a>
                     </div>
-                    <div class="navigation-image-item">
-                        <a href="/collections/best-sellers" class="navigation-image-item-link">
-                            <div class="image-block">
-                                <img src="https://cdn.shopify.com/s/files/1/1231/1148/files/menu-newdrop.jpg?v=1675686365">
-                                </div>
-                            <div class="text-block">
-                                <p>BEST SELLERS</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="navigation-image-item">
-                        <a href="/collections/the-latex-shop" class="navigation-image-item-link">
-                            <div class="image-block">
-                                <img
-                                    src="https://cdn.shopify.com/s/files/1/1231/1148/files/menu-latex.jpg?v=1675686298">
-                            </div>
-                            <div class="text-block">
-                                <p>LATEX</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="navigation-image-item">
-                        <a href="/collections/corsets" class="navigation-image-item-link">
-                            <div class="image-block">
-                                <img
-                                    src="https://cdn.shopify.com/s/files/1/1231/1148/files/menu-corset.jpg?v=1675686298">
-                            </div>
-                            <div class="text-block">
-                                <p>THE CORSET</p>
-                            </div>
-                        </a>
-                    </div>
+                    {% endfor %}
                 </div>
                 </div>
 
@@ -101,60 +75,44 @@
                         </li>
                         <li class="navigation-nosto-section">
                             <div class="navigation-image-grid">
+                                {% for block in section.blocks %}
                                 <div class="navigation-image-item">
-                                    <a href="/collections/new-womens-clothing" class="navigation-image-item-link">
-                                        <div class="image-block">
-                                            <img src="https://cdn.shopify.com/s/files/1/1231/1148/files/menu-bestsellers.jpg?v=1675686298">
-                                            </div>
-                                            <div class="text-block">
-                                                <p> NEW DROP</p>
-                                            </div>
-                                    </a>
-                                </div>
-                                <div class="navigation-image-item">
-                                    <a href="/collections/best-sellers" class="navigation-image-item-link">
-                                        <div class="image-block">
-                                            <img src="https://cdn.shopify.com/s/files/1/1231/1148/files/menu-newdrop.jpg?v=1675686365">
-                                            </div>
-                                        <div class="text-block">
-                                            <p>BEST SELLERS</p>
-                                        </div>
-                                        </a>
-                                </div>
-                                <div class="navigation-image-item">
-                                    <a href="/collections/the-latex-shop" class="navigation-image-item-link">
+                                    <a href="{%- if block.settings.home_slider_url != blank -%}{{ block.settings.home_slider_url }}{%- endif -%}" class="navigation-image-item-link">
+                                    {%- if block.settings.home_slider_image != blank -%}
                                         <div class="image-block">
                                             <img
-                                                src="https://cdn.shopify.com/s/files/1/1231/1148/files/menu-latex.jpg?v=1675686298">
+                                                src="{{block.settings.home_slider_image | img_url: 'master'}}">
                                         </div>
+                                    {%- endif -%}
+                                    {%- if block.settings.home_slider_title != blank -%}
                                         <div class="text-block">
-                                            <p>LATEX</p>
+                                            <p>{{block.settings.home_slider_title}}</p>
                                         </div>
+                                    {%- endif -%}
                                     </a>
                                 </div>
-                                <div class="navigation-image-item">
-                                    <a href="/collections/corsets" class="navigation-image-item-link">
-                                        <div class="image-block">
-                                            <img
-                                                src="https://cdn.shopify.com/s/files/1/1231/1148/files/menu-corset.jpg?v=1675686298">
-                                        </div>
-                                        <div class="text-block">
-                                            <p>THE CORSET</p>
-                                        </div>
-                                    </a>
+                                {% endfor %}
                                 </div>
-                                    </div>
                                     </li>
                                     <li class="universe-banner-section">
-                                      <a href="/pages/rewards">               
+                                    <a
+                                        href="{%- if section.settings.universe_collection_url != blank -%} {{section.settings.universe_collection_url}} {%- endif -%}">
                                         <div class="universe-banner">
-                                            <div class="universe-image-container">                                             
-                                                <img src="https://cdn.shopify.com/s/files/1/1231/1148/files/universe-banner.jpg?v=1674542652"
-                                                    alt="universe-banner" />                                             
+                                            {%- if section.settings.universe_slider_image != blank -%}
+                                            <div class="universe-image-container">
+<!--                                                 {%- capture universe_image_sizes -%}
+                                                {%- render 'print-image-sizes', image: section.settings.universe_slider_image -%}
+                                                {%- endcapture -%} -->
+                                                <img src="{{ section.settings.universe_slider_image | img_url: 'master'}}" alt="universe-banner" />
                                             </div>
+                                            {%- endif -%}
                                             <div class="universe-text-container">
-                                                <h5>Join Miaou Rewards</h5>
-                                                <p>Start earning points and exclusive rewards every time you shop</p>
+                                                {%- if section.settings.universe_slider_title != blank -%}
+                                                <h5>{{ section.settings.universe_slider_title  }}</h5>
+                                                {%- endif -%}
+                                                {%- if section.settings.universe_slider_subheading != blank -%}
+                                                <p>{{ section.settings.universe_slider_subheading }}</p>
+                                            {%- endif -%}
                                             </div>
                                         </div>
                                       </a>  
@@ -234,18 +192,28 @@
                         <a href="javascript:void(0);" class="menu-link mobile-menu-back-link">Back</a>
                     </li>
                     <li class="universe-banner-section">
-                      <a href="/pages/rewards">
-                        <div class="universe-banner">
-                            <div class="universe-image-container">                            
-                                <img src="https://cdn.shopify.com/s/files/1/1231/1148/files/universe-banner.jpg?v=1674542652"
-                                    alt="universe-banner" />                               
+                        <a
+                            href="{%- if section.settings.universe_collection_url != blank -%} {{section.settings.universe_collection_url}} {%- endif -%}">
+                            <div class="universe-banner">
+                        {%- if section.settings.universe_slider_image != blank -%}
+                        <div class="universe-image-container">
+<!--                             {%- capture universe_image_sizes -%}
+                            {%- render 'print-image-sizes', image: section.settings.universe_slider_image -%}
+                            {%- endcapture -%}
+                            <img src="{{universe_image_sizes}}" alt="universe-banner" /> -->
+                           <img src="{{ section.settings.universe_slider_image | img_url: 'master'}}" alt="universe-banner" />
                             </div>
-                            <div class="universe-text-container">
-                                <h5>Join Miaou Rewards</h5>
-                                <p>Start earning points and exclusive rewards every time you shop</p>
-                            </div>           
+                        {%- endif -%}
+                        <div class="universe-text-container">
+                            {%- if section.settings.universe_slider_title != blank -%}
+                            <h5>{{ section.settings.universe_slider_title }}</h5>
+                            {%- endif -%}
+                            {%- if section.settings.universe_slider_subheading != blank -%}
+                            <p>{{ section.settings.universe_slider_subheading }}</p>
+                        {%- endif -%}
                         </div>
-                      </a>
+                        </div>
+                        </a>
                     </li>
                 </ul>
                 </li>
@@ -328,6 +296,7 @@
   {
     "name": "Custom Header",
     "class": "section-header",
+    "max_blocks": 4,
     "settings": [
         {
             "type":"select",
@@ -359,12 +328,63 @@
             "label": "Select mobile fixed menu"
             },
             {
-            "type": "link_list",
-            "id": "universe_menu",
-            "default": "main-menu",
-            "label": "Select Universe menu"
+            "type": "image_picker",
+            "id": "universe_slider_image",
+            "label": "Select Universe banner image"
+            },
+            {
+            "type": "text",
+            "id": "universe_slider_title",
+            "label": "Universe Heading"
+            },
+            {
+            "type": "text",
+            "id": "universe_slider_subheading",
+            "label": "Universe Sub Heading"
+            },
+            {
+            "type": "url",
+            "id": "universe_collection_url",
+            "label": "Choose universe collection url"
             }
-    
+            ],
+            "blocks": [
+            {
+            "type": "column",
+            "name": "Column",
+            "settings": [
+            {
+            "type": "image_picker",
+            "id": "home_slider_image",
+            "label": "Image"
+            }, {
+            "type": "text",
+            "id": "home_slider_title",
+            "label": "Heading"
+            },
+            {
+            "type": "url",
+            "id": "home_slider_url",
+            "label": "Choose the Collection URL"
+            }
+            ]
+            }
+            ],
+            "presets": [
+            {
+            "name": "Custom Header",
+            "blocks": [
+            {
+            "type": "column"
+            }, {
+            "type": "column"
+            }, {
+            "type": "column"
+            }, {
+            "type": "column"
+            }
+            ]
+            }
     ]
   }
 {% endschema %}

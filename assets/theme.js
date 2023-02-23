@@ -967,7 +967,7 @@
               {
                 className: "Search-FeedItem",
                 href: product.url,
-                style: (product.type == "page" ? "grid-column:span 2" : "")
+                // style: (product.type == "page" ? "grid-column:span 2" : "")
               },
               (0, preact_module.h)("div", {
                 className: (product.type == "page" ? "" : "Search-FeedItem-ImagePlaceHolder o-placeholder"),
