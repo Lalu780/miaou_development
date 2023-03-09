@@ -21,7 +21,11 @@
 
 <!-- Canonical URL -->
 {% if template contains 'collection' %}
+  {% if product == blank and collection and collection.metafields.nosto != blank %}
+  <link rel="canonical" href="{{shop.url}}/collections/{{collection.metafields.nosto.sourceHandle}}">
+  {% else %}
   <link rel="canonical" href="{{ shop.url }}{{ collection.url }}"/>
+{% endif %}
 {% elsif template contains 'product' %}
   <link rel="canonical" href="{{ shop.url }}{{ product.url }}"/>
 {% elsif template contains 'page' %}

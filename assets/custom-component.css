@@ -322,7 +322,7 @@ nav a:hover, nav a:visited {
     display: none;
  }
  
-@media all and (min-width: 1024px) {
+@media all and (min-device-width: 1024px) {
     .menu-link[aria-haspopup="true"]:after{
         right: 10px;
         margin-left: 0;
@@ -441,7 +441,7 @@ nav a:hover, nav a:visited {
     font-size: 11px;
    }
 }
-@media(min-width:1024px){
+@media(min-device-width:1024px){
     .header_icons .HeaderMenu-itemLink[title="Account"]{
         display: none;
     }
@@ -570,7 +570,7 @@ nav a:hover, nav a:visited {
 
 /* mobilemenu styles */
 
-@media all and (max-width: 1023px) {
+@media all and (max-device-width: 1023px) {
     .menu-link{
         background-color: #000000;
         color: #ffffff;
@@ -780,7 +780,7 @@ nav a:hover, nav a:visited {
     animation: dropdown .3s forwards;
    }
 }
-@media all and (max-width: 1023px) and (hover: none) {
+@media all and (max-device-width: 1023px) and (hover: none) {
     /* .mobile-menu-trigger:hover ~ ul {
         left: 0;
    } */
@@ -815,7 +815,7 @@ nav a:hover, nav a:visited {
         visibility: hidden;
    }  
 }
-@media(max-width:767px){
+@media(max-device-width:767px){
     .navigation-nosto-section.navigation-nosto-section-mobile{
         display: block;
         /* min-height: 300px !important; */
@@ -834,7 +834,7 @@ nav a:hover, nav a:visited {
     width:40%;
   }
 }
-@media(min-width:768px) and (max-width:1023px){
+@media only screen and (min-device-width:768px) and (max-device-width:1023px){
     .navigation-nosto-section.navigation-nosto-section-mobile{
         display: block;
     }
@@ -854,7 +854,7 @@ nav a:hover, nav a:visited {
   }
 }
 
-@media (max-width:1023px){
+@media only screen and (max-device-width:1023px){
     .header.custom-header .nav{
         justify-content: space-between;
         margin-top:37px !important;
@@ -963,7 +963,7 @@ nav a:hover, nav a:visited {
     }
 }
 
-@media (max-width: 1023px) {
+@media only screen and (max-device-width: 1023px) {
     .main-sub-nav.site-nav--has-dropdown[aria-label="Shop"] .navigation-nosto-section .navigation-image-grid{
        margin-left: 15px;
        margin-right: 15px;
@@ -981,7 +981,7 @@ nav a:hover, nav a:visited {
     }
     }
 
-    @media(max-width:767px){
+    @media(max-device-width:767px){
         /* .menu-bar .main-sub-nav:first-of-type, 
         .menu-bar .main-sub-nav:nth-of-type(2), 
         .menu-bar .main-sub-nav:nth-of-type(3),
@@ -1004,7 +1004,7 @@ nav a:hover, nav a:visited {
             
     }
 
-    @media(min-width:768px) and (max-width:1023px){
+    @media only screen and (min-device-width:768px) and (max-device-width:1023px){
         /* .menu-bar .main-sub-nav:first-of-type, 
         .menu-bar .main-sub-nav:nth-of-type(2), 
         .menu-bar .main-sub-nav:nth-of-type(3),
@@ -1020,7 +1020,7 @@ nav a:hover, nav a:visited {
           } */
     }
 
- @media(max-width:1023px){
+ @media only screen and (max-device-width:1023px){
     #accessibleNav .header-image-placeholder{
         margin-left: 15px;
       }    
@@ -1254,15 +1254,62 @@ iframe#fluidvids-item-desk {
 .HPHero-title:hover, .HPHero-cta:hover {
   color: white;
 }
-@media (max-width: 1023px) {
+/* @media only screen and (max-device-width: 1023px) {
 .header.custom-header .nav {
     background: black !important;
 }
-}
+} */
+
 @media (max-width: 550px) {
-.Offcanvas {
+ .Search-Drawer-Custom {
     height: 30em !important;
-    height: 55% !important;
+/*     height: 60% !important; */
   padding: 2rem 1rem 0 !important;
+   width: 100%!important;
+   top: 6.5em;
 }
+}
+
+@media (min-width: 551px) {
+ .Search-Drawer-Custom {
+    width: 100%!important;
+    height: 74vh!important;
+    top: 6.5em;
+   padding: 1rem 5rem 0 !important;
+}
+}
+.js-offcanvas-bg-search{
+  left: 0vw !important;
+}
+section.HPHero[aria-label="Tops"] .HPHero-imagePlaceholder{
+    background-position: top center;
+    margin-top: 82px;
+}
+
+@media only screen and  (max-device-width:1023px){
+    section.HPHero[aria-label="Tops"] .HPHero-title{
+        position: absolute;
+        left: 50%;
+        top: calc(50% + 50px);
+        transform: translate(-50%, -50%);      
+    }
+   section.HPHero[aria-label="Tops"],  section.HPHero[aria-label="Tops"] .HPHero-imagePlaceholder{
+         height: 22.75rem
+   }
+  [data-shopify-template=collection] .HPHero, [data-shopify-template=collection] .HPHero-imagePlaceholder{
+/*      height: 22.75rem */
+  }
+  [data-shopify-template=collection] .HPHero-title{
+    position: absolute;
+    left: 50%;
+    top: calc(50% + 45px);
+    transform: translate(-50%, -50%);
+    width:100%
+  }
+}
+
+@media only screen and (min-device-width:1024px){
+    section.HPHero[aria-label="Tops"] .HPHero-imagePlaceholder{
+       margin-top: 20px;
+    }
 }

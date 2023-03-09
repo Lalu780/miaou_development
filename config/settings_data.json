@@ -44,7 +44,7 @@
           "166059286295ef2d0d-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/IMG_2932_copy.jpg",
+              "image": "shopify:\/\/shop_images\/7087VL_LILAC_2093.jpg",
               "bg_color": "#ffffff",
               "tint_color": "#8b8484",
               "tint_strength": "0",
@@ -58,7 +58,7 @@
               "cta_style": "solid",
               "banner_height": "window",
               "vertical_alignment": "top",
-              "horizontal_alignment": "left"
+              "horizontal_alignment": "right"
             }
           },
           "166059286295ef2d0d-1": {
@@ -117,7 +117,7 @@
           "1660593266445103ce-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/7026PM2_DIONPLAID_5162.jpg",
+              "image": "shopify:\/\/shop_images\/IMG_3570.jpg",
               "bg_color": "#ffffff",
               "tint_color": "#ffffff",
               "tint_strength": "0",
@@ -131,7 +131,7 @@
               "cta_style": "solid",
               "banner_height": "window",
               "vertical_alignment": "top",
-              "horizontal_alignment": "right"
+              "horizontal_alignment": "left"
             }
           }
         },
@@ -233,14 +233,13 @@
       },
       "hp-hero": {
         "type": "hp-hero",
-        "disabled": true,
         "settings": {
-          "title": "NEW COLLECTION",
+          "title": "FOR WOMEN, BY WOMEN. <br>20% OFF TODAY ONLY.",
           "subtitle": "",
-          "bg_image": "shopify:\/\/shop_images\/MIAOU_WITH_KIKO_HR_002-6_copy.jpg",
-          "bg_image_mobile": "shopify:\/\/shop_images\/MIAOU_WITH_KIKO_HR_0-4_V1.jpg",
+          "bg_image": "shopify:\/\/shop_images\/B737BF78-E166-4C9F-A66C-E139D25CF306.jpg",
+          "bg_image_mobile": "shopify:\/\/shop_images\/DCB04553-C69C-4B6B-BC2B-A94AA35ADEA6.jpg",
           "link": "shopify:\/\/collections\/new-womens-clothing",
-          "cta": "SHOP DROP ONE",
+          "cta": "SHOP NOW",
           "vertical_alignment": "middle",
           "horizontal_alignment": "middle",
           "text_color": "#ffffff"
@@ -316,12 +315,13 @@
       },
       "56816988-2ae0-4c2f-8dc1-3a6212b43384": {
         "type": "video",
+        "disabled": true,
         "settings": {
           "video_heading": "NEW COLLECTION",
           "video_cta": "SHOP NOW",
           "video_cta_id": "shopify:\/\/collections\/new-womens-clothing",
-          "video": "https:\/\/player.vimeo.com\/video\/796802440",
-          "video_mob": "https:\/\/player.vimeo.com\/video\/798890387"
+          "video": "https:\/\/player.vimeo.com\/video\/802870269",
+          "video_mob": "https:\/\/player.vimeo.com\/video\/802777127"
         }
       },
       "custom-header": {
@@ -330,7 +330,7 @@
           "b42eb6fa-ed52-40e5-96fc-b0f8df5da2ad": {
             "type": "column",
             "settings": {
-              "home_slider_image": "shopify:\/\/shop_images\/menu-bestsellers_bb518235-5662-4a54-9ea1-0bb2fd30fbd7.jpg",
+              "home_slider_image": "shopify:\/\/shop_images\/MIAOU_WITH_KIKO_HR_002-11_V1_59709652-bbc7-4c0d-816b-716a76923418.jpg",
               "home_slider_title": "NEW DROP",
               "home_slider_url": "shopify:\/\/collections\/new-womens-clothing"
             }
@@ -338,7 +338,7 @@
           "2c320188-c871-4df4-888d-0bf79b48b816": {
             "type": "column",
             "settings": {
-              "home_slider_image": "shopify:\/\/shop_images\/menu-newdrop_2560c2bb-bf96-41c1-9d70-115d0fed4147.jpg",
+              "home_slider_image": "shopify:\/\/shop_images\/MIAOU_WITH_KIKO_HR_0-4_V1_041e46e6-6a4e-41cd-9562-24cba44b3ee3.jpg",
               "home_slider_title": "BEST SELLERS",
               "home_slider_url": "shopify:\/\/collections\/best-sellers"
             }
@@ -346,7 +346,7 @@
           "dbf69ba5-5dca-48ba-8051-848ce7c2e873": {
             "type": "column",
             "settings": {
-              "home_slider_image": "shopify:\/\/shop_images\/menu-latex_6ee60a1d-1400-41a1-ab82-f3ae432c21d7.jpg",
+              "home_slider_image": "shopify:\/\/shop_images\/MIAOU_WITH_KIKO_HR_002-9_V1.jpg",
               "home_slider_title": "LATEX",
               "home_slider_url": "shopify:\/\/collections\/the-latex-shop"
             }
@@ -354,9 +354,9 @@
           "e1c2cdc2-eca0-485e-80a2-7c2e1ae45183": {
             "type": "column",
             "settings": {
-              "home_slider_image": "shopify:\/\/shop_images\/menu-corset_37ccde82-a8e3-4088-88df-e163b037bc67.jpg",
-              "home_slider_title": "THE CORSET",
-              "home_slider_url": "shopify:\/\/collections\/corsets"
+              "home_slider_image": "shopify:\/\/shop_images\/MIAOU_WITH_KIKO_HR_0-3_V1.jpg",
+              "home_slider_title": "SWIM",
+              "home_slider_url": "shopify:\/\/collections\/swim"
             }
           }
         },
@@ -380,8 +380,8 @@
     "content_for_index": [
       "56816988-2ae0-4c2f-8dc1-3a6212b43384",
       "hp-hero",
-      "166059286295ef2d0d",
       "1660593266445103ce",
+      "166059286295ef2d0d",
       "1c2da56b-6adf-484d-9c2d-c3025b56df4a",
       "16642594701b762353"
     ],

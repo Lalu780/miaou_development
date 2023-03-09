@@ -6009,11 +6009,11 @@ a.pswp__share--download:hover {
 .Offcanvas {
   position: fixed;
   right: 0;
-/*   top: 0; */
+  top: 0;
   height: 100%;
-/*   width: 90%; */
-     top: 6.5em;
-    width: 100%; 
+  width: 90%;
+/*      top: 6.5em;
+    width: 100%;  */
   background-color: black;
   transform: scale(1);
   transform-origin: top right;
@@ -6174,7 +6174,7 @@ a.pswp__share--download:hover {
 #js-offcanvas-bg {
   position: fixed;
   top: 0;
-/*   left: -50vw; */
+  left: -50vw;
   width: 100vw;
   height: 100vh;
   z-index: -1;
@@ -6537,9 +6537,7 @@ a.pswp__share--download:hover {
 .HPHero-title:hover, .HPHero-cta:hover {
   color: black;
 }
-.HPHero-title-custom {
-  color: red;
-}
+
 .HPHero-title-custom:hover {
   color: black;
 }
@@ -8117,11 +8115,9 @@ h3 {
     margin: 5rem 5rem 4rem;
   }
   .Offcanvas {
-    width: 100%;
-/*     padding: 5rem 5rem 0; */
+    width: 50%;
+    padding: 5rem 5rem 0;
 /*         height: 40em !important; */
-      padding: 1rem 5rem 0;
-    height: 39em !important;
 } 
   .Offcanvas-Drawer-Row.is-expanded {
     display: grid !important;
@@ -8718,5 +8714,13 @@ background: #191919!important;
 @media only screen and (max-width: 600px) {
 .Search-FeedContent {
     grid-template-columns: 1fr 1fr !important;
+}
+}
+@media only screen and (max-width: 1010px) { 
+.Search-FeedItem-Name-Page {
+    font-size: 1.5em !important;
+}
+  .Search-Input {
+    font-size: 1.5em !important;
 }
 }

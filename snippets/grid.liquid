@@ -26,6 +26,7 @@
   {% assign fill_by_index = 0 %}
   {% assign new_index = 0 %}
   {% for item in items limit: grid_limit %}
+    {% unless item.metafields.nosto.sourceHandle != blank %}
     {% assign new_index = 0 %}
     {% assign fill_by_index = 0 %}
     {% if skip_products contains item.id %}
@@ -124,5 +125,6 @@
       {% render 'grid-item', grid_item: items[new_index], extra_grid_class: extra_grid_class, random_item: 0 %}
       {% comment %}{% render 'grid-item', grid_item: items[forloop.index], extra_grid_class: extra_grid_class, random_item: 0 %}{% endcomment %}
     {% endif %}
+    {% endunless %}
   {% endfor %}
 </div>

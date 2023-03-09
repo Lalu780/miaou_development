@@ -1,26 +1,10 @@
 {% assign collectionSeo = collection.metafields.custom.seo_rich_text_desctiption %}
 {% assign collectionKeywords = collection.metafields.custom.keywords %}
 
-{%- comment -%} {% unless collection.featured_image contains 'products' %}
-  <section class="HPHero">
-    {%- capture image_sizes -%}
-      {%- render 'print-image-sizes' with collection.featured_image -%}
-    {%- endcapture -%}
-    <div class="HPHero-container">
-      <div class="HPHero-imagePlaceholder o-placeholder lazyload" data-bgset="{{image_sizes}}"></div>
-      {% if collection.id == 91341783145 %}
-      <h1 class="HPHero-title HPHero-title-custom">{{ collection.title }}</h1>
-      {% else %}
-      <h1 class="HPHero-title">{{ collection.title }}</h1>
-      {% endif %}
-    </div>
-    </section>
-    {% endunless %} {%- endcomment -%}
-
-{% if product == blank and collection and collection.metafields.custom.nosto != blank %}
+{% if product == blank and collection and collection.metafields.nosto != blank %}
 <section class="HPHero">
   {%- capture image_sizes -%}
-  {%- render 'print-image-sizes', image: collection.metafields.custom.nosto -%}
+  {%- render 'print-image-sizes', image: collections[collection.metafields.nosto.sourceHandle].image -%}
   {%- endcapture -%}
   <div class="HPHero-container">
     <div class="HPHero-imagePlaceholder o-placeholder lazyload" data-bgset="{{image_sizes}}"></div>
@@ -32,7 +16,7 @@
   </div>
 </section>
 {% else %}
-<section class="HPHero">
+<section class="HPHero" aria-label="{{ collection.title}}">
   {%- capture image_sizes -%}
   {%- render 'print-image-sizes' with collection.featured_image -%}
   {%- endcapture -%}
